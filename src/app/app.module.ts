@@ -7,6 +7,7 @@ import { BugReportListComponent } from './components/bug-report-list/bug-report-
 import { BugReportViewComponent } from './components/bug-report-view/bug-report-view.component';
 import { BugReportCreateComponent } from './components/bug-report-create/bug-report-create.component';
 import { BugReportEditComponent } from './components/bug-report-edit/bug-report-edit.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { BugReportEditComponent } from './components/bug-report-edit/bug-report-
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
