@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { MaterialModule } from './modules/material/material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BugReportListComponent } from './components/bug-report-list/bug-report-list.component';
@@ -15,14 +16,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BugReportListComponent,
     BugReportViewComponent,
     BugReportCreateComponent,
-    BugReportEditComponent
+    BugReportEditComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
