@@ -23,6 +23,18 @@
     <td mat-cell *matCellDef="let bug">{{ bug.status }}</td>
   </ng-container>
 
+  <!-- Actions Column -->
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef>Action</th>
+    <td mat-cell *matCellDef="let bug">
+      <mat-icon mat-list-icon>edit</mat-icon>
+      <mat-icon mat-list-icon>done</mat-icon>
+      <mat-icon mat-list-icon>close</mat-icon>
+      <mat-icon mat-list-icon>upgrade</mat-icon>
+      <mat-icon mat-list-icon>delete</mat-icon>
+    </td>
+  </ng-container>
+
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
