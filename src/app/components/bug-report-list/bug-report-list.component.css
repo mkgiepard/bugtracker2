@@ -4,3 +4,8 @@ table {
 .link {
   cursor: pointer;
 }
+.fab-container {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+}
