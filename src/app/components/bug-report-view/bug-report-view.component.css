@@ -5,3 +5,7 @@
   align-items: baseline;
   gap: 30px;
 }
+
+.title {
+  flex-grow: 12;
+}
