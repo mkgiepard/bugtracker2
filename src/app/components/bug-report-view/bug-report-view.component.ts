@@ -4,7 +4,7 @@ import { BugReport } from 'src/app/dataModel/bug-report';
 const BUG_REPORT_DATA: BugReport = {
   bug_id: 1001,
   title: 'bug report 1',
-  priority: 0,
+  priority: 2,
   status: 'new',
 };
 
@@ -19,4 +19,9 @@ export class BugReportViewComponent implements OnInit {
   ngOnInit(): void {}
 
   bugReport = BUG_REPORT_DATA;
+
+  upPriority() {
+    if (this.bugReport.priority == 0) return;
+    this.bugReport.priority--;
+  }
 }

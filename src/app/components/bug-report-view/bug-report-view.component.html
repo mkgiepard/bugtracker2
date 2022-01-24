@@ -13,12 +13,16 @@
       <p>bug report descrption</p>
     </mat-card-content>
     <mat-card-actions>
-      <mat-icon class="link" routerLink="/edit/1" mat-list-icon>edit</mat-icon>
-      <mat-icon mat-list-icon>done</mat-icon>
-      <mat-icon mat-list-icon>close</mat-icon>
-      <mat-icon mat-list-icon>upgrade</mat-icon>
-      <mat-icon mat-list-icon>delete</mat-icon>
-      <mat-icon routerLink="/list" mat-list-icon>arrow_back</mat-icon>
+      <div class="row-container">
+        <mat-icon class="link" routerLink="/edit/1" mat-list-icon
+          >edit</mat-icon
+        >
+        <mat-icon mat-list-icon>done</mat-icon>
+        <mat-icon mat-list-icon>close</mat-icon>
+        <mat-icon mat-list-icon (click)="upPriority()">upgrade</mat-icon>
+        <mat-icon mat-list-icon>delete</mat-icon>
+        <mat-icon routerLink="/list" mat-list-icon>arrow_back</mat-icon>
+      </div>
     </mat-card-actions>
   </mat-card>
 </div>
