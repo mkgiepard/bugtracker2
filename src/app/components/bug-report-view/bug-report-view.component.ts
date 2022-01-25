@@ -24,4 +24,9 @@ export class BugReportViewComponent implements OnInit {
     if (this.bugReport.priority == 0) return;
     this.bugReport.priority--;
   }
+
+  downPriority() {
+    if (this.bugReport.priority == 4) return;
+    this.bugReport.priority++;
+  }
 }

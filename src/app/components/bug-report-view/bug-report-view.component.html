@@ -19,7 +19,12 @@
         >
         <mat-icon mat-list-icon>done</mat-icon>
         <mat-icon mat-list-icon>close</mat-icon>
-        <mat-icon mat-list-icon (click)="upPriority()">upgrade</mat-icon>
+        <mat-icon mat-list-icon (click)="upPriority()"
+          >arrow_circle_up</mat-icon
+        >
+        <mat-icon mat-list-icon (click)="downPriority()"
+          >arrow_circle_down</mat-icon
+        >
         <mat-icon mat-list-icon>delete</mat-icon>
         <mat-icon routerLink="/list" mat-list-icon>arrow_back</mat-icon>
       </div>
