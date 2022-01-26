@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormBuilder } from '@angular/forms';
 
 import { BugReportCreateComponent } from './bug-report-create.component';
 
@@ -8,9 +9,8 @@ describe('BugReportCreateComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BugReportCreateComponent ]
-    })
-    .compileComponents();
+      declarations: [BugReportCreateComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
