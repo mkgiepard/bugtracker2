@@ -5,7 +5,7 @@
     </div>
     <div class="w100">
       <label>Priority: </label>
-      <mat-radio-group formControlName="priority">
+      <mat-radio-group formControlName="priority" required>
         <mat-radio-button value="p0">P0</mat-radio-button>
         <mat-radio-button value="p1">P1</mat-radio-button>
         <mat-radio-button value="p2">P2</mat-radio-button>
@@ -24,12 +24,14 @@
           matInput
           formControlName="description"
           placeholder="Description"
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="10"
           required
         ></textarea>
       </mat-form-field>
     </div>
     <div class="w100">
-      <button type="submit" mat-raised-button>Cancel</button>
+      <button routerLink="/list" mat-raised-button>Cancel</button>
       <button type="submit" mat-raised-button>Save</button>
     </div>
   </form>
