@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BugReport } from 'src/app/dataModel/bug-report';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 const BUG_REPORT_DATA: BugReport = {
   bug_id: 1001,

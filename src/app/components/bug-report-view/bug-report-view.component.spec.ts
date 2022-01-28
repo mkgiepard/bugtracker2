@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BugReportViewComponent } from './bug-report-view.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('BugReportViewComponent', () => {
   let component: BugReportViewComponent;
@@ -8,9 +10,9 @@ describe('BugReportViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BugReportViewComponent ]
-    })
-    .compileComponents();
+      declarations: [BugReportViewComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+    }).compileComponents();
   });
 
   beforeEach(() => {
