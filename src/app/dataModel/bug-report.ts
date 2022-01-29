@@ -3,4 +3,7 @@ export interface BugReport {
   title: string;
   priority: number;
   status: string;
+  description: string;
+  author: string;
+  comment?: string[];
 }

@@ -25,6 +25,12 @@
     <td mat-cell *matCellDef="let bug">{{ bug.status }}</td>
   </ng-container>
 
+  <!-- Author Column -->
+  <ng-container matColumnDef="author">
+    <th mat-header-cell *matHeaderCellDef>Author</th>
+    <td mat-cell *matCellDef="let bug">{{ bug.author }}</td>
+  </ng-container>
+
   <!-- Actions Column -->
   <ng-container matColumnDef="action">
     <th mat-header-cell *matHeaderCellDef>Action</th>

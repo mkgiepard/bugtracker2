@@ -7,6 +7,8 @@ const BUG_REPORT_DATA: BugReport = {
   title: 'bug report 1',
   priority: 2,
   status: 'new',
+  description: 'lorem epsum...',
+  author: 'Buggy Bug',
 };
 
 @Component({
