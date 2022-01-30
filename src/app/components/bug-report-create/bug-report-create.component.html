@@ -3,15 +3,20 @@
     <div>
       <h1>New Bug Report</h1>
     </div>
-    <div class="w100">
-      <label>Priority: </label>
-      <mat-radio-group formControlName="priority" required>
-        <mat-radio-button value="p0">P0</mat-radio-button>
-        <mat-radio-button value="p1">P1</mat-radio-button>
-        <mat-radio-button value="p2">P2</mat-radio-button>
-        <mat-radio-button value="p3">P3</mat-radio-button>
-        <mat-radio-button value="p4">P4</mat-radio-button>
-      </mat-radio-group>
+    <div class="row w100">
+      <div class="w40">
+        <label>Priority: </label>
+        <mat-radio-group formControlName="priority" required>
+          <mat-radio-button value="p0">P0</mat-radio-button>
+          <mat-radio-button value="p1">P1</mat-radio-button>
+          <mat-radio-button value="p2">P2</mat-radio-button>
+          <mat-radio-button value="p3">P3</mat-radio-button>
+          <mat-radio-button value="p4">P4</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="w40">
+        <label>Status: {{ bugReport.status }}</label>
+      </div>
     </div>
     <div>
       <mat-form-field class="w100" appearance="fill">
@@ -20,14 +25,8 @@
     </div>
     <div class="row">
       <mat-form-field class="w100" appearance="fill">
-        <textarea
-          matInput
-          formControlName="description"
-          placeholder="Description"
-          cdkTextareaAutosize
-          cdkAutosizeMinRows="10"
-          required
-        ></textarea>
+        <textarea matInput formControlName="description" placeholder="Description"
+          cdkTextareaAutosize cdkAutosizeMinRows="10" required></textarea>
       </mat-form-field>
     </div>
     <div class="w100">

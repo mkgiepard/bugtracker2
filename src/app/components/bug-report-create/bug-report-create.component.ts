@@ -8,14 +8,22 @@ import { BugReport } from 'src/app/dataModel/bug-report';
   styleUrls: ['./bug-report-create.component.css'],
 })
 export class BugReportCreateComponent implements OnInit {
+  bugReport: BugReport = {
+    bug_id: 1002,
+    title: '',
+    priority: 2,
+    status: 'new',
+    description: '',
+    author: '',
+  };
   emptyBugReport: FormGroup = new FormGroup({
     title: new FormControl(),
     priority: new FormControl(),
     description: new FormControl(),
   });
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
-  onCreate(): void {}
+  onCreate(): void { }
 }

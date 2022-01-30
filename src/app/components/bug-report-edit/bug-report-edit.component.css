@@ -23,6 +23,15 @@ button {
   margin: 0 12px;
 }
 
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
 .w100 {
   width: 100%;
+}
+
+.w40 {
+  width: 40%;
 }
