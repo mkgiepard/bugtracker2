@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card *ngIf="bugReport">
   <form [formGroup]="bugReportForm" class="container">
     <div>
       <h1>Bug Report: {{ bugReport.bug_id }}</h1>
