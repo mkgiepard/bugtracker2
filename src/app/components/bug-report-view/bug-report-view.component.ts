@@ -1,15 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BugReport } from 'src/app/dataModel/bug-report';
+import { BugReport, bugReportData } from 'src/app/dataModel/bug-report';
 import { FormControl, FormGroup } from '@angular/forms';
-
-const BUG_REPORT_DATA: BugReport = {
-  bug_id: 1001,
-  title: 'bug report 1',
-  priority: 2,
-  status: 'new',
-  description: 'lorem epsum...',
-  author: 'Buggy Bug',
-};
 
 @Component({
   selector: 'app-bug-report-view',
@@ -17,16 +8,16 @@ const BUG_REPORT_DATA: BugReport = {
   styleUrls: ['./bug-report-view.component.css'],
 })
 export class BugReportViewComponent implements OnInit {
-  bugReport = BUG_REPORT_DATA;
+  bugReport = bugReportData[0];
   bugReportForm: FormGroup = new FormGroup({
     title: new FormControl(),
     priority: new FormControl('p' + this.bugReport.priority),
     description: new FormControl(),
   });
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   upPriority() {
     if (this.bugReport.priority == 0) return;

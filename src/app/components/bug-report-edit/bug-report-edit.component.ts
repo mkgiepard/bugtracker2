@@ -1,15 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { BugReport } from 'src/app/dataModel/bug-report';
-
-const BUG_REPORT_DATA: BugReport = {
-  bug_id: 1001,
-  title: 'bug report 1',
-  priority: 2,
-  status: 'new',
-  description: 'lorem epsum...',
-  author: 'Buggy Bug',
-};
+import { BugReport, bugReportData } from 'src/app/dataModel/bug-report';
 
 @Component({
   selector: 'app-bug-report-edit',
@@ -17,17 +8,17 @@ const BUG_REPORT_DATA: BugReport = {
   styleUrls: ['./bug-report-edit.component.css'],
 })
 export class BugReportEditComponent implements OnInit {
-  bugReport = BUG_REPORT_DATA;
+  bugReport = bugReportData[1];
   bugReportForm: FormGroup = new FormGroup({
     title: new FormControl(this.bugReport.title),
     priority: new FormControl('p' + this.bugReport.priority),
     description: new FormControl('lorem epsum....'),
   });
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
-  onSave(): void {}
+  onSave(): void { }
 
   upPriority() {
     if (this.bugReport.priority == 0) return;
