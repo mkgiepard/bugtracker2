@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BugReportEditComponent } from './bug-report-edit.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('BugReportEditComponent', () => {
   let component: BugReportEditComponent;
@@ -12,6 +13,9 @@ describe('BugReportEditComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [BugReportEditComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+      imports: [
+        RouterTestingModule.withRoutes([])
+      ],
     })
       .compileComponents();
   });
