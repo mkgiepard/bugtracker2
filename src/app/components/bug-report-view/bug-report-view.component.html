@@ -36,7 +36,7 @@
       <mat-icon mat-list-icon (click)="upPriority()">arrow_circle_up</mat-icon>
       <mat-icon mat-list-icon (click)="downPriority()">arrow_circle_down</mat-icon>
       <mat-icon mat-list-icon>delete</mat-icon>
-      <button routerLink="/edit/1" mat-raised-button>Edit</button>
+      <button [routerLink]="['/edit', bugReport.bug_id]" mat-raised-button>Edit</button>
     </div>
   </form>
 </mat-card>
