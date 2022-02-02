@@ -1,14 +1,14 @@
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <!-- BugId Column -->
-  <ng-container matColumnDef="bug_id">
+  <ng-container matColumnDef="bugId">
     <th mat-header-cell *matHeaderCellDef>No.</th>
-    <td mat-cell *matCellDef="let bug">{{ bug.bug_id }}</td>
+    <td mat-cell *matCellDef="let bug">{{ bug.bugId }}</td>
   </ng-container>
 
   <!-- Title Column -->
   <ng-container matColumnDef="title">
     <th mat-header-cell *matHeaderCellDef>Title</th>
-    <td mat-cell class="link" [routerLink]="['/view', bug.bug_id]" *matCellDef="let bug">
+    <td mat-cell class="link" [routerLink]="['/view', bug.bugId]" *matCellDef="let bug">
       {{ bug.title }}
     </td>
   </ng-container>
@@ -35,7 +35,7 @@
   <ng-container matColumnDef="action">
     <th mat-header-cell *matHeaderCellDef>Action</th>
     <td mat-cell *matCellDef="let bug">
-      <mat-icon class="link" [routerLink]="['/edit', bug.bug_id]" mat-list-icon>edit</mat-icon>
+      <mat-icon class="link" [routerLink]="['/edit', bug.bugId]" mat-list-icon>edit</mat-icon>
       <mat-icon mat-list-icon>done</mat-icon>
       <mat-icon mat-list-icon>close</mat-icon>
       <mat-icon mat-list-icon>arrow_circle_up</mat-icon>

@@ -1,5 +1,5 @@
 export interface BugReport {
-  bug_id: number;
+  bugId: number;
   title: string;
   priority: number;
   status: string;
@@ -10,7 +10,7 @@ export interface BugReport {
 
 export const bugReportData: BugReport[] = [
   {
-    bug_id: 1001,
+    bugId: 1001,
     title: 'bug report 1',
     priority: 0,
     status: 'new',
@@ -18,7 +18,7 @@ export const bugReportData: BugReport[] = [
     author: 'Buggy Bug',
   },
   {
-    bug_id: 1002,
+    bugId: 1002,
     title: 'bug report 2',
     priority: 1,
     status: 'assigned',
@@ -26,7 +26,7 @@ export const bugReportData: BugReport[] = [
     author: 'Buggy Bug',
   },
   {
-    bug_id: 1003,
+    bugId: 1003,
     title: 'bug report 3',
     priority: 2,
     status: 'accepted',
@@ -34,7 +34,7 @@ export const bugReportData: BugReport[] = [
     author: 'Buggy Bug',
   },
   {
-    bug_id: 1004,
+    bugId: 1004,
     title: 'bug report 4',
     priority: 0,
     status: 'fixed',
@@ -42,7 +42,7 @@ export const bugReportData: BugReport[] = [
     author: 'Buggy Bug',
   },
   {
-    bug_id: 1005,
+    bugId: 1005,
     title: 'bug report 5',
     priority: 1,
     status: 'wai',
@@ -50,7 +50,7 @@ export const bugReportData: BugReport[] = [
     author: 'Buggy Bug',
   },
   {
-    bug_id: 1006,
+    bugId: 1006,
     title: 'bug report 6',
     priority: 2,
     status: 'wnf',
@@ -58,7 +58,7 @@ export const bugReportData: BugReport[] = [
     author: 'Buggy Bug',
   },
   {
-    bug_id: 1007,
+    bugId: 1007,
     title: 'bug report 7',
     priority: 0,
     status: 'new',

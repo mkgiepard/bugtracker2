@@ -13,7 +13,7 @@ export class BugReportListComponent implements OnInit {
   ngOnInit(): void { }
 
   displayedColumns: string[] = [
-    'bug_id',
+    'bugId',
     'title',
     'priority',
     'status',

@@ -24,7 +24,7 @@ export class BugReportViewComponent implements OnInit {
     const bugIdFromRoute = Number(routeParams.get('id'));
 
     // Find the product that correspond with the id provided in route.
-    this.bugReport = bugReportData.find(bugReport => bugReport.bug_id === bugIdFromRoute);
+    this.bugReport = bugReportData.find(bugReport => bugReport.bugId === bugIdFromRoute);
     this.bugReportForm.patchValue({ priority: 'p' + this.bugReport?.priority });
   }
 
