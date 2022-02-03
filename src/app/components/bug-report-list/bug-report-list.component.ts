@@ -21,4 +21,22 @@ export class BugReportListComponent implements OnInit {
     'action',
   ];
   dataSource = bugReportData;
+
+  upPriority(bugId: number) {
+    for (let bug of this.dataSource) {
+      if (bug.bugId == bugId) {
+        if (bug.priority == 0) return;
+        bug.priority--;
+      }
+    }
+  }
+
+  downPriority(bugId: number) {
+    for (let bug of this.dataSource) {
+      if (bug.bugId == bugId) {
+        if (bug.priority == 4) return;
+        bug.priority++;
+      }
+    }
+  }
 }
