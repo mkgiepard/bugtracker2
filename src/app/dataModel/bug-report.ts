@@ -8,7 +8,7 @@ export interface BugReport {
   comment?: string[];
 }
 
-export const bugReportData: BugReport[] = [
+export var bugReportData: BugReport[] = [
   {
     bugId: 1001,
     title: 'bug report 1',
