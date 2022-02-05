@@ -25,20 +25,20 @@ export class BugReportViewComponent implements OnInit {
 
     // Find the product that correspond with the id provided in route.
     this.bugReport = bugReportData.find(bugReport => bugReport.bugId === bugIdFromRoute);
-    this.bugReportForm.patchValue({ priority: 'p' + this.bugReport?.priority });
+    this.bugReportForm.patchValue({ priority: this.bugReport?.priority.toString() });
   }
 
   upPriority() {
     if (this.bugReport == undefined) return;
     if (this.bugReport.priority == 0) return;
     this.bugReport.priority--;
-    this.bugReportForm.patchValue({ priority: 'p' + this.bugReport.priority });
+    this.bugReportForm.patchValue({ priority: this.bugReport.priority.toString() });
   }
 
   downPriority() {
     if (this.bugReport == undefined) return;
     if (this.bugReport.priority == 4) return;
     this.bugReport.priority++;
-    this.bugReportForm.patchValue({ priority: 'p' + this.bugReport.priority });
+    this.bugReportForm.patchValue({ priority: this.bugReport.priority.toString() });
   }
 }
