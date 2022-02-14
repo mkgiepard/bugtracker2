@@ -13,6 +13,7 @@ export class BugReportEditComponent implements OnInit {
   bugReportForm: FormGroup = new FormGroup({
     bugId: new FormControl(),
     title: new FormControl(),
+    status: new FormControl(),
     priority: new FormControl(),
     description: new FormControl(),
   });
@@ -56,5 +57,11 @@ export class BugReportEditComponent implements OnInit {
     if (this.bugReport.priority == 4) return;
     this.bugReport.priority++;
     this.bugReportForm.patchValue({ priority: this.bugReport.priority.toString() });
+  }
+
+  markAsFixed() {
+    if (this.bugReport == undefined) return;
+    if (this.bugReport.status === "fixed") return;
+    this.bugReport.status = "fixed";
   }
 }
