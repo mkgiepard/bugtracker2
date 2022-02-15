@@ -1,8 +1,17 @@
+export enum Status {
+  New = "New",
+  Assigned = "Assigned",
+  Accepted = "Accepted",
+  Fixed = "Fixed",
+  WAI = "WAI",
+  WNF = "WNF"
+}
+
 export interface BugReport {
   bugId: number;
   title: string;
   priority: number;
-  status: string;
+  status: Status;
   description: string;
   author: string;
   comment?: string[];
@@ -13,7 +22,7 @@ export var bugReportData: BugReport[] = [
     bugId: 1001,
     title: 'bug report 1',
     priority: 0,
-    status: 'new',
+    status: Status.New,
     description: 'lorem epsum...',
     author: 'Buggy Bug',
   },
@@ -21,7 +30,7 @@ export var bugReportData: BugReport[] = [
     bugId: 1002,
     title: 'bug report 2',
     priority: 1,
-    status: 'assigned',
+    status: Status.Accepted,
     description: 'lorem epsum...',
     author: 'Buggy Bug',
   },
@@ -29,7 +38,7 @@ export var bugReportData: BugReport[] = [
     bugId: 1003,
     title: 'bug report 3',
     priority: 2,
-    status: 'accepted',
+    status: Status.Assigned,
     description: 'lorem epsum...',
     author: 'Buggy Bug',
   },
@@ -37,7 +46,7 @@ export var bugReportData: BugReport[] = [
     bugId: 1004,
     title: 'bug report 4',
     priority: 0,
-    status: 'fixed',
+    status: Status.Fixed,
     description: 'lorem epsum...',
     author: 'Buggy Bug',
   },
@@ -45,7 +54,7 @@ export var bugReportData: BugReport[] = [
     bugId: 1005,
     title: 'bug report 5',
     priority: 1,
-    status: 'wai',
+    status: Status.WAI,
     description: 'lorem epsum...',
     author: 'Buggy Bug',
   },
@@ -53,7 +62,7 @@ export var bugReportData: BugReport[] = [
     bugId: 1006,
     title: 'bug report 6',
     priority: 2,
-    status: 'wnf',
+    status: Status.WNF,
     description: 'lorem epsum...',
     author: 'Buggy Bug',
   },
@@ -61,7 +70,7 @@ export var bugReportData: BugReport[] = [
     bugId: 1007,
     title: 'bug report 7',
     priority: 0,
-    status: 'new',
+    status: Status.New,
     description: 'lorem epsum...',
     author: 'Buggy Bug',
   },

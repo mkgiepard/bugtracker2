@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { BugReport } from 'src/app/dataModel/bug-report';
+import { BugReport, Status } from 'src/app/dataModel/bug-report';
 
 @Component({
   selector: 'app-bug-report-create',
@@ -12,7 +12,7 @@ export class BugReportCreateComponent implements OnInit {
     bugId: 1099,
     title: '',
     priority: 2,
-    status: 'new',
+    status: Status.New,
     description: '',
     author: '',
   };

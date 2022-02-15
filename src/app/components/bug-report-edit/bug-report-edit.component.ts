@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { BugReport, bugReportData } from 'src/app/dataModel/bug-report';
+import { BugReport, Status, bugReportData } from 'src/app/dataModel/bug-report';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -61,7 +61,7 @@ export class BugReportEditComponent implements OnInit {
 
   markAsFixed() {
     if (this.bugReport == undefined) return;
-    if (this.bugReport.status === "fixed") return;
-    this.bugReport.status = "fixed";
+    if (this.bugReport.status === Status.Fixed) return;
+    this.bugReport.status = Status.Fixed;
   }
 }
