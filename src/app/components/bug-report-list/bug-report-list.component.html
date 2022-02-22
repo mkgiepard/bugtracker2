@@ -36,7 +36,7 @@
     <th mat-header-cell *matHeaderCellDef>Action</th>
     <td mat-cell *matCellDef="let bug">
       <mat-icon class="link" [routerLink]="['/edit', bug.bugId]" mat-list-icon>edit</mat-icon>
-      <mat-icon mat-list-icon>done</mat-icon>
+      <mat-icon mat-list-icon (click)="markAsFixed(bug.bugId)">done</mat-icon>
       <mat-icon mat-list-icon>close</mat-icon>
       <mat-icon mat-list-icon (click)="upPriority(bug.bugId)">arrow_circle_up</mat-icon>
       <mat-icon mat-list-icon (click)="downPriority(bug.bugId)">arrow_circle_down</mat-icon>

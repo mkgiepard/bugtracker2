@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MaterialModule } from 'src/app/modules/material/material.module';
-import { BugReport, bugReportData } from 'src/app/dataModel/bug-report';
+import { BugReport, Status, bugReportData } from 'src/app/dataModel/bug-report';
 
 @Component({
   selector: 'app-bug-report-list',
@@ -36,6 +36,15 @@ export class BugReportListComponent implements OnInit {
       if (bug.bugId == bugId) {
         if (bug.priority == 4) return;
         bug.priority++;
+      }
+    }
+  }
+
+  markAsFixed(bugId: number) {
+    for (let bug of this.dataSource) {
+      if (bug.bugId == bugId) {
+        if (bug.status === Status.Fixed) return;
+        bug.status = Status.Fixed;
       }
     }
   }

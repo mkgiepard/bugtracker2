@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BugReport, bugReportData } from 'src/app/dataModel/bug-report';
+import { BugReport, Status, bugReportData } from 'src/app/dataModel/bug-report';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
@@ -40,5 +40,11 @@ export class BugReportViewComponent implements OnInit {
     if (this.bugReport.priority == 4) return;
     this.bugReport.priority++;
     this.bugReportForm.patchValue({ priority: this.bugReport.priority.toString() });
+  }
+
+  markAsFixed() {
+    if (this.bugReport == undefined) return;
+    if (this.bugReport.status === Status.Fixed) return;
+    this.bugReport.status = Status.Fixed;
   }
 }
