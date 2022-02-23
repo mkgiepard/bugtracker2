@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MaterialModule } from 'src/app/modules/material/material.module';
 import { BugReport, Status, bugReportData } from 'src/app/dataModel/bug-report';
+import { BugReportService } from 'src/app/services/bug-report.service';
 
 @Component({
   selector: 'app-bug-report-list',
@@ -8,10 +9,6 @@ import { BugReport, Status, bugReportData } from 'src/app/dataModel/bug-report';
   styleUrls: ['./bug-report-list.component.css'],
 })
 export class BugReportListComponent implements OnInit {
-  constructor() { }
-
-  ngOnInit(): void { }
-
   displayedColumns: string[] = [
     'bugId',
     'title',
@@ -20,7 +17,17 @@ export class BugReportListComponent implements OnInit {
     'author',
     'action',
   ];
-  dataSource = bugReportData;
+  dataSource: BugReport[] = [];
+
+  constructor(private bugReportService: BugReportService) { }
+
+  ngOnInit(): void {
+    this.getBugReports();
+  }
+
+  getBugReports() {
+    this.dataSource = this.bugReportService.getBugReports();
+  }
 
   upPriority(bugId: number) {
     for (let bug of this.dataSource) {
