@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { BugReport, bugReportData } from '../dataModel/bug-report';
 
@@ -7,11 +8,11 @@ import { BugReport, bugReportData } from '../dataModel/bug-report';
   providedIn: 'root'
 })
 export class BugReportService {
+  private bugReportUrl = 'api/bugReports';
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getBugReports(): Observable<BugReport[]> {
-    const bugReports = of(bugReportData);
-    return bugReports;
+    return this.http.get<BugReport[]>(this.bugReportUrl);
   }
 }
