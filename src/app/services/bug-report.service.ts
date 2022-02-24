@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { bugReportData } from '../dataModel/bug-report';
+import { Observable, of } from 'rxjs';
+
+import { BugReport, bugReportData } from '../dataModel/bug-report';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +10,8 @@ export class BugReportService {
 
   constructor() { }
 
-  getBugReports() {
-    return bugReportData;
+  getBugReports(): Observable<BugReport[]> {
+    const bugReports = of(bugReportData);
+    return bugReports;
   }
 }

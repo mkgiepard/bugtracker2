@@ -26,7 +26,8 @@ export class BugReportListComponent implements OnInit {
   }
 
   getBugReports() {
-    this.dataSource = this.bugReportService.getBugReports();
+    this.bugReportService.getBugReports()
+      .subscribe(bugReports => this.dataSource = bugReports);
   }
 
   upPriority(bugId: number) {
