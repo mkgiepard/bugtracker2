@@ -19,6 +19,6 @@ export class InMemoryDataService implements InMemoryDbService {
   // if the bugReports array is not empty, the method below returns the highest
   // bugReport id + 1.
   genId(bugReports: BugReport[]): number {
-    return bugReports.length > 0 ? Math.max(...bugReports.map(bugReport => bugReport.bugId)) + 1 : 1001;
+    return bugReports.length > 0 ? Math.max(...bugReports.map(bugReport => bugReport.id)) + 1 : 1001;
   }
 }

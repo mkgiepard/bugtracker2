@@ -9,7 +9,7 @@ import { BugReport, Status } from 'src/app/dataModel/bug-report';
 })
 export class BugReportCreateComponent implements OnInit {
   bugReport: BugReport = {
-    bugId: 1099,
+    id: 1099,
     title: '',
     priority: 2,
     status: Status.New,

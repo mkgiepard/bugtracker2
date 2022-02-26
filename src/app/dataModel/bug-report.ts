@@ -8,7 +8,7 @@ export enum Status {
 }
 
 export interface BugReport {
-  bugId: number;
+  id: number;
   title: string;
   priority: number;
   status: Status;
@@ -19,7 +19,7 @@ export interface BugReport {
 
 export var bugReportData: BugReport[] = [
   {
-    bugId: 1001,
+    id: 1001,
     title: 'bug report 1',
     priority: 0,
     status: Status.New,
@@ -27,7 +27,7 @@ export var bugReportData: BugReport[] = [
     author: 'Buggy Bug',
   },
   {
-    bugId: 1002,
+    id: 1002,
     title: 'bug report 2',
     priority: 1,
     status: Status.Accepted,
@@ -35,7 +35,7 @@ export var bugReportData: BugReport[] = [
     author: 'Buggy Bug',
   },
   {
-    bugId: 1003,
+    id: 1003,
     title: 'bug report 3',
     priority: 2,
     status: Status.Assigned,
@@ -43,7 +43,7 @@ export var bugReportData: BugReport[] = [
     author: 'Buggy Bug',
   },
   {
-    bugId: 1004,
+    id: 1004,
     title: 'bug report 4',
     priority: 0,
     status: Status.Fixed,
@@ -51,7 +51,7 @@ export var bugReportData: BugReport[] = [
     author: 'Buggy Bug',
   },
   {
-    bugId: 1005,
+    id: 1005,
     title: 'bug report 5',
     priority: 1,
     status: Status.WAI,
@@ -59,7 +59,7 @@ export var bugReportData: BugReport[] = [
     author: 'Buggy Bug',
   },
   {
-    bugId: 1006,
+    id: 1006,
     title: 'bug report 6',
     priority: 2,
     status: Status.WNF,
@@ -67,7 +67,7 @@ export var bugReportData: BugReport[] = [
     author: 'Buggy Bug',
   },
   {
-    bugId: 1007,
+    id: 1007,
     title: 'bug report 7',
     priority: 0,
     status: Status.New,

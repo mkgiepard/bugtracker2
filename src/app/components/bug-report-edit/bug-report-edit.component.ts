@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class BugReportEditComponent implements OnInit {
   bugReport: BugReport | undefined;
   bugReportForm: FormGroup = new FormGroup({
-    bugId: new FormControl(),
+    id: new FormControl(),
     title: new FormControl(),
     status: new FormControl(),
     priority: new FormControl(),
@@ -23,11 +23,11 @@ export class BugReportEditComponent implements OnInit {
   ngOnInit(): void {
     // First get the product id from the current route.
     const routeParams = this.route.snapshot.paramMap;
-    const bugIdFromRoute = Number(routeParams.get('id'));
+    const idFromRoute = Number(routeParams.get('id'));
 
     // Find the product that correspond with the id provided in route.
-    this.bugReport = bugReportData.find(bugReport => bugReport.bugId === bugIdFromRoute);
-    this.bugReportForm.patchValue({ bugId: this.bugReport?.bugId });
+    this.bugReport = bugReportData.find(bugReport => bugReport.id === idFromRoute);
+    this.bugReportForm.patchValue({ id: this.bugReport?.id });
     this.bugReportForm.patchValue({ title: this.bugReport?.title });
     // For setting a value in mat-radio-button you need to pass String
     this.bugReportForm.patchValue({ priority: this.bugReport?.priority.toString() });
@@ -36,7 +36,7 @@ export class BugReportEditComponent implements OnInit {
 
   updateProject(bug: BugReport): void {
     for (let b of bugReportData) {
-      if (b.bugId == bug.bugId) {
+      if (b.id == bug.id) {
         b.title = bug.title;
         b.priority = +bug.priority; // '+' converts to number
         b.description = bug.description;

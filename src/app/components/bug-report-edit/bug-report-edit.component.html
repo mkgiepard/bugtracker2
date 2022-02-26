@@ -1,8 +1,8 @@
 <mat-card *ngIf="bugReport">
   <form [formGroup]="bugReportForm" class="container">
     <div>
-      <h1>Bug Report: {{ bugReport.bugId }}</h1>
-      <input matInput formControlName="bugId" value="{{ bugReport.bugId }}" hidden />
+      <h1>Bug Report: {{ bugReport.id }}</h1>
+      <input matInput formControlName="id" value="{{ bugReport.id }}" hidden />
     </div>
     <div class="row w100">
       <div class="w40">

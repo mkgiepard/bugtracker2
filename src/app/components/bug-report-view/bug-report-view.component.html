@@ -1,7 +1,7 @@
 <mat-card *ngIf="bugReport">
   <form [formGroup]="bugReportForm" class="container">
     <div>
-      <h1>Bug Report: {{ bugReport.bugId }}</h1>
+      <h1>Bug Report: {{ bugReport.id }}</h1>
     </div>
     <div class="row w100">
       <div class="w40">
@@ -36,7 +36,7 @@
       <mat-icon mat-list-icon (click)="upPriority()">arrow_circle_up</mat-icon>
       <mat-icon mat-list-icon (click)="downPriority()">arrow_circle_down</mat-icon>
       <mat-icon mat-list-icon>delete</mat-icon>
-      <button [routerLink]="['/edit', bugReport.bugId]" mat-raised-button>Edit</button>
+      <button [routerLink]="['/edit', bugReport.id]" mat-raised-button>Edit</button>
     </div>
   </form>
 </mat-card>

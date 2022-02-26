@@ -10,7 +10,7 @@ import { BugReportService } from 'src/app/services/bug-report.service';
 })
 export class BugReportListComponent implements OnInit {
   displayedColumns: string[] = [
-    'bugId',
+    'id',
     'title',
     'priority',
     'status',
@@ -30,27 +30,27 @@ export class BugReportListComponent implements OnInit {
       .subscribe(bugReports => this.dataSource = bugReports);
   }
 
-  upPriority(bugId: number) {
+  upPriority(id: number) {
     for (let bug of this.dataSource) {
-      if (bug.bugId == bugId) {
+      if (bug.id == id) {
         if (bug.priority == 0) return;
         bug.priority--;
       }
     }
   }
 
-  downPriority(bugId: number) {
+  downPriority(id: number) {
     for (let bug of this.dataSource) {
-      if (bug.bugId == bugId) {
+      if (bug.id == id) {
         if (bug.priority == 4) return;
         bug.priority++;
       }
     }
   }
 
-  markAsFixed(bugId: number) {
+  markAsFixed(id: number) {
     for (let bug of this.dataSource) {
-      if (bug.bugId == bugId) {
+      if (bug.id == id) {
         if (bug.status === Status.Fixed) return;
         bug.status = Status.Fixed;
       }

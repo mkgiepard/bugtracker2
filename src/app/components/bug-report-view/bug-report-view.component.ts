@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BugReport, Status, bugReportData } from 'src/app/dataModel/bug-report';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { BugReportService } from 'src/app/services/bug-report.service';
 
 @Component({
   selector: 'app-bug-report-view',
@@ -16,16 +17,21 @@ export class BugReportViewComponent implements OnInit {
     description: new FormControl(),
   });
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private bugReportService: BugReportService) { }
 
   ngOnInit(): void {
     // First get the product id from the current route.
     const routeParams = this.route.snapshot.paramMap;
-    const bugIdFromRoute = Number(routeParams.get('id'));
+    const idFromRoute = Number(routeParams.get('id'));
 
-    // Find the product that correspond with the id provided in route.
-    this.bugReport = bugReportData.find(bugReport => bugReport.bugId === bugIdFromRoute);
+    // Get the bugReport through the service
+    this.getBugReport(idFromRoute);
     this.bugReportForm.patchValue({ priority: this.bugReport?.priority.toString() });
+  }
+
+  getBugReport(id: number) {
+    this.bugReportService.getBugReport(id)
+      .subscribe(bugReport => this.bugReport = bugReport);
   }
 
   upPriority() {

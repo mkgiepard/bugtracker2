@@ -20,6 +20,14 @@ export class BugReportService {
       );
   }
 
+  getBugReport(id: number): Observable<BugReport> {
+    const url = `${this.bugReportUrl}/${id}`;
+    return this.http.get<BugReport>(url).pipe(
+      //tap(_ => this.log(`fetched bugReport id=${id}`)),
+      catchError(this.handleError<BugReport>(`bugReport id=${id}`))
+    );
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.
