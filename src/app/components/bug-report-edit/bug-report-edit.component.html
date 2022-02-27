@@ -2,17 +2,19 @@
   <form [formGroup]="bugReportForm" class="container">
     <div>
       <h1>Bug Report: {{ bugReport.id }}</h1>
-      <input matInput formControlName="id" value="{{ bugReport.id }}" hidden />
+      <input matInput formControlName="id" [(ngModel)]="bugReport.id" value="{{ bugReport.id }}"
+        hidden />
     </div>
     <div class="row w100">
       <div class="w40">
         <label>Priority: </label>
-        <mat-radio-group formControlName="priority" appearance="outline">
-          <mat-radio-button value="0">P0</mat-radio-button>
-          <mat-radio-button value="1">P1</mat-radio-button>
-          <mat-radio-button value="2">P2</mat-radio-button>
-          <mat-radio-button value="3">P3</mat-radio-button>
-          <mat-radio-button value="4">P4</mat-radio-button>
+        <mat-radio-group formControlName="priority" appearance="outline"
+          [(ngModel)]="bugReport.priority">
+          <mat-radio-button [value]="0">P0</mat-radio-button>
+          <mat-radio-button [value]="1">P1</mat-radio-button>
+          <mat-radio-button [value]="2">P2</mat-radio-button>
+          <mat-radio-button [value]="3">P3</mat-radio-button>
+          <mat-radio-button [value]="4">P4</mat-radio-button>
         </mat-radio-group>
       </div>
       <div class="w40">
@@ -21,13 +23,14 @@
     </div>
     <div>
       <mat-form-field class="w100" appearance="outline">
-        <input matInput formControlName="title" placeholder="Title" value="{{ bugReport.title }}" />
+        <input matInput formControlName="title" placeholder="Title" [(ngModel)]="bugReport.title"
+          value="{{ bugReport.title }}" />
       </mat-form-field>
     </div>
     <div>
       <mat-form-field class="w100" appearance="outline">
         <textarea matInput formControlName="description" placeholder="Description"
-          cdkTextareaAutosize cdkAutosizeMinRows="10"
+          cdkTextareaAutosize cdkAutosizeMinRows="10" [(ngModel)]="bugReport.description"
           value="{{ bugReport.description }}"></textarea>
       </mat-form-field>
     </div>
@@ -38,7 +41,7 @@
       <mat-icon mat-list-icon (click)="upPriority()">arrow_circle_up</mat-icon>
       <mat-icon mat-list-icon (click)="downPriority()">arrow_circle_down</mat-icon>
       <mat-icon mat-list-icon>delete</mat-icon>
-      <button (click)="updateProject(bugReportForm.value)" mat-raised-button>Save</button>
+      <button (click)="save()" mat-raised-button>Save</button>
     </div>
   </form>
 </mat-card>

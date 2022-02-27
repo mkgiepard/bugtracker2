@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { BugReport, Status, bugReportData } from 'src/app/dataModel/bug-report';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BugReportService } from 'src/app/services/bug-report.service';
 
 @Component({
   selector: 'app-bug-report-edit',
@@ -17,32 +18,30 @@ export class BugReportEditComponent implements OnInit {
     priority: new FormControl(),
     description: new FormControl(),
   });
+  bugReportPriority: string | undefined;
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(
+    private router: Router, private route: ActivatedRoute,
+    private bugReportService: BugReportService) { }
 
   ngOnInit(): void {
     // First get the product id from the current route.
     const routeParams = this.route.snapshot.paramMap;
     const idFromRoute = Number(routeParams.get('id'));
 
-    // Find the product that correspond with the id provided in route.
-    this.bugReport = bugReportData.find(bugReport => bugReport.id === idFromRoute);
+    // Get the bugReport through the service
+    this.getBugReport(idFromRoute);
     this.bugReportForm.patchValue({ id: this.bugReport?.id });
     this.bugReportForm.patchValue({ title: this.bugReport?.title });
     // For setting a value in mat-radio-button you need to pass String
+    this.bugReportPriority = this.bugReport?.priority.toString();
     this.bugReportForm.patchValue({ priority: this.bugReport?.priority.toString() });
     this.bugReportForm.patchValue({ description: this.bugReport?.description });
   }
 
-  updateProject(bug: BugReport): void {
-    for (let b of bugReportData) {
-      if (b.id == bug.id) {
-        b.title = bug.title;
-        b.priority = +bug.priority; // '+' converts to number
-        b.description = bug.description;
-      }
-    }
-    this.router.navigate(["/list"]);
+  getBugReport(id: number) {
+    this.bugReportService.getBugReport(id)
+      .subscribe(bugReport => this.bugReport = bugReport);
   }
 
   upPriority() {
@@ -63,5 +62,16 @@ export class BugReportEditComponent implements OnInit {
     if (this.bugReport == undefined) return;
     if (this.bugReport.status === Status.Fixed) return;
     this.bugReport.status = Status.Fixed;
+  }
+
+  save(): void {
+    if (this.bugReport) {
+      this.bugReportService.updateBugReport(this.bugReport)
+        .subscribe(() => this.goBack());
+    }
+  }
+
+  goBack(): void {
+    this.router.navigate(["/list"]);
   }
 }

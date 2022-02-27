@@ -4,6 +4,11 @@ import { BugReportEditComponent } from './bug-report-edit.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
+// Http testing module and mocking controller
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from "@angular/common/http/testing";
 
 describe('BugReportEditComponent', () => {
   let component: BugReportEditComponent;
@@ -14,7 +19,8 @@ describe('BugReportEditComponent', () => {
       declarations: [BugReportEditComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
       imports: [
-        RouterTestingModule.withRoutes([])
+        RouterTestingModule.withRoutes([]),
+        HttpClientTestingModule
       ],
     })
       .compileComponents();

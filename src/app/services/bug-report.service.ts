@@ -11,6 +11,10 @@ import { BugReport, bugReportData } from '../dataModel/bug-report';
 export class BugReportService {
   private bugReportUrl = 'api/bugReports';
 
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
   constructor(private http: HttpClient) { }
 
   getBugReports(): Observable<BugReport[]> {
@@ -25,6 +29,14 @@ export class BugReportService {
     return this.http.get<BugReport>(url).pipe(
       //tap(_ => this.log(`fetched bugReport id=${id}`)),
       catchError(this.handleError<BugReport>(`bugReport id=${id}`))
+    );
+  }
+
+  /** PUT: update the bugReport on the server */
+  updateBugReport(bugReport: BugReport): Observable<any> {
+    return this.http.put(this.bugReportUrl, bugReport, this.httpOptions).pipe(
+      //tap(_ => this.log(`updated bugReport id=${bugReport.id}`)),
+      catchError(this.handleError<any>('updateBugReport'))
     );
   }
 
