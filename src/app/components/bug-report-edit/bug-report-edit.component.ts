@@ -31,12 +31,8 @@ export class BugReportEditComponent implements OnInit {
 
     // Get the bugReport through the service
     this.getBugReport(idFromRoute);
-    this.bugReportForm.patchValue({ id: this.bugReport?.id });
-    this.bugReportForm.patchValue({ title: this.bugReport?.title });
     // For setting a value in mat-radio-button you need to pass String
     this.bugReportPriority = this.bugReport?.priority.toString();
-    this.bugReportForm.patchValue({ priority: this.bugReport?.priority.toString() });
-    this.bugReportForm.patchValue({ description: this.bugReport?.description });
   }
 
   getBugReport(id: number) {
@@ -47,15 +43,13 @@ export class BugReportEditComponent implements OnInit {
   upPriority() {
     if (this.bugReport == undefined) return;
     if (this.bugReport.priority == 0) return;
-    this.bugReport.priority--;
-    this.bugReportForm.patchValue({ priority: this.bugReport.priority.toString() });
+    this.bugReportPriority = (this.bugReport.priority--).toString();
   }
 
   downPriority() {
     if (this.bugReport == undefined) return;
     if (this.bugReport.priority == 4) return;
-    this.bugReport.priority++;
-    this.bugReportForm.patchValue({ priority: this.bugReport.priority.toString() });
+    this.bugReportPriority = (this.bugReport.priority++).toString();
   }
 
   markAsFixed() {
