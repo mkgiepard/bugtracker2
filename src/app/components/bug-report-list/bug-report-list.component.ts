@@ -31,21 +31,17 @@ export class BugReportListComponent implements OnInit {
   }
 
   upPriority(id: number) {
-    for (let bug of this.dataSource) {
-      if (bug.id == id) {
-        if (bug.priority == 0) return;
-        bug.priority--;
-      }
-    }
+    let bug = this.dataSource.find(b => b.id === id);
+    if (bug == undefined) return;
+    if (bug.priority == 0) return;
+    bug.priority--;
   }
 
   downPriority(id: number) {
-    for (let bug of this.dataSource) {
-      if (bug.id == id) {
-        if (bug.priority == 4) return;
-        bug.priority++;
-      }
-    }
+    let bug = this.dataSource.find(b => b.id === id);
+    if (bug == undefined) return;
+    if (bug.priority == 4) return;
+    bug.priority++;
   }
 
   markAsFixed(id: number) {
