@@ -32,6 +32,14 @@ export class BugReportService {
     );
   }
 
+  /** POST: add a new bugReport to the server */
+  addBugReport(bugReport: BugReport): Observable<BugReport> {
+    return this.http.post<BugReport>(this.bugReportUrl, bugReport, this.httpOptions).pipe(
+      //tap((newBugReport: BugReport) => this.log(`added hero w/ id=${bugReport.id}`)),
+      catchError(this.handleError<BugReport>('addBugReport'))
+    );
+  }
+
   /** PUT: update the bugReport on the server */
   updateBugReport(bugReport: BugReport): Observable<any> {
     return this.http.put(this.bugReportUrl, bugReport, this.httpOptions).pipe(
