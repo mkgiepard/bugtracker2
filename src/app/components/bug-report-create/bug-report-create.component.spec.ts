@@ -8,8 +8,11 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import {
   HttpClientTestingModule,
   HttpTestingController,
-} from "@angular/common/http/testing";
+} from '@angular/common/http/testing';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MaterialModule } from '../../modules/material/material.module';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('BugReportCreateComponent', () => {
   let component: BugReportCreateComponent;
@@ -18,7 +21,13 @@ describe('BugReportCreateComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [BugReportCreateComponent],
-      imports: [HttpClientTestingModule, ReactiveFormsModule],
+      imports: [
+        HttpClientTestingModule,
+        MaterialModule,
+        NoopAnimationsModule,
+        ReactiveFormsModule,
+        RouterTestingModule,
+      ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
     }).compileComponents();
   });
