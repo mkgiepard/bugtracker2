@@ -35,3 +35,7 @@ button {
 .w40 {
   width: 40%;
 }
+
+.link {
+  cursor: pointer;
+}

@@ -65,6 +65,12 @@ export class BugReportEditComponent implements OnInit {
     }
   }
 
+  delete(): void {
+    if (this.bugReport) {
+      this.bugReportService.deleteBugReport(this.bugReport.id).subscribe(() => this.goBack());
+    }
+  }
+
   goBack(): void {
     this.router.navigate(["/list"]);
   }

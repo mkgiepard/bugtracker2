@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BugReport, Status, bugReportData } from 'src/app/dataModel/bug-report';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BugReportService } from 'src/app/services/bug-report.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class BugReportViewComponent implements OnInit {
   });
   bugReportPriority: string | undefined;
 
-  constructor(private route: ActivatedRoute, private bugReportService: BugReportService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private bugReportService: BugReportService) { }
 
   ngOnInit(): void {
     // First get the product id from the current route.
@@ -52,5 +52,15 @@ export class BugReportViewComponent implements OnInit {
     if (this.bugReport == undefined) return;
     if (this.bugReport.status === Status.Fixed) return;
     this.bugReport.status = Status.Fixed;
+  }
+
+  delete(): void {
+    if (this.bugReport) {
+      this.bugReportService.deleteBugReport(this.bugReport.id).subscribe(() => this.goBack());
+    }
+  }
+
+  goBack(): void {
+    this.router.navigate(["/list"]);
   }
 }
