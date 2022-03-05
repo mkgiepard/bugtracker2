@@ -40,7 +40,7 @@
       <mat-icon mat-list-icon>close</mat-icon>
       <mat-icon mat-list-icon (click)="upPriority(bug.id)">arrow_circle_up</mat-icon>
       <mat-icon mat-list-icon (click)="downPriority(bug.id)">arrow_circle_down</mat-icon>
-      <mat-icon mat-list-icon>delete</mat-icon>
+      <mat-icon mat-list-icon (click)="delete(bug)">delete</mat-icon>
     </td>
   </ng-container>
 

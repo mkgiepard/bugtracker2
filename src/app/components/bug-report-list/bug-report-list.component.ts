@@ -52,4 +52,9 @@ export class BugReportListComponent implements OnInit {
       }
     }
   }
+
+  delete(bugReport: BugReport): void {
+    this.dataSource = this.dataSource.filter(b => b !== bugReport);
+    this.bugReportService.deleteBugReport(bugReport.id).subscribe();
+  }
 }
