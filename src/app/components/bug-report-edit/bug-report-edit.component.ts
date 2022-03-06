@@ -19,6 +19,7 @@ export class BugReportEditComponent implements OnInit {
     description: new FormControl(),
   });
   bugReportPriority: string | undefined;
+  bugReportStatuses = Object.values(Status)
 
   constructor(
     private router: Router, private route: ActivatedRoute,
