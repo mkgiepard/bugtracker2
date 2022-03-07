@@ -13,6 +13,7 @@ import { BugReportViewComponent } from './components/bug-report-view/bug-report-
 import { BugReportCreateComponent } from './components/bug-report-create/bug-report-create.component';
 import { BugReportEditComponent } from './components/bug-report-edit/bug-report-edit.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BugReportSearchComponent } from './components/bug-report-search/bug-report-search.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BugReportViewComponent,
     BugReportCreateComponent,
     BugReportEditComponent,
+    BugReportSearchComponent,
   ],
   imports: [
     HttpClientModule,

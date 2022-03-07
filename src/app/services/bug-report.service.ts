@@ -58,6 +58,20 @@ export class BugReportService {
     );
   }
 
+  /* GET bugReports whose title contains search term */
+  searchBugReports(term: string): Observable<BugReport[]> {
+    if (!term.trim()) {
+      // if not search term, return empty hero array.
+      return of([]);
+    }
+    return this.http.get<BugReport[]>(`${this.bugReportUrl}/?title=${term}`).pipe(
+      //tap(x => x.length ?
+      //this.log(`found heroes matching "${term}"`) :
+      //this.log(`no heroes matching "${term}"`)),
+      catchError(this.handleError<BugReport[]>('searchBugReport', []))
+    );
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.

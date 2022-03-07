@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MaterialModule } from 'src/app/modules/material/material.module';
 import { BugReport, Status, bugReportData } from 'src/app/dataModel/bug-report';
 import { BugReportService } from 'src/app/services/bug-report.service';
+import { BugReportSearchComponent } from '../bug-report-search/bug-report-search.component';
 
 @Component({
   selector: 'app-bug-report-list',
