@@ -18,7 +18,7 @@
         </mat-radio-group>
       </div>
       <div class="w40">
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="standard" floatLabel="auto">
           <mat-label>Status</mat-label>
           <mat-select [(value)]="bugReport.status">
             <mat-option *ngFor="let bugReportStatus of bugReportStatuses" [value]="bugReportStatus">
