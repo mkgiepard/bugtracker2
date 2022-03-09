@@ -1,12 +1,14 @@
-<div id="search-component">
-    <label for="search-box">Hero Search</label>
-    <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+<mat-card>
+    <div id="search-component" class="w100">
+        <input matInput #searchBox class="w100" id="search-box" (input)="search(searchBox.value)"
+            placeholder="Search by itle" />
 
-    <ul class="search-result">
-        <li *ngFor="let bugReport of bugReports$ | async">
-            <a routerLink="/view/{{bugReport.id}}">
-                {{bugReport.title}}
-            </a>
-        </li>
-    </ul>
-</div>
+        <ul class="search-result">
+            <li *ngFor="let bugReport of bugReports$ | async">
+                <a routerLink="/view/{{bugReport.id}}">
+                    {{bugReport.title}}
+                </a>
+            </li>
+        </ul>
+    </div>
+</mat-card>
