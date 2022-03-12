@@ -58,6 +58,20 @@ export class BugReportService {
     );
   }
 
+  upPriority(bugReport: BugReport): Observable<any> {
+    if (bugReport.priority != 0) {
+      bugReport.priority--;
+    }
+    return this.updateBugReport(bugReport);
+  }
+
+  downPriority(bugReport: BugReport): Observable<any> {
+    if (bugReport.priority != 4) {
+      bugReport.priority++;
+    }
+    return this.updateBugReport(bugReport);
+  }
+
   /* GET bugReports whose title contains search term */
   searchBugReports(term: string): Observable<BugReport[]> {
     if (!term.trim()) {

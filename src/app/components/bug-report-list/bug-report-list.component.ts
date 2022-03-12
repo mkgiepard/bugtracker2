@@ -34,15 +34,13 @@ export class BugReportListComponent implements OnInit {
   upPriority(id: number) {
     let bug = this.dataSource.find(b => b.id === id);
     if (bug == undefined) return;
-    if (bug.priority == 0) return;
-    bug.priority--;
+    this.bugReportService.upPriority(bug).subscribe();
   }
 
   downPriority(id: number) {
     let bug = this.dataSource.find(b => b.id === id);
     if (bug == undefined) return;
-    if (bug.priority == 4) return;
-    bug.priority++;
+    this.bugReportService.downPriority(bug).subscribe();
   }
 
   markAsFixed(id: number) {

@@ -43,14 +43,12 @@ export class BugReportEditComponent implements OnInit {
 
   upPriority() {
     if (this.bugReport == undefined) return;
-    if (this.bugReport.priority == 0) return;
-    this.bugReportPriority = (this.bugReport.priority--).toString();
+    this.bugReportService.upPriority(this.bugReport).subscribe(() => this.reload());
   }
 
   downPriority() {
     if (this.bugReport == undefined) return;
-    if (this.bugReport.priority == 4) return;
-    this.bugReportPriority = (this.bugReport.priority++).toString();
+    this.bugReportService.downPriority(this.bugReport).subscribe();
   }
 
   markAsFixed() {
@@ -80,5 +78,10 @@ export class BugReportEditComponent implements OnInit {
 
   goBack(): void {
     this.router.navigate(["/list"]);
+  }
+
+  reload(): void {
+    if (this.bugReport == undefined) return;
+    this.getBugReport(this.bugReport.id);
   }
 }
