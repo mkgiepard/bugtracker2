@@ -54,6 +54,12 @@ export class BugReportViewComponent implements OnInit {
     this.bugReport.status = Status.Fixed;
   }
 
+  markAsWnf() {
+    if (this.bugReport == undefined) return;
+    if (this.bugReport.status === Status.WNF || this.bugReport.status === Status.Fixed) return;
+    this.bugReport.status = Status.WNF;
+  }
+
   delete(): void {
     if (this.bugReport) {
       this.bugReportService.deleteBugReport(this.bugReport.id).subscribe(() => this.goBack());

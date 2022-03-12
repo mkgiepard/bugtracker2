@@ -33,7 +33,7 @@
     <div class="w100">
       <button routerLink="/list" mat-raised-button>Back</button>
       <mat-icon class="link" mat-list-icon (click)="markAsFixed()">done</mat-icon>
-      <mat-icon mat-list-icon>close</mat-icon>
+      <mat-icon mat-list-icon (click)="markAsWnf()">close</mat-icon>
       <mat-icon class="link" mat-list-icon (click)="upPriority()">arrow_circle_up</mat-icon>
       <mat-icon class="link" mat-list-icon (click)="downPriority()">arrow_circle_down</mat-icon>
       <mat-icon class="link" mat-list-icon (click)="delete()">delete</mat-icon>

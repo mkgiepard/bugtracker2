@@ -59,6 +59,12 @@ export class BugReportEditComponent implements OnInit {
     this.bugReport.status = Status.Fixed;
   }
 
+  markAsWnf() {
+    if (this.bugReport == undefined) return;
+    if (this.bugReport.status === Status.WNF || this.bugReport.status === Status.Fixed) return;
+    this.bugReport.status = Status.WNF;
+  }
+
   save(): void {
     if (this.bugReport) {
       this.bugReportService.updateBugReport(this.bugReport)

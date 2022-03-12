@@ -54,6 +54,15 @@ export class BugReportListComponent implements OnInit {
     }
   }
 
+  markAsWnf(id: number) {
+    for (let bug of this.dataSource) {
+      if (bug.id == id) {
+        if (bug.status === Status.WNF || bug.status === Status.Fixed) return;
+        bug.status = Status.WNF;
+      }
+    }
+  }
+
   delete(bugReport: BugReport): void {
     this.dataSource = this.dataSource.filter(b => b !== bugReport);
     this.bugReportService.deleteBugReport(bugReport.id).subscribe();
