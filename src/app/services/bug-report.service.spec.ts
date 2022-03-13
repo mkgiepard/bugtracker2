@@ -10,14 +10,46 @@ import { BugReport, Status } from '../dataModel/bug-report';
 
 describe('BugReportService', () => {
   let service: BugReportService;
+  let httpTestingController: HttpTestingController;
+  let mockBugReports: BugReport[];
 
   beforeEach(() => {
     TestBed.configureTestingModule({ imports: [HttpClientTestingModule] });
     service = TestBed.inject(BugReportService);
+    httpTestingController = TestBed.get(HttpTestingController);
+    mockBugReports = [
+      {
+        id: 1001,
+        title: 'highest priority',
+        priority: 0,
+        status: Status.New,
+        description: 'lorem epsum...',
+        author: 'Buggy Bug',
+      },
+      {
+        id: 1002,
+        title: 'lowest priority',
+        priority: 4,
+        status: Status.Accepted,
+        description: 'lorem epsum...',
+        author: 'Buggy Bug',
+      },
+    ];
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+  });
+
+  it('should GET a list of bugReports', () => {
+    service.getBugReports().subscribe((bugReports) => {
+      expect(bugReports.length).toBe(2);
+      expect(bugReports).toEqual(mockBugReports);
+    });
+    const request = httpTestingController.expectOne("api/bugReports");
+    expect(request.request.method).toBe("GET");
+    request.flush(mockBugReports);
+    httpTestingController.verify();
   });
 
   it('should increase bugReport priority from 4 to 0', () => {
