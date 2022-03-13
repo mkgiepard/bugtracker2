@@ -49,10 +49,10 @@ export class BugReportService {
   }
 
   /** DELETE: delete the hero from the server */
-  deleteBugReport(id: number): Observable<BugReport> {
+  deleteBugReport(id: number): Observable<any> {
     const url = `${this.bugReportUrl}/${id}`;
 
-    return this.http.delete<BugReport>(url, this.httpOptions).pipe(
+    return this.http.delete(url, this.httpOptions).pipe(
       //tap(_ => this.log(`deleted hero id=${id}`)),
       catchError(this.handleError<BugReport>('deleteBugReport'))
     );

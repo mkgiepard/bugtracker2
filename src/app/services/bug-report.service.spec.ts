@@ -113,7 +113,7 @@ describe('BugReportService', () => {
 
     service.deleteBugReport(1001).subscribe(
       response => {
-        expect(response).toEqual({ status: 200 });
+        expect(response.status).toEqual(200);
         done();
       },
       done.fail
