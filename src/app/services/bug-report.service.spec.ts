@@ -123,10 +123,7 @@ describe('BugReportService', () => {
 
   it('#upPriority should increase bugReport priority from 4 to 3', (done: DoneFn) => {
     var bugReport = fakeBugReports[1];
-    bugReport.title = "Updated";
-
     httpSpy.put.and.nextWith(bugReport);
-
     service.upPriority(bugReport).subscribe({
       next: bugReport => {
         expect(bugReport.priority).toEqual(3);
@@ -139,10 +136,7 @@ describe('BugReportService', () => {
 
   it('#upPriority should not increase bugReport priority when it is qual 0', (done: DoneFn) => {
     var bugReport = fakeBugReports[0];
-    bugReport.title = "Updated";
-
     httpSpy.put.and.nextWith(bugReport);
-
     service.upPriority(bugReport).subscribe({
       next: bugReport => {
         expect(bugReport.priority).toEqual(0);
@@ -155,10 +149,7 @@ describe('BugReportService', () => {
 
   it('#downPriority should decrease bugReport priority from 0 to 1', (done: DoneFn) => {
     var bugReport = fakeBugReports[0];
-    bugReport.title = "Updated";
-
     httpSpy.put.and.nextWith(bugReport);
-
     service.downPriority(bugReport).subscribe({
       next: bugReport => {
         expect(bugReport.priority).toEqual(1);
@@ -171,10 +162,7 @@ describe('BugReportService', () => {
 
   it('#downPriority should not increase bugReport priority when it is qual 4', (done: DoneFn) => {
     var bugReport = fakeBugReports[1];
-    bugReport.title = "Updated";
-
     httpSpy.put.and.nextWith(bugReport);
-
     service.downPriority(bugReport).subscribe({
       next: bugReport => {
         expect(bugReport.priority).toEqual(4);
