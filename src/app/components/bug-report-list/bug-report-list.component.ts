@@ -44,12 +44,9 @@ export class BugReportListComponent implements OnInit {
   }
 
   markAsFixed(id: number) {
-    for (let bug of this.dataSource) {
-      if (bug.id == id) {
-        if (bug.status === Status.Fixed) return;
-        bug.status = Status.Fixed;
-      }
-    }
+    let bug = this.dataSource.find(b => b.id === id);
+    if (bug == undefined) return;
+    this.bugReportService.markAsFixed(bug).subscribe();
   }
 
   markAsWnf(id: number) {

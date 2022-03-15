@@ -48,8 +48,7 @@ export class BugReportViewComponent implements OnInit {
 
   markAsFixed() {
     if (this.bugReport == undefined) return;
-    if (this.bugReport.status === Status.Fixed) return;
-    this.bugReport.status = Status.Fixed;
+    this.bugReportService.markAsFixed(this.bugReport).subscribe();
   }
 
   markAsWnf() {

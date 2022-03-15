@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { BugReport, bugReportData } from '../dataModel/bug-report';
+import { BugReport, Status, bugReportData } from '../dataModel/bug-report';
 
 @Injectable({
   providedIn: 'root'
@@ -68,6 +68,13 @@ export class BugReportService {
   downPriority(bugReport: BugReport): Observable<any> {
     if (bugReport.priority != 4) {
       bugReport.priority++;
+    }
+    return this.updateBugReport(bugReport);
+  }
+
+  markAsFixed(bugReport: BugReport): Observable<any> {
+    if (bugReport.status != Status.Fixed) {
+      bugReport.status = Status.Fixed;
     }
     return this.updateBugReport(bugReport);
   }
