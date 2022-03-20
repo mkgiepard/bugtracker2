@@ -58,8 +58,7 @@ export class BugReportEditComponent implements OnInit {
 
   markAsWnf() {
     if (this.bugReport == undefined) return;
-    if (this.bugReport.status === Status.WNF || this.bugReport.status === Status.Fixed) return;
-    this.bugReport.status = Status.WNF;
+    this.bugReportService.markAsWnf(this.bugReport).subscribe();
   }
 
   save(): void {

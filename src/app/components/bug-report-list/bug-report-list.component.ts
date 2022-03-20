@@ -50,12 +50,9 @@ export class BugReportListComponent implements OnInit {
   }
 
   markAsWnf(id: number) {
-    for (let bug of this.dataSource) {
-      if (bug.id == id) {
-        if (bug.status === Status.WNF || bug.status === Status.Fixed) return;
-        bug.status = Status.WNF;
-      }
-    }
+    let bug = this.dataSource.find(b => b.id === id);
+    if (bug == undefined) return;
+    this.bugReportService.markAsWnf(bug).subscribe();
   }
 
   delete(bugReport: BugReport): void {

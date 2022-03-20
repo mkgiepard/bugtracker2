@@ -79,6 +79,14 @@ export class BugReportService {
     return this.updateBugReport(bugReport);
   }
 
+  markAsWnf(bugReport: BugReport): Observable<any> {
+    if (bugReport.status !== Status.WNF && bugReport.status !== Status.Fixed) {
+      bugReport.status = Status.WNF;
+    }
+    return this.updateBugReport(bugReport);
+  }
+
+
   /* GET bugReports whose title contains search term */
   searchBugReports(term: string): Observable<BugReport[]> {
     if (!term.trim()) {
