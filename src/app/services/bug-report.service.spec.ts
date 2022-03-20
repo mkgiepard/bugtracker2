@@ -30,7 +30,7 @@ describe('BugReportService', () => {
     httpTestingController = TestBed.get(HttpTestingController);
     fakeBugReports = [
       {
-        id: 1001,
+        id: 1000,
         title: 'highest priority',
         priority: 0,
         status: Status.New,
@@ -38,10 +38,34 @@ describe('BugReportService', () => {
         author: 'Buggy Bug',
       },
       {
-        id: 1002,
+        id: 1001,
         title: 'lowest priority',
         priority: 4,
         status: Status.Accepted,
+        description: 'lorem epsum...',
+        author: 'Buggy Bug',
+      },
+      {
+        id: 1002,
+        title: 'New',
+        priority: 0,
+        status: Status.New,
+        description: 'lorem epsum...',
+        author: 'Buggy Bug',
+      },
+      {
+        id: 1003,
+        title: 'Fixed',
+        priority: 0,
+        status: Status.Fixed,
+        description: 'lorem epsum...',
+        author: 'Buggy Bug',
+      },
+      {
+        id: 1004,
+        title: 'Wnf',
+        priority: 0,
+        status: Status.WNF,
         description: 'lorem epsum...',
         author: 'Buggy Bug',
       },
@@ -172,4 +196,70 @@ describe('BugReportService', () => {
     });
     expect(httpSpy.put.calls.count()).toBe(1);
   });
+
+  it('#markAsFixed should change bugReport status to Fixed if not set yet', (done: DoneFn) => {
+    var bugReport = fakeBugReports[2];
+    httpSpy.put.and.nextWith(bugReport);
+    service.markAsFixed(bugReport).subscribe({
+      next: bugReport => {
+        expect(bugReport.status).toEqual(Status.Fixed);
+        done();
+      },
+      error: done.fail
+    });
+    expect(httpSpy.put.calls.count()).toBe(1);
+  });
+
+  it('#markAsFixed should do nothing if bugreport status is set to Fixed already', (done: DoneFn) => {
+    var bugReport = fakeBugReports[3];
+    httpSpy.put.and.nextWith(bugReport);
+    service.markAsFixed(bugReport).subscribe({
+      next: bugReport => {
+        expect(bugReport.status).toEqual(Status.Fixed);
+        done();
+      },
+      error: done.fail
+    });
+    expect(httpSpy.put.calls.count()).toBe(1);
+  });
+
+  it('#markAsWnf should change bugReport status to WNF if not set to Fixed or WNF', (done: DoneFn) => {
+    var bugReport = fakeBugReports[2];
+    httpSpy.put.and.nextWith(bugReport);
+    service.markAsWnf(bugReport).subscribe({
+      next: bugReport => {
+        expect(bugReport.status).toEqual(Status.WNF);
+        done();
+      },
+      error: done.fail
+    });
+    expect(httpSpy.put.calls.count()).toBe(1);
+  });
+
+  it('#markAsWnf should do nothing if bugreport status is set to Fixed', (done: DoneFn) => {
+    var bugReport = fakeBugReports[3];
+    httpSpy.put.and.nextWith(bugReport);
+    service.markAsWnf(bugReport).subscribe({
+      next: bugReport => {
+        expect(bugReport.status).toEqual(Status.Fixed);
+        done();
+      },
+      error: done.fail
+    });
+    expect(httpSpy.put.calls.count()).toBe(1);
+  });
+
+  it('#markAsWnf should do nothing if bugreport status is set to WNF', (done: DoneFn) => {
+    var bugReport = fakeBugReports[4];
+    httpSpy.put.and.nextWith(bugReport);
+    service.markAsWnf(bugReport).subscribe({
+      next: bugReport => {
+        expect(bugReport.status).toEqual(Status.WNF);
+        done();
+      },
+      error: done.fail
+    });
+    expect(httpSpy.put.calls.count()).toBe(1);
+  });
+
 });
