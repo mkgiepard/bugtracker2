@@ -3,6 +3,7 @@ import { MaterialModule } from 'src/app/modules/material/material.module';
 import { BugReport, Status, bugReportData } from 'src/app/dataModel/bug-report';
 import { BugReportService } from 'src/app/services/bug-report.service';
 import { BugReportSearchComponent } from '../bug-report-search/bug-report-search.component';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-bug-report-list',
@@ -18,7 +19,8 @@ export class BugReportListComponent implements OnInit {
     'author',
     'action',
   ];
-  dataSource: BugReport[] = [];
+  // dataSource: BugReport[] = [];
+  dataSource: MatTableDataSource<BugReport> | undefined;
 
   constructor(private bugReportService: BugReportService) { }
 
@@ -28,35 +30,46 @@ export class BugReportListComponent implements OnInit {
 
   getBugReports() {
     this.bugReportService.getBugReports()
-      .subscribe(bugReports => this.dataSource = bugReports);
+      .subscribe(bugReports => this.dataSource = new MatTableDataSource(bugReports));
+  }
+
+  applyFilter(event: Event) {
+    if (this.dataSource == undefined) return;
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   upPriority(id: number) {
-    let bug = this.dataSource.find(b => b.id === id);
+    if (this.dataSource == undefined) return;
+    let bug = this.dataSource.data.find(b => b.id === id);
     if (bug == undefined) return;
     this.bugReportService.upPriority(bug).subscribe();
   }
 
   downPriority(id: number) {
-    let bug = this.dataSource.find(b => b.id === id);
+    if (this.dataSource == undefined) return;
+    let bug = this.dataSource.data.find(b => b.id === id);
     if (bug == undefined) return;
     this.bugReportService.downPriority(bug).subscribe();
   }
 
   markAsFixed(id: number) {
-    let bug = this.dataSource.find(b => b.id === id);
+    if (this.dataSource == undefined) return;
+    let bug = this.dataSource.data.find(b => b.id === id);
     if (bug == undefined) return;
     this.bugReportService.markAsFixed(bug).subscribe();
   }
 
   markAsWnf(id: number) {
-    let bug = this.dataSource.find(b => b.id === id);
+    if (this.dataSource == undefined) return;
+    let bug = this.dataSource.data.find(b => b.id === id);
     if (bug == undefined) return;
     this.bugReportService.markAsWnf(bug).subscribe();
   }
 
   delete(bugReport: BugReport): void {
-    this.dataSource = this.dataSource.filter(b => b !== bugReport);
+    if (this.dataSource == undefined) return;
+    this.dataSource.data = this.dataSource.data.filter(b => b !== bugReport);
     this.bugReportService.deleteBugReport(bugReport.id).subscribe();
   }
 }

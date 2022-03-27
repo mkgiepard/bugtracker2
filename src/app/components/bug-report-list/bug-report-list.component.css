@@ -9,3 +9,7 @@ table {
   bottom: 30px;
   right: 30px;
 }
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
