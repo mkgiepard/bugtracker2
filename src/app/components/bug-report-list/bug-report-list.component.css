@@ -16,3 +16,9 @@ table {
 .search-box {
   margin-top: 20px;
 }
+mat-icon {
+  margin-right: 12px;
+}
+.w50 {
+  width: 50%;
+}

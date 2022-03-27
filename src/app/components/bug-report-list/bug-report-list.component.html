@@ -13,7 +13,7 @@
   <!-- Title Column -->
   <ng-container matColumnDef="title">
     <th mat-header-cell *matHeaderCellDef>Title</th>
-    <td mat-cell class="link" [routerLink]="['/view', bug.id]" *matCellDef="let bug">
+    <td mat-cell class="link w50" [routerLink]="['/view', bug.id]" *matCellDef="let bug">
       {{ bug.title }}
     </td>
   </ng-container>
@@ -40,6 +40,7 @@
   <ng-container matColumnDef="action">
     <th mat-header-cell *matHeaderCellDef>Action</th>
     <td mat-cell *matCellDef="let bug">
+      <mat-icon mat-list-icon>comment</mat-icon>
       <mat-icon class="link" [routerLink]="['/edit', bug.id]" mat-list-icon>edit</mat-icon>
       <mat-icon class="link" mat-list-icon (click)="markAsFixed(bug.id)">done</mat-icon>
       <mat-icon mat-list-icon (click)="markAsWnf(bug.id)">close</mat-icon>
