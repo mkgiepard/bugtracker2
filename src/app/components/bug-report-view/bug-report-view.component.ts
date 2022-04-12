@@ -17,6 +17,7 @@ export class BugReportViewComponent implements OnInit {
     description: new FormControl(),
   });
   bugReportPriority: string | undefined;
+  bugComments: string[] | undefined;
 
   constructor(private router: Router, private route: ActivatedRoute, private bugReportService: BugReportService) { }
 

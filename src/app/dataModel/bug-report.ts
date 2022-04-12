@@ -25,6 +25,7 @@ export var bugReportData: BugReport[] = [
     status: Status.New,
     description: 'lorem epsum...',
     author: 'Buggy Bug',
+    comment: ["first comment", "second comment", "third comment"],
   },
   {
     id: 1002,
@@ -33,6 +34,7 @@ export var bugReportData: BugReport[] = [
     status: Status.Accepted,
     description: 'lorem epsum...',
     author: 'Buggy Bug',
+    comment: ["first comment"],
   },
   {
     id: 1003,
@@ -41,6 +43,7 @@ export var bugReportData: BugReport[] = [
     status: Status.Assigned,
     description: 'lorem epsum...',
     author: 'Buggy Bug',
+    comment: ["first comment", "second comment", "third comment", "lorem epsum"],
   },
   {
     id: 1004,

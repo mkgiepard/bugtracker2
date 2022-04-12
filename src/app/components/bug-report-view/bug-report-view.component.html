@@ -30,6 +30,12 @@
           cdkAutosizeMinRows="10" value="some description"></textarea>
       </mat-form-field>
     </div>
+    <div *ngFor="let comment of bugReport.comment" class="row">
+      <mat-form-field class="w100" appearance="outline">
+        <textarea matInput readonly="true" placeholder="Comment" cdkTextareaAutosize
+          cdkAutosizeMinRows="10" value="{{ comment }}"></textarea>
+      </mat-form-field>
+    </div>
     <div class="w100">
       <button routerLink="/list" mat-raised-button>Back</button>
       <mat-icon mat-list-icon>comment</mat-icon>
