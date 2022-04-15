@@ -5,6 +5,7 @@ import { BugReportCreateComponent } from './components/bug-report-create/bug-rep
 import { BugReportEditComponent } from './components/bug-report-edit/bug-report-edit.component';
 import { BugReportViewComponent } from './components/bug-report-view/bug-report-view.component';
 import { BugReportListComponent } from './components/bug-report-list/bug-report-list.component';
+import { BugReportAddCommentComponent } from './components/bug-report-add-comment/bug-report-add-comment.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/list', pathMatch: 'full' },
@@ -12,10 +13,11 @@ const routes: Routes = [
   { path: 'edit/:id', component: BugReportEditComponent },
   { path: 'view/:id', component: BugReportViewComponent },
   { path: 'list', component: BugReportListComponent },
+  { path: "comment/:id", component: BugReportAddCommentComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -27,13 +27,13 @@
     <div class="row">
       <mat-form-field class="w100" appearance="outline">
         <textarea matInput readonly="true" placeholder="Description" cdkTextareaAutosize
-          cdkAutosizeMinRows="10" value="some description"></textarea>
+          cdkAutosizeMinRows="2" value="some description"></textarea>
       </mat-form-field>
     </div>
     <div *ngFor="let comment of bugReport.comment" class="row">
       <mat-form-field class="w100" appearance="outline">
         <textarea matInput readonly="true" placeholder="Comment" cdkTextareaAutosize
-          cdkAutosizeMinRows="10" value="{{ comment }}"></textarea>
+          cdkAutosizeMinRows="2" value="{{ comment }}"></textarea>
       </mat-form-field>
     </div>
     <div class="w100">

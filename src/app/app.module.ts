@@ -14,6 +14,7 @@ import { BugReportCreateComponent } from './components/bug-report-create/bug-rep
 import { BugReportEditComponent } from './components/bug-report-edit/bug-report-edit.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BugReportSearchComponent } from './components/bug-report-search/bug-report-search.component';
+import { BugReportAddCommentComponent } from './components/bug-report-add-comment/bug-report-add-comment.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { BugReportSearchComponent } from './components/bug-report-search/bug-rep
     BugReportCreateComponent,
     BugReportEditComponent,
     BugReportSearchComponent,
+    BugReportAddCommentComponent,
   ],
   imports: [
     HttpClientModule,

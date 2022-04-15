@@ -52,6 +52,7 @@ export var bugReportData: BugReport[] = [
     status: Status.Fixed,
     description: 'lorem epsum...',
     author: 'Buggy Bug',
+    comment: [],
   },
   {
     id: 1005,
@@ -60,6 +61,7 @@ export var bugReportData: BugReport[] = [
     status: Status.WAI,
     description: 'lorem epsum...',
     author: 'Buggy Bug',
+    comment: [],
   },
   {
     id: 1006,
@@ -68,6 +70,7 @@ export var bugReportData: BugReport[] = [
     status: Status.WNF,
     description: 'lorem epsum...',
     author: 'Buggy Bug',
+    comment: [],
   },
   {
     id: 1007,
@@ -76,5 +79,6 @@ export var bugReportData: BugReport[] = [
     status: Status.New,
     description: 'lorem epsum...',
     author: 'Buggy Bug',
+    comment: [],
   },
 ];
