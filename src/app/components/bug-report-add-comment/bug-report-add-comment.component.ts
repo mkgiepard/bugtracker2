@@ -11,6 +11,7 @@ import { BugReportService } from 'src/app/services/bug-report.service';
   styleUrls: ['./bug-report-add-comment.component.css']
 })
 export class BugReportAddCommentComponent implements OnInit {
+
   bugReport: BugReport | undefined;
   bugReportForm: FormGroup = new FormGroup({
     title: new FormControl(),
@@ -43,9 +44,9 @@ export class BugReportAddCommentComponent implements OnInit {
 
   addComment(comment: string): void {
     if (this.bugReport) {
-      this.bugReport.comment?.push(comment);
-      this.bugReportService.updateBugReport(this.bugReport)
-        .subscribe(() => this.goBack());
+      this.addCommentForm.reset();
+      this.bugReportService.addComment(this.bugReport, comment)
+        .subscribe();
     }
   }
 
