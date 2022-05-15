@@ -45,7 +45,7 @@
       <mat-icon class="link action-icon" [routerLink]="['/edit', bug.id]" mat-list-icon>edit
       </mat-icon>
       <mat-icon class="link action-icon" mat-list-icon (click)="markAsFixed(bug.id)">done</mat-icon>
-      <mat-icon class="action-icon" mat-list-icon (click)="markAsWnf(bug.id)">close</mat-icon>
+      <mat-icon class="link action-icon" mat-list-icon (click)="markAsWnf(bug.id)">close</mat-icon>
       <mat-icon class="link action-icon" mat-list-icon (click)="upPriority(bug.id)">arrow_circle_up
       </mat-icon>
       <mat-icon class="link action-icon" mat-list-icon (click)="downPriority(bug.id)">

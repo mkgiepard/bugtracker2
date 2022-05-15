@@ -4,7 +4,7 @@ mat-card {
   width: 80%;
 }
 
-mat-icon {
+.action-icon {
   margin-right: 24px;
 }
 
