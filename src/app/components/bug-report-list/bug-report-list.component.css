@@ -8,6 +8,8 @@ table {
   position: absolute;
   bottom: 30px;
   right: 30px;
+  display: flex;
+  justify-content: center;
 }
 .mat-form-field {
   font-size: 14px;
@@ -16,7 +18,8 @@ table {
 .search-box {
   margin-top: 20px;
 }
-mat-icon {
+
+.action-icon {
   margin-right: 12px;
 }
 .w50 {

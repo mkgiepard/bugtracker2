@@ -40,14 +40,18 @@
   <ng-container matColumnDef="action">
     <th mat-header-cell *matHeaderCellDef>Action</th>
     <td mat-cell *matCellDef="let bug">
-      <mat-icon class="link" [routerLink]="['/comment', bug.id]" mat-list-icon>comment</mat-icon>
-      <mat-icon class="link" [routerLink]="['/edit', bug.id]" mat-list-icon>edit</mat-icon>
-      <mat-icon class="link" mat-list-icon (click)="markAsFixed(bug.id)">done</mat-icon>
-      <mat-icon mat-list-icon (click)="markAsWnf(bug.id)">close</mat-icon>
-      <mat-icon class="link" mat-list-icon (click)="upPriority(bug.id)">arrow_circle_up</mat-icon>
-      <mat-icon class="link" mat-list-icon (click)="downPriority(bug.id)">arrow_circle_down
+      <mat-icon class="link action-icon" [routerLink]="['/comment', bug.id]" mat-list-icon>comment
       </mat-icon>
-      <mat-icon class="link" mat-list-icon (click)="delete(bug)">delete</mat-icon>
+      <mat-icon class="link action-icon" [routerLink]="['/edit', bug.id]" mat-list-icon>edit
+      </mat-icon>
+      <mat-icon class="link action-icon" mat-list-icon (click)="markAsFixed(bug.id)">done</mat-icon>
+      <mat-icon class="action-icon" mat-list-icon (click)="markAsWnf(bug.id)">close</mat-icon>
+      <mat-icon class="link action-icon" mat-list-icon (click)="upPriority(bug.id)">arrow_circle_up
+      </mat-icon>
+      <mat-icon class="link action-icon" mat-list-icon (click)="downPriority(bug.id)">
+        arrow_circle_down
+      </mat-icon>
+      <mat-icon class="link action-icon" mat-list-icon (click)="delete(bug)">delete</mat-icon>
     </td>
   </ng-container>
 
