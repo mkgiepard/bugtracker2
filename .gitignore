@@ -46,3 +46,6 @@ Thumbs.db
 
 # Angular
 /.angular
+
+# Cypress
+/cypress
