@@ -24,7 +24,7 @@ export class BugReportCreateComponent implements OnInit {
   constructor(private router: Router, private bugReportService: BugReportService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.createNewProjectIntance();
+    this.createNewBugReportIntance();
     if (this.bugReport) {
       this.createForm = this.fb.group({
         title: [this.bugReport.title, Validators.required],
@@ -32,11 +32,12 @@ export class BugReportCreateComponent implements OnInit {
         status: Status.New,
         description: this.bugReport.description,
         author: this.bugReport.author,
+        comment: this.bugReport.comment,
       });
     }
   }
 
-  createNewProjectIntance() {
+  createNewBugReportIntance() {
     this.bugReport = {
       id: -1,
       title: "",
@@ -44,6 +45,7 @@ export class BugReportCreateComponent implements OnInit {
       status: Status.New,
       description: "",
       author: "Jan Kowalski",
+      comment: [],
     };
   }
 

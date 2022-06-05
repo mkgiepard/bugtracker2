@@ -50,6 +50,9 @@ export class BugReportService {
 
   /** PUT: add a comment to the bugReport on the server */
   addComment(bugReport: BugReport, comment: string): Observable<any> {
+    if (bugReport.comment == null) {
+      bugReport.comment = [];
+    }
     bugReport.comment?.push(comment);
     return this.http.put(this.bugReportUrl, bugReport, this.httpOptions).pipe(
       //tap(_ => this.log(`updated bugReport id=${bugReport.id}`)),
