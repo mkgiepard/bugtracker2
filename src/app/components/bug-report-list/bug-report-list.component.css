@@ -11,6 +11,9 @@ table {
   display: flex;
   justify-content: center;
 }
+.fab-container button {
+  background-color: #1976d2;
+}
 .mat-form-field {
   font-size: 14px;
   width: 100%;
