@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { BugReport, Status } from 'src/app/dataModel/bug-report';
 import { BugReportService } from 'src/app/services/bug-report.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,18 +10,18 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./bug-report-create.component.css'],
 })
 export class BugReportCreateComponent implements OnInit {
-  createForm: FormGroup | undefined;
+  createForm: UntypedFormGroup | undefined;
   savingBugReport = false;
   id: number | undefined;
   bugReports: BugReport[] = [];
   bugReport: BugReport | undefined;
 
-  emptyBugReport: FormGroup = new FormGroup({
-    title: new FormControl(),
-    priority: new FormControl(),
-    description: new FormControl(),
+  emptyBugReport: UntypedFormGroup = new UntypedFormGroup({
+    title: new UntypedFormControl(),
+    priority: new UntypedFormControl(),
+    description: new UntypedFormControl(),
   });
-  constructor(private router: Router, private bugReportService: BugReportService, private fb: FormBuilder) { }
+  constructor(private router: Router, private bugReportService: BugReportService, private fb: UntypedFormBuilder) { }
 
   ngOnInit(): void {
     this.createNewBugReportIntance();

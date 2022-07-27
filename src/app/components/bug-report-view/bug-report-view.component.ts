@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BugReport, Status, bugReportData } from 'src/app/dataModel/bug-report';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BugReportService } from 'src/app/services/bug-report.service';
 
@@ -11,10 +11,10 @@ import { BugReportService } from 'src/app/services/bug-report.service';
 })
 export class BugReportViewComponent implements OnInit {
   bugReport: BugReport | undefined;
-  bugReportForm: FormGroup = new FormGroup({
-    title: new FormControl(),
-    priority: new FormControl(),
-    description: new FormControl(),
+  bugReportForm: UntypedFormGroup = new UntypedFormGroup({
+    title: new UntypedFormControl(),
+    priority: new UntypedFormControl(),
+    description: new UntypedFormControl(),
   });
   bugReportPriority: string | undefined;
   bugComments: string[] | undefined;

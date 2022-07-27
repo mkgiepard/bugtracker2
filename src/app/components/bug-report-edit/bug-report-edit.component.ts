@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { BugReport, Status, bugReportData } from 'src/app/dataModel/bug-report';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BugReportService } from 'src/app/services/bug-report.service';
@@ -11,12 +11,12 @@ import { BugReportService } from 'src/app/services/bug-report.service';
 })
 export class BugReportEditComponent implements OnInit {
   bugReport: BugReport | undefined;
-  bugReportForm: FormGroup = new FormGroup({
-    id: new FormControl(),
-    title: new FormControl(),
-    status: new FormControl(),
-    priority: new FormControl(),
-    description: new FormControl(),
+  bugReportForm: UntypedFormGroup = new UntypedFormGroup({
+    id: new UntypedFormControl(),
+    title: new UntypedFormControl(),
+    status: new UntypedFormControl(),
+    priority: new UntypedFormControl(),
+    description: new UntypedFormControl(),
   });
   bugReportPriority: string | undefined;
   bugReportStatuses = Object.values(Status)
