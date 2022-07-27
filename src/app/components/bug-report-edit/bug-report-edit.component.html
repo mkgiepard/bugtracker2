@@ -18,6 +18,9 @@
         </mat-radio-group>
       </div>
       <div class="w40">
+        <label>Author: {{ bugReport.author }}</label>
+      </div>
+      <div>
         <mat-form-field appearance="standard" floatLabel="auto">
           <mat-label>Status</mat-label>
           <mat-select [(value)]="bugReport.status">
