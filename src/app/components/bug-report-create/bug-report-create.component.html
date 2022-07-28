@@ -15,6 +15,11 @@
         </mat-radio-group>
       </div>
       <div class="w40">
+        <mat-form-field class="w80" appearance="fill">
+          <input formControlName="author" matInput placeholder="Author" required #author />
+        </mat-form-field>
+      </div>
+      <div>
         <label>Status: {{ bugReport.status }}</label>
       </div>
     </div>

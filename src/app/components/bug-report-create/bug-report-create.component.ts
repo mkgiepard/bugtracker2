@@ -44,7 +44,7 @@ export class BugReportCreateComponent implements OnInit {
       priority: 3,
       status: Status.New,
       description: "",
-      author: "Jan Kowalski",
+      author: "",
       comment: [],
     };
   }
