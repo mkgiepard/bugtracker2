@@ -1,20 +1,33 @@
+import { HomePage } from '../pages/home_page';
+
+const homePage = new HomePage();
+
 describe("The Home Page", () => {
   beforeEach(() => {
-    cy.visit("/");
+    homePage.open();
   })
 
   it("Navigation: successfully loads", () => {
-    cy.visit("/");
-    cy.url().should("include", "/list");
+    homePage.open();
   });
 
   it("Navigation: FAB should open new bug report page", () => {
-    cy.contains("add").click();
-    cy.url().should("include", "/create");
+    homePage.clickFAB();
   });
 
   it("Navigation: click on a title should open bug report view page", () => {
-    cy.contains("bug report 1").click();
-    cy.url().should("include", "/view");
+    homePage.clickOnBugTitle("bug report 2");
   });
+
+  it("Action: click on 'up' should increase a bug priority", () => {
+    homePage.clickOnUpPriorityInRow(2);
+    homePage.validatePriorityInRow(2, 0);
+  });
+
+  it("Action: click on 'down' should decrease a bug priority", () => {
+    homePage.clickOnDownPriorityInRow(1);
+    homePage.validatePriorityInRow(1, 1);
+  });
+
+
 });
