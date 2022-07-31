@@ -26,6 +26,17 @@ export class HomePage {
         })
     }
 
+    clickOnDeleteInRow(row: number) {
+        cy.get('tr').eq(row).within(() => {
+            cy.get('mat-icon').eq(6).click();
+        })
+    }
+
+    validateNumberOfRows(rows: number) {
+        cy.get('tr').should('have.length', rows);
+    }
+
+
     validateHomePage() {
         cy.url().should("include", "/list");
         cy.contains("add");
