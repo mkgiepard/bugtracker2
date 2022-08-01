@@ -1,3 +1,6 @@
+import { EditPage } from './edit_page';
+import { ViewPage } from './view_page';
+
 export class HomePage {
 
     open() {
@@ -9,9 +12,18 @@ export class HomePage {
         cy.url().should("include", "/create");
     }
 
-    clickOnBugTitle(title: string) {
+    clickOnBugTitle(title: string): ViewPage {
         cy.contains(title).click();
         cy.url().should("include", "/view");
+        return new ViewPage();
+    }
+
+    clickOnEditInRow(row: number): EditPage {
+        cy.get('tr').eq(row).within(() => {
+            cy.get('mat-icon').eq(1).click();
+            cy.url().should("include", "/edit");
+        });
+        return new EditPage();
     }
 
     clickOnUpPriorityInRow(row: number) {
