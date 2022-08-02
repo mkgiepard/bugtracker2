@@ -12,7 +12,7 @@ export class EditPage {
         cy.url().should("include", "/list");
     }
 
-    clickOnBack() {
+    clickOnBack(): HomePage {
         cy.contains('Back').click();
         return new HomePage();
     }
