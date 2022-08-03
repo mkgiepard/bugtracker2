@@ -1,3 +1,4 @@
+import { AddCommentPage } from './add_comment_page';
 import { EditPage } from './edit_page';
 import { ViewPage } from './view_page';
 
@@ -16,6 +17,14 @@ export class HomePage {
         cy.contains(title).click();
         cy.url().should("include", "/view");
         return new ViewPage();
+    }
+
+    clickOnAddCommentInRow(row: number): AddCommentPage {
+        cy.get('tr').eq(row).within(() => {
+            cy.get('mat-icon').eq(0).click();
+            cy.url().should("include", "/comment");
+        });
+        return new AddCommentPage();
     }
 
     clickOnEditInRow(row: number): EditPage {
