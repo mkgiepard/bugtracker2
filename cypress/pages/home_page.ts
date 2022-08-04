@@ -1,4 +1,5 @@
 import { AddCommentPage } from './add_comment_page';
+import { CreatePage } from './create_page';
 import { EditPage } from './edit_page';
 import { ViewPage } from './view_page';
 
@@ -8,9 +9,10 @@ export class HomePage {
         cy.visit("/");
     }
 
-    clickFAB() {
+    clickFAB(): CreatePage {
         cy.contains("add").click();
         cy.url().should("include", "/create");
+        return new CreatePage();
     }
 
     clickOnBugTitle(title: string): ViewPage {
