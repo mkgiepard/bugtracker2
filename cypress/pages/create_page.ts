@@ -12,6 +12,23 @@ export class CreatePage {
         return new HomePage();
     }
 
+    clickOnSave(): HomePage {
+        cy.contains('Save').click();
+        return new HomePage();
+    }
+
+    typeTitle(title: string) {
+        cy.get('[formcontrolname="title"]').type(title);
+    }
+
+    typeAuthor(author: string) {
+        cy.get('[formcontrolname="author"]').type(author);
+    }
+
+    typeDesc(desc: string) {
+        cy.get('[formcontrolname="description"]').type(desc);
+    }
+
     validateCreatePage() {
         cy.url().should("include", "/create");
         cy.contains("Save");

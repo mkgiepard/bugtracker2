@@ -20,4 +20,15 @@ describe("Verify bug creattion", () => {
         var pageAfterBack: HomePage = createPage.clickOnCancel();
         pageAfterBack.validateHomePage();
     });
+
+    it("Verify basic issue creation with default data", () => {
+        var createPage: CreatePage = new CreatePage();
+        createPage.open();
+        createPage.typeTitle('my title');
+        createPage.typeAuthor('joe doe');
+        createPage.typeDesc('my desc\n2nd line');
+        var pageAfterSave: HomePage = createPage.clickOnSave();
+        pageAfterSave.validateHomePage();
+        pageAfterSave.clickOnBugTitle('my title');
+    });
 });
