@@ -17,6 +17,16 @@ export class EditPage {
         return new HomePage();
     }
 
+    clickOnSave(): HomePage {
+        cy.contains('Save').click();
+        return new HomePage();
+    }
+
+    updateTitle(newTitle: string) {
+        cy.get("[formcontrolname='title']").clear();
+        cy.get("[formcontrolname='title']").type(newTitle);
+    }
+
     validateEditPage() {
         cy.url().should("include", "/edit");
         cy.contains("Save");

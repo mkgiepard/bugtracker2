@@ -22,4 +22,12 @@ describe("Verify bug edition", () => {
         var pageAfterBack: HomePage = editPage.clickOnBack();
         pageAfterBack.validateHomePage();
     });
+
+    it("Verify bug title update", () => {
+        var editPage = new EditPage();
+        editPage.open(1001);
+        editPage.updateTitle("this is new title");
+        var pageAfterSave: HomePage = editPage.clickOnSave();
+        pageAfterSave.clickOnBugTitle("this is new title");
+    })
 });
