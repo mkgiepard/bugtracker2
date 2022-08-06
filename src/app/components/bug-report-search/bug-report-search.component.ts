@@ -36,4 +36,9 @@ export class BugReportSearchComponent implements OnInit {
     this.searchTerms.next(term);
   }
 
+  // Push a search term into the observable stream.
+  clearResults(): void {
+    this.searchTerms.next('');
+  }
+
 }

@@ -276,7 +276,8 @@
 
   /* Responsive Styles */
   @media screen and (max-width: 767px) {
-    .card-container > *:not(.circle-link),
+
+    .card-container>*:not(.circle-link),
     .terminal {
       width: 100%;
     }
@@ -307,6 +308,9 @@
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
   <span class="link" routerLink="/list">Bugtracker2</span>
+  <span class="link" routerLink="/search">
+    <mat-icon>search</mat-icon>
+  </span>
 </div>
 <div class="content">
   <router-outlet></router-outlet>
