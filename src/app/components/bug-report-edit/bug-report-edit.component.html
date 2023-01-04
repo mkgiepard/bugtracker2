@@ -21,7 +21,7 @@
         <label>Author: {{ bugReport.author }}</label>
       </div>
       <div>
-        <mat-form-field appearance="standard" floatLabel="auto">
+        <mat-form-field appearance="outline" floatLabel="auto">
           <mat-label>Status</mat-label>
           <mat-select [(value)]="bugReport.status">
             <mat-option *ngFor="let bugReportStatus of bugReportStatuses" [value]="bugReportStatus">
