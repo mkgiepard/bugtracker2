@@ -5,6 +5,7 @@ import {
 } from 'rxjs/operators';
 import { BugReport, Status, bugReportData } from 'src/app/dataModel/bug-report';
 import { BugReportService } from 'src/app/services/bug-report.service';
+import { MaterialModule } from 'src/app/modules/material/material.module';
 
 
 @Component({

@@ -19,6 +19,7 @@ describe('BugReportSearchComponent', () => {
       imports: [
         HttpClientTestingModule
       ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
     })
       .compileComponents();
   });
