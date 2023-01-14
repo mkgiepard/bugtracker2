@@ -1,3 +1,5 @@
+import { User, userData } from './author'
+
 export enum Status {
   New = "New",
   Assigned = "Assigned",
@@ -13,7 +15,7 @@ export interface BugReport {
   priority: number;
   status: Status;
   description: string;
-  author: string;
+  author: User;
   comment?: string[];
 }
 
@@ -24,7 +26,7 @@ export var bugReportData: BugReport[] = [
     priority: 0,
     status: Status.New,
     description: 'lorem epsum...',
-    author: 'Buggy Bug',
+    author: userData[0],
     comment: ["first comment", "second comment", "third comment"],
   },
   {
@@ -33,7 +35,7 @@ export var bugReportData: BugReport[] = [
     priority: 1,
     status: Status.Accepted,
     description: 'lorem epsum...',
-    author: 'Buggy Bug',
+    author: userData[1],
     comment: ["first comment"],
   },
   {
@@ -42,7 +44,7 @@ export var bugReportData: BugReport[] = [
     priority: 2,
     status: Status.Assigned,
     description: 'lorem epsum...',
-    author: 'Buggy Bug',
+    author: userData[2],
     comment: ["first comment", "second comment", "third comment", "lorem epsum"],
   },
   {
@@ -51,7 +53,7 @@ export var bugReportData: BugReport[] = [
     priority: 0,
     status: Status.Fixed,
     description: 'lorem epsum...',
-    author: 'Buggy Bug',
+    author: userData[3],
     comment: [],
   },
   {
@@ -60,7 +62,7 @@ export var bugReportData: BugReport[] = [
     priority: 1,
     status: Status.WAI,
     description: 'lorem epsum...',
-    author: 'Buggy Bug',
+    author: userData[4],
     comment: [],
   },
   {
@@ -69,7 +71,7 @@ export var bugReportData: BugReport[] = [
     priority: 2,
     status: Status.WNF,
     description: 'lorem epsum...',
-    author: 'Buggy Bug',
+    author: userData[0],
     comment: [],
   },
   {
@@ -78,7 +80,7 @@ export var bugReportData: BugReport[] = [
     priority: 0,
     status: Status.New,
     description: 'lorem epsum...',
-    author: 'Buggy Bug',
+    author: userData[1],
     comment: [],
   },
 ];

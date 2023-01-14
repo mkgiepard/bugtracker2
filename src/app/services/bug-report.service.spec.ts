@@ -9,12 +9,14 @@ import { createSpyFromClass, Spy } from 'jasmine-auto-spies';
 
 import { BugReportService } from './bug-report.service';
 import { BugReport, Status } from '../dataModel/bug-report';
+import { User } from '../dataModel/author';
 
 describe('BugReportService', () => {
   let service: BugReportService;
   let httpTestingController: HttpTestingController;
   let httpSpy: Spy<HttpClient>;
   let fakeBugReports: BugReport[];
+  const fakeUser: User = { id: 0, name: 'a', lastName: 'b', username: 'ab' };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -35,7 +37,7 @@ describe('BugReportService', () => {
         priority: 0,
         status: Status.New,
         description: 'lorem epsum...',
-        author: 'Buggy Bug',
+        author: fakeUser,
       },
       {
         id: 1001,
@@ -43,7 +45,7 @@ describe('BugReportService', () => {
         priority: 4,
         status: Status.Accepted,
         description: 'lorem epsum...',
-        author: 'Buggy Bug',
+        author: fakeUser,
       },
       {
         id: 1002,
@@ -51,7 +53,7 @@ describe('BugReportService', () => {
         priority: 0,
         status: Status.New,
         description: 'lorem epsum...',
-        author: 'Buggy Bug',
+        author: fakeUser,
       },
       {
         id: 1003,
@@ -59,7 +61,7 @@ describe('BugReportService', () => {
         priority: 0,
         status: Status.Fixed,
         description: 'lorem epsum...',
-        author: 'Buggy Bug',
+        author: fakeUser,
       },
       {
         id: 1004,
@@ -67,7 +69,7 @@ describe('BugReportService', () => {
         priority: 0,
         status: Status.WNF,
         description: 'lorem epsum...',
-        author: 'Buggy Bug',
+        author: fakeUser,
       },
     ];
   });
@@ -97,7 +99,7 @@ describe('BugReportService', () => {
       priority: 2,
       status: Status.New,
       description: 'lorem epsum...',
-      author: 'Buggy Bug',
+      author: fakeUser,
     } as BugReport;
 
     httpSpy.post.and.nextWith(newBugReport);

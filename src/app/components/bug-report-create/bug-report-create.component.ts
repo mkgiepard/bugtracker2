@@ -3,6 +3,7 @@ import { UntypedFormControl, UntypedFormGroup, UntypedFormBuilder, Validators } 
 import { BugReport, Status } from 'src/app/dataModel/bug-report';
 import { BugReportService } from 'src/app/services/bug-report.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { defaultUser } from '../../dataModel/author';
 
 @Component({
   selector: 'app-bug-report-create',
@@ -31,7 +32,7 @@ export class BugReportCreateComponent implements OnInit {
         priority: this.bugReport.priority,
         status: Status.New,
         description: this.bugReport.description,
-        author: this.bugReport.author,
+        author: this.bugReport.author.username,
         comment: this.bugReport.comment,
       });
     }
@@ -44,7 +45,7 @@ export class BugReportCreateComponent implements OnInit {
       priority: 3,
       status: Status.New,
       description: "",
-      author: "",
+      author: defaultUser,
       comment: [],
     };
   }
