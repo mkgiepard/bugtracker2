@@ -33,7 +33,7 @@
   <!-- Author Column -->
   <ng-container matColumnDef="author">
     <th mat-header-cell *matHeaderCellDef>Author</th>
-    <td mat-cell *matCellDef="let bug">{{ bug.author.username }}</td>
+    <td mat-cell *matCellDef="let bug">{{ bug.author | fullName }}</td>
   </ng-container>
 
   <!-- Actions Column -->

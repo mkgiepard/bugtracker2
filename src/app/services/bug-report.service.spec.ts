@@ -9,14 +9,14 @@ import { createSpyFromClass, Spy } from 'jasmine-auto-spies';
 
 import { BugReportService } from './bug-report.service';
 import { BugReport, Status } from '../dataModel/bug-report';
-import { User } from '../dataModel/author';
+import { User } from '../dataModel/user';
 
 describe('BugReportService', () => {
   let service: BugReportService;
   let httpTestingController: HttpTestingController;
   let httpSpy: Spy<HttpClient>;
   let fakeBugReports: BugReport[];
-  const fakeUser: User = { id: 0, name: 'a', lastName: 'b', username: 'ab' };
+  const fakeUser: User = new User('a', 'b', 'ab');
 
   beforeEach(() => {
     TestBed.configureTestingModule({

@@ -3,7 +3,7 @@ import { UntypedFormControl, UntypedFormGroup, UntypedFormBuilder, Validators } 
 import { BugReport, Status } from 'src/app/dataModel/bug-report';
 import { BugReportService } from 'src/app/services/bug-report.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { defaultUser } from '../../dataModel/author';
+import { defaultUser } from '../../dataModel/user';
 
 @Component({
   selector: 'app-bug-report-create',

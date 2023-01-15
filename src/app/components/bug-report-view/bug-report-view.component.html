@@ -16,7 +16,7 @@
         </mat-radio-group>
       </div>
       <div class="w40">
-        <label>Author: {{ bugReport.author.username }}</label>
+        <label>Author: {{ bugReport.author | fullName }}</label>
       </div>
       <div>
         <label>Status: {{ bugReport.status }}</label>

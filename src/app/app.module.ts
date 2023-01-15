@@ -16,6 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BugReportSearchComponent } from './components/bug-report-search/bug-report-search.component';
 import { BugReportAddCommentComponent } from './components/bug-report-add-comment/bug-report-add-comment.component';
 
+import { FullNamePipe } from './pipes/full-name-pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +27,7 @@ import { BugReportAddCommentComponent } from './components/bug-report-add-commen
     BugReportEditComponent,
     BugReportSearchComponent,
     BugReportAddCommentComponent,
+    FullNamePipe,
   ],
   imports: [
     HttpClientModule,

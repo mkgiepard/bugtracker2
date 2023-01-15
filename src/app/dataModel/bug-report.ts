@@ -1,4 +1,4 @@
-import { User, userData } from './author'
+import { User, userData } from './user'
 
 export enum Status {
   New = "New",

@@ -1,5 +1,5 @@
 import { BugReport, Status } from './bug-report';
-import { userData } from './author';
+import { userData } from './user';
 
 describe('BugReport', () => {
     it('first test', () => {
