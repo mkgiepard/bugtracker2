@@ -7,7 +7,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import {
   HttpClientTestingModule,
   HttpTestingController,
-} from "@angular/common/http/testing";
+} from '@angular/common/http/testing';
 
 describe('BugReportListComponent', () => {
   let component: BugReportListComponent;
@@ -29,5 +29,12 @@ describe('BugReportListComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should open bug view page when clicked on title', () => {
+    let elem = document
+      .getElementsByClassName('tr.mat-mdc-row:nth-child(4) > td:nth-child(2)')
+      .item(0);
+    console.log(elem);
   });
 });
