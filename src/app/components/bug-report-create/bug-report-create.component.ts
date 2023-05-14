@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
+import {
+  UntypedFormControl,
+  UntypedFormGroup,
+  UntypedFormBuilder,
+  Validators,
+} from '@angular/forms';
 import { BugReport, Status } from 'src/app/dataModel/bug-report';
 import { BugReportService } from 'src/app/services/bug-report.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -22,7 +27,11 @@ export class BugReportCreateComponent implements OnInit {
     priority: new UntypedFormControl(),
     description: new UntypedFormControl(),
   });
-  constructor(private router: Router, private bugReportService: BugReportService, private fb: UntypedFormBuilder) { }
+  constructor(
+    private router: Router,
+    private bugReportService: BugReportService,
+    private fb: UntypedFormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.createNewBugReportIntance();
@@ -33,7 +42,7 @@ export class BugReportCreateComponent implements OnInit {
         status: Status.New,
         description: this.bugReport.description,
         author: this.bugReport.author.username,
-        comment: this.bugReport.comment,
+        comment: this.bugReport.comments,
       });
     }
   }
@@ -41,26 +50,28 @@ export class BugReportCreateComponent implements OnInit {
   createNewBugReportIntance() {
     this.bugReport = {
       id: -1,
-      title: "",
+      title: '',
       priority: 3,
       status: Status.New,
-      description: "",
+      description: '',
       author: defaultUser,
-      comment: [],
+      comments: [],
     };
   }
 
   getBugReports() {
-    this.bugReportService.getBugReports()
-      .subscribe(bugReports => this.bugReports = bugReports);
+    this.bugReportService
+      .getBugReports()
+      .subscribe((bugReports) => (this.bugReports = bugReports));
   }
 
   add(bugReport: BugReport): void {
-    if (!bugReport) { return; }
-    this.bugReportService.addBugReport(bugReport)
-      .subscribe(bugReport => {
-        this.bugReports.push(bugReport);
-        this.router.navigate(["/list"]);
-      });
+    if (!bugReport) {
+      return;
+    }
+    this.bugReportService.addBugReport(bugReport).subscribe((bugReport) => {
+      this.bugReports.push(bugReport);
+      this.router.navigate(['/list']);
+    });
   }
 }

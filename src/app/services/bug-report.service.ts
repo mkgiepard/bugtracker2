@@ -4,24 +4,24 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { BugReport, Status, bugReportData } from '../dataModel/bug-report';
+import { BugReportComment } from '../dataModel/bug-report-comment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BugReportService {
   private bugReportUrl = 'api/bugReports';
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getBugReports(): Observable<BugReport[]> {
-    return this.http.get<BugReport[]>(this.bugReportUrl)
-      .pipe(
-        catchError(this.handleError<BugReport[]>('getBugReports', []))
-      );
+    return this.http
+      .get<BugReport[]>(this.bugReportUrl)
+      .pipe(catchError(this.handleError<BugReport[]>('getBugReports', [])));
   }
 
   getBugReport(id: number): Observable<BugReport> {
@@ -34,10 +34,12 @@ export class BugReportService {
 
   /** POST: add a new bugReport to the server */
   addBugReport(bugReport: BugReport): Observable<BugReport> {
-    return this.http.post<BugReport>(this.bugReportUrl, bugReport, this.httpOptions).pipe(
-      //tap((newBugReport: BugReport) => this.log(`added hero w/ id=${bugReport.id}`)),
-      catchError(this.handleError<BugReport>('addBugReport'))
-    );
+    return this.http
+      .post<BugReport>(this.bugReportUrl, bugReport, this.httpOptions)
+      .pipe(
+        //tap((newBugReport: BugReport) => this.log(`added hero w/ id=${bugReport.id}`)),
+        catchError(this.handleError<BugReport>('addBugReport'))
+      );
   }
 
   /** PUT: update the bugReport on the server */
@@ -49,11 +51,11 @@ export class BugReportService {
   }
 
   /** PUT: add a comment to the bugReport on the server */
-  addComment(bugReport: BugReport, comment: string): Observable<any> {
-    if (bugReport.comment == null) {
-      bugReport.comment = [];
+  addComment(bugReport: BugReport, comment: BugReportComment): Observable<any> {
+    if (bugReport.comments == null) {
+      bugReport.comments = [];
     }
-    bugReport.comment?.push(comment);
+    bugReport.comments?.push(comment);
     return this.http.put(this.bugReportUrl, bugReport, this.httpOptions).pipe(
       //tap(_ => this.log(`updated bugReport id=${bugReport.id}`)),
       catchError(this.handleError<any>('updateBugReport with new comment'))
@@ -98,19 +100,20 @@ export class BugReportService {
     return this.updateBugReport(bugReport);
   }
 
-
   /* GET bugReports whose title contains search term */
   searchBugReports(term: string): Observable<BugReport[]> {
     if (!term.trim()) {
       // if not search term, return empty hero array.
       return of([]);
     }
-    return this.http.get<BugReport[]>(`${this.bugReportUrl}/?title=${term}`).pipe(
-      //tap(x => x.length ?
-      //this.log(`found heroes matching "${term}"`) :
-      //this.log(`no heroes matching "${term}"`)),
-      catchError(this.handleError<BugReport[]>('searchBugReport', []))
-    );
+    return this.http
+      .get<BugReport[]>(`${this.bugReportUrl}/?title=${term}`)
+      .pipe(
+        //tap(x => x.length ?
+        //this.log(`found heroes matching "${term}"`) :
+        //this.log(`no heroes matching "${term}"`)),
+        catchError(this.handleError<BugReport[]>('searchBugReport', []))
+      );
   }
 
   /**
@@ -122,7 +125,6 @@ export class BugReportService {
    */
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 

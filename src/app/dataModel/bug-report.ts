@@ -1,12 +1,13 @@
-import { User, userData } from './user'
+import { User, userData } from './user';
+import { BugReportComment } from './bug-report-comment';
 
 export enum Status {
-  New = "New",
-  Assigned = "Assigned",
-  Accepted = "Accepted",
-  Fixed = "Fixed",
-  WAI = "WAI",
-  WNF = "WNF"
+  New = 'New',
+  Assigned = 'Assigned',
+  Accepted = 'Accepted',
+  Fixed = 'Fixed',
+  WAI = 'WAI',
+  WNF = 'WNF',
 }
 
 export interface BugReport {
@@ -16,7 +17,7 @@ export interface BugReport {
   status: Status;
   description: string;
   author: User;
-  comment?: string[];
+  comments?: BugReportComment[];
 }
 
 export var bugReportData: BugReport[] = [
@@ -27,7 +28,11 @@ export var bugReportData: BugReport[] = [
     status: Status.New,
     description: 'lorem epsum...',
     author: userData[0],
-    comment: ["first comment", "second comment", "third comment"],
+    comments: [
+      { author: userData[0], comment: 'first comment' },
+      { author: userData[1], comment: 'second comment' },
+      { author: userData[0], comment: 'third comment' },
+    ],
   },
   {
     id: 1002,
@@ -36,7 +41,7 @@ export var bugReportData: BugReport[] = [
     status: Status.Accepted,
     description: 'lorem epsum...',
     author: userData[1],
-    comment: ["first comment"],
+    comments: [{ author: userData[0], comment: 'first comment' }],
   },
   {
     id: 1003,
@@ -45,7 +50,12 @@ export var bugReportData: BugReport[] = [
     status: Status.Assigned,
     description: 'lorem epsum...',
     author: userData[2],
-    comment: ["first comment", "second comment", "third comment", "lorem epsum"],
+    comments: [
+      { author: userData[0], comment: 'first comment' },
+      { author: userData[1], comment: 'second comment' },
+      { author: userData[2], comment: 'third comment' },
+      { author: userData[0], comment: 'lorem epsum' },
+    ],
   },
   {
     id: 1004,
@@ -54,7 +64,7 @@ export var bugReportData: BugReport[] = [
     status: Status.Fixed,
     description: 'lorem epsum...',
     author: userData[3],
-    comment: [],
+    comments: [],
   },
   {
     id: 1005,
@@ -63,7 +73,7 @@ export var bugReportData: BugReport[] = [
     status: Status.WAI,
     description: 'lorem epsum...',
     author: userData[4],
-    comment: [],
+    comments: [],
   },
   {
     id: 1006,
@@ -72,7 +82,7 @@ export var bugReportData: BugReport[] = [
     status: Status.WNF,
     description: 'lorem epsum...',
     author: userData[0],
-    comment: [],
+    comments: [],
   },
   {
     id: 1007,
@@ -81,6 +91,6 @@ export var bugReportData: BugReport[] = [
     status: Status.New,
     description: 'lorem epsum...',
     author: userData[1],
-    comment: [],
+    comments: [],
   },
 ];

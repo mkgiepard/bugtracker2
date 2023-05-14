@@ -3,6 +3,7 @@ import { BugReport, Status, bugReportData } from 'src/app/dataModel/bug-report';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BugReportService } from 'src/app/services/bug-report.service';
+import { BugReportComment } from 'src/app/dataModel/bug-report-comment';
 
 @Component({
   selector: 'app-bug-report-view',
@@ -17,9 +18,13 @@ export class BugReportViewComponent implements OnInit {
     description: new UntypedFormControl(),
   });
   bugReportPriority: string | undefined;
-  bugComments: string[] | undefined;
+  bugComments: BugReportComment[] | undefined;
 
-  constructor(private router: Router, private route: ActivatedRoute, private bugReportService: BugReportService) { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private bugReportService: BugReportService
+  ) {}
 
   ngOnInit(): void {
     // First get the product id from the current route.
@@ -33,13 +38,16 @@ export class BugReportViewComponent implements OnInit {
   }
 
   getBugReport(id: number) {
-    this.bugReportService.getBugReport(id)
-      .subscribe(bugReport => this.bugReport = bugReport);
+    this.bugReportService
+      .getBugReport(id)
+      .subscribe((bugReport) => (this.bugReport = bugReport));
   }
 
   upPriority() {
     if (this.bugReport == undefined) return;
-    this.bugReportService.upPriority(this.bugReport).subscribe(() => this.reload());
+    this.bugReportService
+      .upPriority(this.bugReport)
+      .subscribe(() => this.reload());
   }
 
   downPriority() {
@@ -59,12 +67,14 @@ export class BugReportViewComponent implements OnInit {
 
   delete(): void {
     if (this.bugReport) {
-      this.bugReportService.deleteBugReport(this.bugReport.id).subscribe(() => this.goBack());
+      this.bugReportService
+        .deleteBugReport(this.bugReport.id)
+        .subscribe(() => this.goBack());
     }
   }
 
   goBack(): void {
-    this.router.navigate(["/list"]);
+    this.router.navigate(['/list']);
   }
 
   reload(): void {

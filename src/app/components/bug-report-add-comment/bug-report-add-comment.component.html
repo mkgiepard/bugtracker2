@@ -16,7 +16,7 @@
                 </mat-radio-group>
             </div>
             <div class="w40">
-                <label>Author: {{ bugReport.author }}</label>
+                <label>Author: {{ bugReport.author | fullName }}</label>
             </div>
             <div>
                 <label>Status: {{ bugReport.status }}</label>
@@ -33,10 +33,11 @@
                     cdkAutosizeMinRows="2" value="{{ bugReport.description }}"></textarea>
             </mat-form-field>
         </div>
-        <div *ngFor="let comment of bugReport.comment" class="row">
+        <div *ngFor="let comment of bugReport.comments">
+            <label class="w100">Author: {{ comment.author | fullName }}</label>
             <mat-form-field class="w100" appearance="outline">
                 <textarea matInput readonly="true" placeholder="Comment" cdkTextareaAutosize
-                    cdkAutosizeMinRows="2" value="{{ comment }}"></textarea>
+                    cdkAutosizeMinRows="2" value="{{ comment.comment }}"></textarea>
             </mat-form-field>
         </div>
     </form>
