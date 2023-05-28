@@ -10,7 +10,7 @@ describe('BugReport', () => {
       status: Status.New,
       description: 'description',
       author: userData[0],
-      comments: ['comment'],
+      comments: [],
     };
   });
 });
