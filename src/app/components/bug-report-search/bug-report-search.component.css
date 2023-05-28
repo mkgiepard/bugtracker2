@@ -29,3 +29,7 @@
   margin-top: 40px;
   row-gap: 10px;
 }
+
+.search-result-card {
+  padding: 10px;
+}
