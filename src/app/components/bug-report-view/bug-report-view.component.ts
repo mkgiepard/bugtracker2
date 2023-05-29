@@ -66,7 +66,12 @@ export class BugReportViewComponent implements OnInit {
   }
 
   delete(): void {
-    if (this.bugReport) {
+    if (
+      this.bugReport &&
+      window.confirm(
+        'Are you sure you want to delete: "' + this.bugReport.title + '"?'
+      )
+    ) {
       this.bugReportService
         .deleteBugReport(this.bugReport.id)
         .subscribe(() => this.goBack());

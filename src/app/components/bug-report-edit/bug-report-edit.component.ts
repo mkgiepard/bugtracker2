@@ -19,11 +19,13 @@ export class BugReportEditComponent implements OnInit {
     description: new UntypedFormControl(),
   });
   bugReportPriority: string | undefined;
-  bugReportStatuses = Object.values(Status)
+  bugReportStatuses = Object.values(Status);
 
   constructor(
-    private router: Router, private route: ActivatedRoute,
-    private bugReportService: BugReportService) { }
+    private router: Router,
+    private route: ActivatedRoute,
+    private bugReportService: BugReportService
+  ) {}
 
   ngOnInit(): void {
     // First get the product id from the current route.
@@ -37,13 +39,16 @@ export class BugReportEditComponent implements OnInit {
   }
 
   getBugReport(id: number) {
-    this.bugReportService.getBugReport(id)
-      .subscribe(bugReport => this.bugReport = bugReport);
+    this.bugReportService
+      .getBugReport(id)
+      .subscribe((bugReport) => (this.bugReport = bugReport));
   }
 
   upPriority() {
     if (this.bugReport == undefined) return;
-    this.bugReportService.upPriority(this.bugReport).subscribe(() => this.reload());
+    this.bugReportService
+      .upPriority(this.bugReport)
+      .subscribe(() => this.reload());
   }
 
   downPriority() {
@@ -63,19 +68,27 @@ export class BugReportEditComponent implements OnInit {
 
   save(): void {
     if (this.bugReport) {
-      this.bugReportService.updateBugReport(this.bugReport)
+      this.bugReportService
+        .updateBugReport(this.bugReport)
         .subscribe(() => this.goBack());
     }
   }
 
   delete(): void {
-    if (this.bugReport) {
-      this.bugReportService.deleteBugReport(this.bugReport.id).subscribe(() => this.goBack());
+    if (
+      this.bugReport &&
+      window.confirm(
+        'Are you sure you want to delete: "' + this.bugReport.title + '"?'
+      )
+    ) {
+      this.bugReportService
+        .deleteBugReport(this.bugReport.id)
+        .subscribe(() => this.goBack());
     }
   }
 
   goBack(): void {
-    this.router.navigate(["/list"]);
+    this.router.navigate(['/list']);
   }
 
   reload(): void {
