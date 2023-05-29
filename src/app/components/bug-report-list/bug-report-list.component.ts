@@ -23,15 +23,18 @@ export class BugReportListComponent implements OnInit {
   // dataSource: BugReport[] = [];
   dataSource: MatTableDataSource<BugReport> | undefined;
 
-  constructor(private bugReportService: BugReportService) { }
+  constructor(private bugReportService: BugReportService) {}
 
   ngOnInit(): void {
     this.getBugReports();
   }
 
   getBugReports() {
-    this.bugReportService.getBugReports()
-      .subscribe(bugReports => this.dataSource = new MatTableDataSource(bugReports));
+    this.bugReportService
+      .getBugReports()
+      .subscribe(
+        (bugReports) => (this.dataSource = new MatTableDataSource(bugReports))
+      );
   }
 
   applyFilter(event: Event) {
@@ -42,35 +45,43 @@ export class BugReportListComponent implements OnInit {
 
   upPriority(id: number) {
     if (this.dataSource == undefined) return;
-    let bug = this.dataSource.data.find(b => b.id === id);
+    let bug = this.dataSource.data.find((b) => b.id === id);
     if (bug == undefined) return;
     this.bugReportService.upPriority(bug).subscribe();
   }
 
   downPriority(id: number) {
     if (this.dataSource == undefined) return;
-    let bug = this.dataSource.data.find(b => b.id === id);
+    let bug = this.dataSource.data.find((b) => b.id === id);
     if (bug == undefined) return;
     this.bugReportService.downPriority(bug).subscribe();
   }
 
   markAsFixed(id: number) {
     if (this.dataSource == undefined) return;
-    let bug = this.dataSource.data.find(b => b.id === id);
+    let bug = this.dataSource.data.find((b) => b.id === id);
     if (bug == undefined) return;
     this.bugReportService.markAsFixed(bug).subscribe();
   }
 
   markAsWnf(id: number) {
     if (this.dataSource == undefined) return;
-    let bug = this.dataSource.data.find(b => b.id === id);
+    let bug = this.dataSource.data.find((b) => b.id === id);
     if (bug == undefined) return;
     this.bugReportService.markAsWnf(bug).subscribe();
   }
 
   delete(bugReport: BugReport): void {
     if (this.dataSource == undefined) return;
-    this.dataSource.data = this.dataSource.data.filter(b => b !== bugReport);
-    this.bugReportService.deleteBugReport(bugReport.id).subscribe();
+    if (
+      window.confirm(
+        'Are you sure you want to delete: "' + bugReport.title + '"?'
+      )
+    ) {
+      this.dataSource.data = this.dataSource.data.filter(
+        (b) => b !== bugReport
+      );
+      this.bugReportService.deleteBugReport(bugReport.id).subscribe();
+    }
   }
 }
