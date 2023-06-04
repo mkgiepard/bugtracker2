@@ -29,3 +29,7 @@ table {
 .w50 {
   width: 50%;
 }
+
+.mat-mdc-table tr.mat-mdc-row:hover {
+  background: lightgrey;
+}
