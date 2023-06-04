@@ -1,4 +1,4 @@
-<mat-card *ngIf="bugReport">
+<mat-card *ngIf="bugReport" [ngClass]="{'changed': isChanged}">
   <form [formGroup]="bugReportForm" class="container">
     <div>
       <h1>Bug Report: {{ bugReport.id }}</h1>
@@ -6,8 +6,8 @@
     <div class="row w100">
       <div class="w40">
         <label>Priority: </label>
-        <mat-radio-group [disabled]="true" formControlName="priority" appearance="outline"
-          [(ngModel)]="bugReport.priority">
+        <mat-radio-group formControlName="priority" appearance="outline"
+          [(ngModel)]="bugReport.priority" (change)="setIsChanged()">
           <mat-radio-button [value]="0">P0</mat-radio-button>
           <mat-radio-button [value]="1">P1</mat-radio-button>
           <mat-radio-button [value]="2">P2</mat-radio-button>
@@ -52,6 +52,7 @@
       </mat-icon>
       <mat-icon class="link action-icon" mat-list-icon (click)="delete()">delete</mat-icon>
       <button [routerLink]="['/edit', bugReport.id]" mat-raised-button>Edit</button>
+      <label [ngClass]="{'visible': !isChanged}">NOTE: Priority or Status were changed.</label>
     </div>
   </form>
 </mat-card>

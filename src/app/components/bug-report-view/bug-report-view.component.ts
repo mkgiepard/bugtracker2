@@ -19,6 +19,7 @@ export class BugReportViewComponent implements OnInit {
   });
   bugReportPriority: string | undefined;
   bugComments: BugReportComment[] | undefined;
+  isChanged = false;
 
   constructor(
     private router: Router,
@@ -48,21 +49,25 @@ export class BugReportViewComponent implements OnInit {
     this.bugReportService
       .upPriority(this.bugReport)
       .subscribe(() => this.reload());
+    this.setIsChanged();
   }
 
   downPriority() {
     if (this.bugReport == undefined) return;
     this.bugReportService.downPriority(this.bugReport).subscribe();
+    this.setIsChanged();
   }
 
   markAsFixed() {
     if (this.bugReport == undefined) return;
     this.bugReportService.markAsFixed(this.bugReport).subscribe();
+    this.setIsChanged();
   }
 
   markAsWnf() {
     if (this.bugReport == undefined) return;
     this.bugReportService.markAsWnf(this.bugReport).subscribe();
+    this.setIsChanged();
   }
 
   delete(): void {
@@ -85,5 +90,9 @@ export class BugReportViewComponent implements OnInit {
   reload(): void {
     if (this.bugReport == undefined) return;
     this.getBugReport(this.bugReport.id);
+  }
+
+  setIsChanged(): void {
+    this.isChanged = true;
   }
 }

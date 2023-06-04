@@ -4,6 +4,11 @@ mat-card {
   width: 80%;
 }
 
+.changed {
+  border-color: yellow;
+  border-width: 1px;
+}
+
 .action-icon {
   margin-right: 24px;
 }
@@ -38,4 +43,8 @@ button {
 
 .link {
   cursor: pointer;
+}
+
+.visible {
+  display: none;
 }
