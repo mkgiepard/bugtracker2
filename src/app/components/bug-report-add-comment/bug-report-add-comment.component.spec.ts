@@ -4,10 +4,7 @@ import { BugReportAddCommentComponent } from './bug-report-add-comment.component
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 // Http testing module and mocking controller
-import {
-  HttpClientTestingModule,
-  HttpTestingController,
-} from '@angular/common/http/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MaterialModule } from '../../modules/material/material.module';
 import { RouterTestingModule } from '@angular/router/testing';
 
@@ -26,8 +23,7 @@ describe('BugReportAddCommentComponent', () => {
         RouterTestingModule,
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
-    })
-      .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {

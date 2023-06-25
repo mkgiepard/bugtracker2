@@ -5,10 +5,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 // Http testing module and mocking controller
-import {
-  HttpClientTestingModule,
-  HttpTestingController,
-} from "@angular/common/http/testing";
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('BugReportViewComponent', () => {
   let component: BugReportViewComponent;
@@ -18,10 +15,7 @@ describe('BugReportViewComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [BugReportViewComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
-      imports: [
-        RouterTestingModule.withRoutes([]),
-        HttpClientTestingModule
-      ],
+      imports: [RouterTestingModule.withRoutes([]), HttpClientTestingModule],
     }).compileComponents();
   });
 

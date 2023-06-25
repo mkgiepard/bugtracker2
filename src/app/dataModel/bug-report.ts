@@ -20,7 +20,7 @@ export interface BugReport {
   comments?: BugReportComment[];
 }
 
-export var bugReportData: BugReport[] = [
+export const bugReportData: BugReport[] = [
   {
     id: 1001,
     title: 'bug report 1',

@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MaterialModule } from 'src/app/modules/material/material.module';
-import { BugReport, Status, bugReportData } from 'src/app/dataModel/bug-report';
+import { BugReport } from 'src/app/dataModel/bug-report';
 import { BugReportService } from 'src/app/services/bug-report.service';
-import { BugReportSearchComponent } from '../bug-report-search/bug-report-search.component';
 import { MatTableDataSource } from '@angular/material/table';
-import { User } from '../../dataModel/user';
 
 @Component({
   selector: 'app-bug-report-list',
@@ -45,28 +42,28 @@ export class BugReportListComponent implements OnInit {
 
   upPriority(id: number) {
     if (this.dataSource == undefined) return;
-    let bug = this.dataSource.data.find((b) => b.id === id);
+    const bug = this.dataSource.data.find((b) => b.id === id);
     if (bug == undefined) return;
     this.bugReportService.upPriority(bug).subscribe();
   }
 
   downPriority(id: number) {
     if (this.dataSource == undefined) return;
-    let bug = this.dataSource.data.find((b) => b.id === id);
+    const bug = this.dataSource.data.find((b) => b.id === id);
     if (bug == undefined) return;
     this.bugReportService.downPriority(bug).subscribe();
   }
 
   markAsFixed(id: number) {
     if (this.dataSource == undefined) return;
-    let bug = this.dataSource.data.find((b) => b.id === id);
+    const bug = this.dataSource.data.find((b) => b.id === id);
     if (bug == undefined) return;
     this.bugReportService.markAsFixed(bug).subscribe();
   }
 
   markAsWnf(id: number) {
     if (this.dataSource == undefined) return;
-    let bug = this.dataSource.data.find((b) => b.id === id);
+    const bug = this.dataSource.data.find((b) => b.id === id);
     if (bug == undefined) return;
     this.bugReportService.markAsWnf(bug).subscribe();
   }

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 
-import { BugReport, Status, bugReportData } from '../dataModel/bug-report';
+import { BugReport, Status } from '../dataModel/bug-report';
 import { BugReportComment } from '../dataModel/bug-report-comment';
 
 @Injectable({
@@ -43,23 +43,32 @@ export class BugReportService {
   }
 
   /** PUT: update the bugReport on the server */
-  updateBugReport(bugReport: BugReport): Observable<any> {
-    return this.http.put(this.bugReportUrl, bugReport, this.httpOptions).pipe(
-      //tap(_ => this.log(`updated bugReport id=${bugReport.id}`)),
-      catchError(this.handleError<any>('updateBugReport'))
-    );
+  updateBugReport(bugReport: BugReport): Observable<BugReport> {
+    return this.http
+      .put<BugReport>(this.bugReportUrl, bugReport, this.httpOptions)
+      .pipe(
+        //tap(_ => this.log(`updated bugReport id=${bugReport.id}`)),
+        catchError(this.handleError<BugReport>('updateBugReport'))
+      );
   }
 
   /** PUT: add a comment to the bugReport on the server */
-  addComment(bugReport: BugReport, comment: BugReportComment): Observable<any> {
+  addComment(
+    bugReport: BugReport,
+    comment: BugReportComment
+  ): Observable<BugReport> {
     if (bugReport.comments == null) {
       bugReport.comments = [];
     }
     bugReport.comments?.push(comment);
-    return this.http.put(this.bugReportUrl, bugReport, this.httpOptions).pipe(
-      //tap(_ => this.log(`updated bugReport id=${bugReport.id}`)),
-      catchError(this.handleError<any>('updateBugReport with new comment'))
-    );
+    return this.http
+      .put<BugReport>(this.bugReportUrl, bugReport, this.httpOptions)
+      .pipe(
+        //tap(_ => this.log(`updated bugReport id=${bugReport.id}`)),
+        catchError(
+          this.handleError<BugReport>('updateBugReport with new comment')
+        )
+      );
   }
 
   /** DELETE: delete the hero from the server */
@@ -68,32 +77,32 @@ export class BugReportService {
 
     return this.http.delete(url, this.httpOptions).pipe(
       //tap(_ => this.log(`deleted hero id=${id}`)),
-      catchError(this.handleError<BugReport>('deleteBugReport'))
+      catchError(this.handleError('deleteBugReport'))
     );
   }
 
-  upPriority(bugReport: BugReport): Observable<any> {
+  upPriority(bugReport: BugReport): Observable<BugReport> {
     if (bugReport.priority != 0) {
       bugReport.priority--;
     }
     return this.updateBugReport(bugReport);
   }
 
-  downPriority(bugReport: BugReport): Observable<any> {
+  downPriority(bugReport: BugReport): Observable<BugReport> {
     if (bugReport.priority != 4) {
       bugReport.priority++;
     }
     return this.updateBugReport(bugReport);
   }
 
-  markAsFixed(bugReport: BugReport): Observable<any> {
+  markAsFixed(bugReport: BugReport): Observable<BugReport> {
     if (bugReport.status != Status.Fixed) {
       bugReport.status = Status.Fixed;
     }
     return this.updateBugReport(bugReport);
   }
 
-  markAsWnf(bugReport: BugReport): Observable<any> {
+  markAsWnf(bugReport: BugReport): Observable<BugReport> {
     if (bugReport.status !== Status.WNF && bugReport.status !== Status.Fixed) {
       bugReport.status = Status.WNF;
     }

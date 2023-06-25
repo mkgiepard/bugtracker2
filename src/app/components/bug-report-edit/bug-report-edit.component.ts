@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
-import { BugReport, Status, bugReportData } from 'src/app/dataModel/bug-report';
+import { BugReport, Status } from 'src/app/dataModel/bug-report';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BugReportService } from 'src/app/services/bug-report.service';
 

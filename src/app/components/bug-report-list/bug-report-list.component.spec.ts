@@ -4,10 +4,7 @@ import { BugReportListComponent } from './bug-report-list.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 // Http testing module and mocking controller
-import {
-  HttpClientTestingModule,
-  HttpTestingController,
-} from '@angular/common/http/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('BugReportListComponent', () => {
   let component: BugReportListComponent;
@@ -29,12 +26,5 @@ describe('BugReportListComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should open bug view page when clicked on title', () => {
-    let elem = document
-      .getElementsByClassName('tr.mat-mdc-row:nth-child(4) > td:nth-child(2)')
-      .item(0);
-    console.log(elem);
   });
 });

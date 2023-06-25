@@ -1,23 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import {
-  debounceTime, distinctUntilChanged, switchMap
-} from 'rxjs/operators';
-import { BugReport, Status, bugReportData } from 'src/app/dataModel/bug-report';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { BugReport } from 'src/app/dataModel/bug-report';
 import { BugReportService } from 'src/app/services/bug-report.service';
-import { MaterialModule } from 'src/app/modules/material/material.module';
-
 
 @Component({
   selector: 'app-bug-report-search',
   templateUrl: './bug-report-search.component.html',
-  styleUrls: ['./bug-report-search.component.css']
+  styleUrls: ['./bug-report-search.component.css'],
 })
 export class BugReportSearchComponent implements OnInit {
   bugReports$!: Observable<BugReport[]>;
   private searchTerms = new Subject<string>();
 
-  constructor(private bugReportService: BugReportService) { }
+  constructor(private bugReportService: BugReportService) {}
 
   ngOnInit(): void {
     this.bugReports$ = this.searchTerms.pipe(
@@ -28,7 +24,7 @@ export class BugReportSearchComponent implements OnInit {
       distinctUntilChanged(),
 
       // switch to new search observable each time the term changes
-      switchMap((term: string) => this.bugReportService.searchBugReports(term)),
+      switchMap((term: string) => this.bugReportService.searchBugReports(term))
     );
   }
 
@@ -41,5 +37,4 @@ export class BugReportSearchComponent implements OnInit {
   clearResults(): void {
     this.searchTerms.next('');
   }
-
 }

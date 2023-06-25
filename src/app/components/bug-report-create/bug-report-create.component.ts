@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { BugReport, Status } from 'src/app/dataModel/bug-report';
 import { BugReportService } from 'src/app/services/bug-report.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { defaultUser } from '../../dataModel/user';
 
 @Component({
