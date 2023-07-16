@@ -54,7 +54,9 @@ export class BugReportViewComponent implements OnInit {
 
   downPriority() {
     if (this.bugReport == undefined) return;
-    this.bugReportService.downPriority(this.bugReport).subscribe();
+    this.bugReportService
+      .downPriority(this.bugReport)
+      .subscribe(() => this.reload());
     this.setIsChanged();
   }
 

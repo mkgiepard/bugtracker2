@@ -82,30 +82,50 @@ export class BugReportService {
   }
 
   upPriority(bugReport: BugReport): Observable<BugReport> {
+    let oldPriority = bugReport.priority;
     if (bugReport.priority != 0) {
       bugReport.priority--;
     }
+    bugReport.updates?.push({
+      author: bugReport.author,
+      update: 'Priority change: P' + oldPriority + ' > P' + bugReport.priority,
+    });
     return this.updateBugReport(bugReport);
   }
 
   downPriority(bugReport: BugReport): Observable<BugReport> {
+    let oldPriority = bugReport.priority;
     if (bugReport.priority != 4) {
       bugReport.priority++;
     }
+    bugReport.updates?.push({
+      author: bugReport.author,
+      update: 'Priority change: P' + oldPriority + ' > P' + bugReport.priority,
+    });
     return this.updateBugReport(bugReport);
   }
 
   markAsFixed(bugReport: BugReport): Observable<BugReport> {
+    let oldStatus = bugReport.status;
     if (bugReport.status != Status.Fixed) {
       bugReport.status = Status.Fixed;
     }
+    bugReport.updates?.push({
+      author: bugReport.author,
+      update: 'Status change: ' + oldStatus + ' > ' + bugReport.status,
+    });
     return this.updateBugReport(bugReport);
   }
 
   markAsWnf(bugReport: BugReport): Observable<BugReport> {
+    let oldStatus = bugReport.status;
     if (bugReport.status !== Status.WNF && bugReport.status !== Status.Fixed) {
       bugReport.status = Status.WNF;
     }
+    bugReport.updates?.push({
+      author: bugReport.author,
+      update: 'Status change: ' + oldStatus + ' > ' + bugReport.status,
+    });
     return this.updateBugReport(bugReport);
   }
 

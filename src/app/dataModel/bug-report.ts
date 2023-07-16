@@ -1,5 +1,6 @@
 import { User, userData } from './user';
 import { BugReportComment } from './bug-report-comment';
+import { BugReportUpdate } from './bug-report-update';
 
 export enum Status {
   New = 'New',
@@ -18,6 +19,7 @@ export interface BugReport {
   description: string;
   author: User;
   comments?: BugReportComment[];
+  updates?: BugReportUpdate[];
 }
 
 export const bugReportData: BugReport[] = [
@@ -32,6 +34,12 @@ export const bugReportData: BugReport[] = [
       { author: userData[0], comment: 'first comment' },
       { author: userData[1], comment: 'second comment' },
       { author: userData[0], comment: 'third comment' },
+    ],
+    updates: [
+      {
+        author: userData[0],
+        update: 'Priority change P1 > P0',
+      },
     ],
   },
   {

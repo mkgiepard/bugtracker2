@@ -40,6 +40,10 @@
           cdkAutosizeMinRows="2" value="{{ comment.comment }}"></textarea>
       </mat-form-field>
     </div>
+    <div class="row w100" *ngFor="let u of bugReport.updates">
+      <label class="w100">Author: {{ u.author | fullName }}</label>
+      <label class="w100">{{u.update}}</label>
+    </div>
     <div class="w100">
       <button routerLink="/list" mat-raised-button>Back</button>
       <mat-icon class="link action-icon" mat-list-icon [routerLink]="['/comment', bugReport.id]">
