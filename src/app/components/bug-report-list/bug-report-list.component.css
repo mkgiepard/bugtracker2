@@ -1,6 +1,9 @@
 table {
   width: 100%;
 }
+.filter {
+  width: 100%;
+}
 .link {
   cursor: pointer;
 }
@@ -14,7 +17,7 @@ table {
 .fab-container button {
   background-color: #1976d2;
 }
-.mat-form-field {
+mat-form-field {
   font-size: 14px;
   width: 100%;
 }
