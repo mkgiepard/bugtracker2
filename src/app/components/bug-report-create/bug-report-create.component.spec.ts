@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MaterialModule } from '../../modules/material/material.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { Location } from '@angular/common';
 
 describe('BugReportCreateComponent', () => {
   let component: BugReportCreateComponent;
@@ -37,4 +38,8 @@ describe('BugReportCreateComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  xit('should navigate to main page with click on Cancel', () => {});
+
+  xit('should show disabled Save button on empty form', () => {});
 });
