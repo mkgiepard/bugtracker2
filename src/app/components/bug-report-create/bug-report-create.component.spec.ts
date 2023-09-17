@@ -42,4 +42,14 @@ describe('BugReportCreateComponent', () => {
   xit('should navigate to main page with click on Cancel', () => {});
 
   xit('should show disabled Save button on empty form', () => {});
+
+  xit('should show enabled Save button with all the data filled', () => {});
+
+  xit('should show disabled Save button on partially filled form', () => {});
+
+  xit('should show disabled Save button when filled field is cleared', () => {});
+
+  xit('should call add method on Save', () => {});
+
+  xit('should pass bugReport data to add method on Save', () => {});
 });
