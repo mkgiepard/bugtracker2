@@ -10,10 +10,12 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { MaterialModule } from '../../modules/material/material.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 describe('BugReportCreateComponent', () => {
   let component: BugReportCreateComponent;
   let fixture: ComponentFixture<BugReportCreateComponent>;
+  let router: Router;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -23,7 +25,7 @@ describe('BugReportCreateComponent', () => {
         MaterialModule,
         NoopAnimationsModule,
         ReactiveFormsModule,
-        RouterTestingModule,
+        RouterTestingModule.withRoutes([]),
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
     }).compileComponents();
@@ -32,6 +34,7 @@ describe('BugReportCreateComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(BugReportCreateComponent);
     component = fixture.componentInstance;
+    router = TestBed.inject(Router);
     fixture.detectChanges();
   });
 
@@ -39,7 +42,20 @@ describe('BugReportCreateComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  xit('should navigate to main page with click on Cancel', () => {});
+  it('should navigate to /list when "Cancel" button is clicked', () => {
+    const navSpy = spyOn(router, 'navigateByUrl');
+    const buttons = fixture.nativeElement.querySelectorAll(
+      'button'
+    ) as HTMLElement[];
+    const button = Array.from(buttons).find(
+      (el) => el.textContent === 'Cancel'
+    );
+
+    button?.click();
+
+    expect(navSpy).toHaveBeenCalledTimes(1);
+    expect(navSpy.calls.mostRecent().args[0].toString()).toEqual('/list');
+  });
 
   xit('should show disabled Save button on empty form', () => {});
 
@@ -49,7 +65,7 @@ describe('BugReportCreateComponent', () => {
 
   xit('should show disabled Save button when filled field is cleared', () => {});
 
-  xit('should call add method on Save', () => {});
+  xit('should call add() method wehn Save is clicked', () => {});
 
-  xit('should pass bugReport data to add method on Save', () => {});
+  xit('should pass bugReport data to add() method when Save is clicked', () => {});
 });
