@@ -57,7 +57,16 @@ describe('BugReportCreateComponent', () => {
     expect(navSpy.calls.mostRecent().args[0].toString()).toEqual('/list');
   });
 
-  xit('should show disabled Save button on empty form', () => {});
+  it('should show disabled Save button on empty form', () => {
+    const buttons = fixture.nativeElement.querySelectorAll(
+      'button'
+    ) as HTMLButtonElement[];
+    const saveButton = Array.from(buttons).find(
+      (el) => el.textContent === 'Save'
+    );
+
+    expect(saveButton?.disabled).toBeTruthy();
+  });
 
   xit('should show enabled Save button with all the data filled', () => {});
 
