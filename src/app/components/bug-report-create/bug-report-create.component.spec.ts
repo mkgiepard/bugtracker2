@@ -70,7 +70,26 @@ describe('BugReportCreateComponent', () => {
 
   xit('should show enabled Save button with all the data filled', () => {});
 
-  xit('should show disabled Save button on partially filled form', () => {});
+  it('should show disabled Save button on partially filled form', () => {
+    const inputs = fixture.nativeElement.querySelectorAll(
+      'input'
+    ) as HTMLInputElement[];
+    const titleInput = Array.from(inputs).find(
+      (el) => el.placeholder === 'Title'
+    ) as HTMLInputElement;
+    titleInput.value = 'someTitle';
+    titleInput?.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+
+    const buttons = fixture.nativeElement.querySelectorAll(
+      'button'
+    ) as HTMLButtonElement[];
+    const saveButton = Array.from(buttons).find(
+      (el) => el.textContent === 'Save'
+    );
+
+    expect(saveButton?.disabled).toBeTruthy();
+  });
 
   xit('should show disabled Save button when filled field is cleared', () => {});
 
