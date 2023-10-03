@@ -68,7 +68,39 @@ describe('BugReportCreateComponent', () => {
     expect(saveButton?.disabled).toBeTruthy();
   });
 
-  xit('should show enabled Save button with all the data filled', () => {});
+  it('should show enabled Save button with all the data filled', () => {
+    const inputs = fixture.nativeElement.querySelectorAll(
+      'input'
+    ) as HTMLInputElement[];
+    const titleInput = Array.from(inputs).find(
+      (el) => el.placeholder === 'Title'
+    ) as HTMLInputElement;
+    titleInput.value = 'someTitle';
+    titleInput?.dispatchEvent(new Event('input'));
+    const authorInput = Array.from(inputs).find(
+      (el) => el.placeholder === 'Author'
+    ) as HTMLInputElement;
+    authorInput.value = 'some author';
+    authorInput?.dispatchEvent(new Event('input'));
+    const textAreas = fixture.nativeElement.querySelectorAll(
+      'textarea'
+    ) as HTMLInputElement[];
+    const descInput = Array.from(textAreas).find(
+      (el) => el.placeholder === 'Description'
+    ) as HTMLInputElement;
+    descInput.value = 'some desc';
+    descInput?.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+
+    const buttons = fixture.nativeElement.querySelectorAll(
+      'button'
+    ) as HTMLButtonElement[];
+    const saveButton = Array.from(buttons).find(
+      (el) => el.textContent === 'Save'
+    );
+
+    expect(saveButton?.disabled).toBeFalsy();
+  });
 
   it('should show disabled Save button on partially filled form', () => {
     const inputs = fixture.nativeElement.querySelectorAll(
