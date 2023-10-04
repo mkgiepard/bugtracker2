@@ -125,7 +125,7 @@ describe('BugReportCreateComponent', () => {
 
   xit('should show disabled Save button when filled field is cleared', () => {});
 
-  xit('should call add() method wehn Save is clicked', () => {});
+  xit('should call add() method when Save is clicked', () => {});
 
   xit('should pass bugReport data to add() method when Save is clicked', () => {});
 });
