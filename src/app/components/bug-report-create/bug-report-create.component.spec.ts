@@ -44,12 +44,7 @@ describe('BugReportCreateComponent', () => {
 
   it('should navigate to /list when "Cancel" button is clicked', () => {
     const navSpy = spyOn(router, 'navigateByUrl');
-    const buttons = fixture.nativeElement.querySelectorAll(
-      'button'
-    ) as HTMLElement[];
-    const button = Array.from(buttons).find(
-      (el) => el.textContent === 'Cancel'
-    );
+    const button = getButtonElement('Cancel');
 
     button?.click();
 
@@ -58,12 +53,7 @@ describe('BugReportCreateComponent', () => {
   });
 
   it('should show disabled Save button on empty form', () => {
-    const buttons = fixture.nativeElement.querySelectorAll(
-      'button'
-    ) as HTMLButtonElement[];
-    const saveButton = Array.from(buttons).find(
-      (el) => el.textContent === 'Save'
-    );
+    const saveButton = getButtonElement('Save');
 
     expect(saveButton?.disabled).toBeTruthy();
   });
@@ -80,12 +70,7 @@ describe('BugReportCreateComponent', () => {
     descInput?.dispatchEvent(new Event('input'));
     fixture.detectChanges();
 
-    const buttons = fixture.nativeElement.querySelectorAll(
-      'button'
-    ) as HTMLButtonElement[];
-    const saveButton = Array.from(buttons).find(
-      (el) => el.textContent === 'Save'
-    );
+    const saveButton = getButtonElement('Save');
 
     expect(saveButton?.disabled).toBeFalsy();
   });
@@ -96,12 +81,7 @@ describe('BugReportCreateComponent', () => {
     titleInput?.dispatchEvent(new Event('input'));
     fixture.detectChanges();
 
-    const buttons = fixture.nativeElement.querySelectorAll(
-      'button'
-    ) as HTMLButtonElement[];
-    const saveButton = Array.from(buttons).find(
-      (el) => el.textContent === 'Save'
-    );
+    const saveButton = getButtonElement('Save');
 
     expect(saveButton?.disabled).toBeTruthy();
   });
@@ -130,5 +110,15 @@ describe('BugReportCreateComponent', () => {
       (el) => el.placeholder === text
     ) as HTMLInputElement;
     return inputElement;
+  }
+
+  function getButtonElement(text: string): HTMLButtonElement {
+    const buttons = fixture.nativeElement.querySelectorAll(
+      'button'
+    ) as HTMLButtonElement[];
+    const button = Array.from(buttons).find(
+      (el) => el.textContent === text
+    ) as HTMLButtonElement;
+    return button;
   }
 });
