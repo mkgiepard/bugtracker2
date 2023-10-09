@@ -86,7 +86,30 @@ describe('BugReportCreateComponent', () => {
     expect(saveButton?.disabled).toBeTruthy();
   });
 
-  xit('should show disabled Save button when filled field is cleared', () => {});
+  it('should show disabled Save button when filled field is cleared', () => {
+    const titleInput = getInputElement('Title');
+    titleInput.value = 'someTitle';
+    titleInput?.dispatchEvent(new Event('input'));
+    const authorInput = getInputElement('Author');
+    authorInput.value = 'some author';
+    authorInput?.dispatchEvent(new Event('input'));
+    const descInput = getTextAreaElement('Description');
+    descInput.value = 'some desc';
+    descInput?.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+
+    let saveButton = getButtonElement('Save');
+
+    expect(saveButton?.disabled).toBeFalsy();
+
+    descInput.value = '';
+    descInput?.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+
+    saveButton = getButtonElement('Save');
+
+    expect(saveButton?.disabled).toBeTruthy();
+  });
 
   xit('should call add() method when Save is clicked', () => {});
 
