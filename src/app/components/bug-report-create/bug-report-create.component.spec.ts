@@ -59,15 +59,9 @@ describe('BugReportCreateComponent', () => {
   });
 
   it('should show enabled Save button with all the data filled', () => {
-    const titleInput = getInputElement('Title');
-    titleInput.value = 'someTitle';
-    titleInput?.dispatchEvent(new Event('input'));
-    const authorInput = getInputElement('Author');
-    authorInput.value = 'some author';
-    authorInput?.dispatchEvent(new Event('input'));
-    const descInput = getTextAreaElement('Description');
-    descInput.value = 'some desc';
-    descInput?.dispatchEvent(new Event('input'));
+    seedInputElement('Title', 'someTitle');
+    seedInputElement('Author', 'some author');
+    seedInputElement('Description', 'some desc');
     fixture.detectChanges();
 
     const saveButton = getButtonElement('Save');
@@ -76,9 +70,7 @@ describe('BugReportCreateComponent', () => {
   });
 
   it('should show disabled Save button on partially filled form', () => {
-    const titleInput = getInputElement('Title');
-    titleInput.value = 'someTitle';
-    titleInput?.dispatchEvent(new Event('input'));
+    seedInputElement('Title', 'someTitle');
     fixture.detectChanges();
 
     const saveButton = getButtonElement('Save');
@@ -87,25 +79,17 @@ describe('BugReportCreateComponent', () => {
   });
 
   it('should show disabled Save button when filled field is cleared', () => {
-    const titleInput = getInputElement('Title');
-    titleInput.value = 'someTitle';
-    titleInput?.dispatchEvent(new Event('input'));
-    const authorInput = getInputElement('Author');
-    authorInput.value = 'some author';
-    authorInput?.dispatchEvent(new Event('input'));
-    const descInput = getTextAreaElement('Description');
-    descInput.value = 'some desc';
-    descInput?.dispatchEvent(new Event('input'));
+    seedInputElement('Title', 'someTitle');
+    seedInputElement('Author', 'some author');
+    seedInputElement('Description', 'some desc');
     fixture.detectChanges();
 
     let saveButton = getButtonElement('Save');
 
     expect(saveButton?.disabled).toBeFalsy();
 
-    descInput.value = '';
-    descInput?.dispatchEvent(new Event('input'));
+    seedInputElement('Description', '');
     fixture.detectChanges();
-
     saveButton = getButtonElement('Save');
 
     expect(saveButton?.disabled).toBeTruthy();
@@ -114,6 +98,15 @@ describe('BugReportCreateComponent', () => {
   xit('should call add() method when Save is clicked', () => {});
 
   xit('should pass bugReport data to add() method when Save is clicked', () => {});
+
+  function seedInputElement(text: string, value: string) {
+    let input = getInputElement(text);
+    if (input == null) {
+      input = getTextAreaElement(text);
+    }
+    input.value = value;
+    input?.dispatchEvent(new Event('input'));
+  }
 
   function getInputElement(text: string): HTMLInputElement {
     const inputs = fixture.nativeElement.querySelectorAll(
