@@ -95,7 +95,19 @@ describe('BugReportCreateComponent', () => {
     expect(saveButton?.disabled).toBeTruthy();
   });
 
-  xit('should call add() method when Save is clicked', () => {});
+  it('should call add() method when Save is clicked', () => {
+    spyOn(component, 'add');
+
+    seedInputElement('Title', 'someTitle');
+    seedInputElement('Author', 'some author');
+    seedInputElement('Description', 'some desc');
+    fixture.detectChanges();
+
+    const saveButton = getButtonElement('Save');
+    saveButton.click();
+
+    expect(component.add).toHaveBeenCalled();
+  });
 
   xit('should pass bugReport data to add() method when Save is clicked', () => {});
 
