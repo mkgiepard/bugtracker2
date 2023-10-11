@@ -28,4 +28,6 @@ describe('BugReportViewComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  xit('should show bug report data in the view form', () => {});
 });
