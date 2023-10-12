@@ -30,4 +30,20 @@ describe('BugReportViewComponent', () => {
   });
 
   xit('should show bug report data in the view form', () => {});
+
+  xit('should navigate to /list when "Back" button is clicked ', () => {});
+
+  xit('should navigate to /edit when "Edit" button is clicked ', () => {});
+
+  xit('should navigate to /comment when "Comment" buton is clicked', () => {});
+
+  xit('should call markAsFixed() method when "Fixed" button is clicked', () => {});
+
+  xit('should call markAsWnf() method when "WNF" button is clicked', () => {});
+
+  xit('should call upPriority() method when "Up" button is clicked', () => {});
+
+  xit('should call downPriority() method when "Down" button is clicked', () => {});
+
+  xit('should call delete() method when "Delete" button is clicked', () => {});
 });
