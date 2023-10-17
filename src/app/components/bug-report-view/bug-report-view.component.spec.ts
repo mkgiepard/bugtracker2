@@ -46,4 +46,12 @@ describe('BugReportViewComponent', () => {
   xit('should call downPriority() method when "Down" button is clicked', () => {});
 
   xit('should call delete() method when "Delete" button is clicked', () => {});
+
+  xit('should display new update when "Fixed" button is clicked', () => {});
+
+  xit('should display new update when "WNF" button is clicked', () => {});
+
+  xit('should display new update when "Up" button is clicked', () => {});
+
+  xit('should display new update method when "Down" button is clicked', () => {});
 });
