@@ -53,5 +53,15 @@ describe('BugReportViewComponent', () => {
 
   xit('should display new update when "Up" button is clicked', () => {});
 
-  xit('should display new update method when "Down" button is clicked', () => {});
+  xit('should display new update when "Down" button is clicked', () => {});
+
+  xit('should display new update when bug priority is changed', () => {});
+
+  xit('should display yellow warning frame when bug data are changed', () => {});
+
+  xit('should display title as read-only', () => {});
+
+  xit('should display description as read-only', () => {});
+
+  xit('should display comments as read-only', () => {});
 });
