@@ -12,6 +12,8 @@ import { BugReportService } from 'src/app/services/bug-report.service';
 import { Observable, of } from 'rxjs';
 import { FullNamePipe } from 'src/app/pipes/full-name-pipe';
 import { Router } from '@angular/router';
+import { MaterialModule } from '../../modules/material/material.module';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 class MockBugReportService {
   isLoggedIn = true;
@@ -40,7 +42,12 @@ describe('BugReportViewComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [BugReportViewComponent, FullNamePipe],
       schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
-      imports: [RouterTestingModule.withRoutes([]), HttpClientTestingModule],
+      imports: [
+        RouterTestingModule.withRoutes([]),
+        HttpClientTestingModule,
+        MaterialModule,
+        NoopAnimationsModule,
+      ],
       providers: [
         { provide: BugReportService, useClass: MockBugReportService },
       ],
