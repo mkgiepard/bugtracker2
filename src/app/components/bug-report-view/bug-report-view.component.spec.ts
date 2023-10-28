@@ -105,15 +105,50 @@ describe('BugReportViewComponent', () => {
     );
   });
 
-  xit('should call markAsFixed() method when "Fixed" button is clicked', () => {});
+  it('should call markAsFixed() method when "Fixed" button is clicked', () => {
+    spyOn(component, 'markAsFixed');
 
-  xit('should call markAsWnf() method when "WNF" button is clicked', () => {});
+    const fixedButton = getMatIconElement('done');
+    fixedButton.click();
 
-  xit('should call upPriority() method when "Up" button is clicked', () => {});
+    expect(component.markAsFixed).toHaveBeenCalled();
+  });
 
-  xit('should call downPriority() method when "Down" button is clicked', () => {});
+  it('should call markAsWnf() method when "WNF" button is clicked', () => {
+    spyOn(component, 'markAsWnf');
 
-  xit('should call delete() method when "Delete" button is clicked', () => {});
+    const wnfButton = getMatIconElement('close');
+    wnfButton.click();
+
+    expect(component.markAsWnf).toHaveBeenCalled();
+  });
+
+  it('should call upPriority() method when "Up" button is clicked', () => {
+    spyOn(component, 'upPriority');
+
+    const upButton = getMatIconElement('arrow_circle_up');
+    upButton.click();
+
+    expect(component.upPriority).toHaveBeenCalled();
+  });
+
+  it('should call downPriority() method when "Down" button is clicked', () => {
+    spyOn(component, 'downPriority');
+
+    const downButton = getMatIconElement('arrow_circle_down');
+    downButton.click();
+
+    expect(component.downPriority).toHaveBeenCalled();
+  });
+
+  it('should call delete() method when "Delete" button is clicked', () => {
+    spyOn(component, 'delete');
+
+    const deleteButton = getMatIconElement('delete');
+    deleteButton.click();
+
+    expect(component.delete).toHaveBeenCalled();
+  });
 
   xit('should display new update when "Fixed" button is clicked', () => {});
 
