@@ -163,8 +163,12 @@ describe('BugReportViewComponent', () => {
     fixedButton.click();
     fixture.detectChanges();
 
-    const updateElements = getElementByClass('update').length;
-    expect(updateElements).toEqual(1);
+    const updateElements = getElementByClass('update');
+    expect(updateElements.length).toEqual(1);
+    expect(updateElements[0].textContent).toContain('Author: Alpha Tester');
+    expect(updateElements[0].textContent).toContain(
+      'Status change: Accepted > Fixed'
+    );
   });
 
   xit('should display new update when "WNF" button is clicked', () => {});
