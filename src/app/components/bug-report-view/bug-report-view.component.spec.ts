@@ -27,8 +27,16 @@ class MockBugReportService {
     description: 'test lorem epsum...',
     author: this.testUser,
     comments: [{ author: this.testUser, comment: 'test first comment' }],
+    updates: [],
   };
   getBugReport(id: number): Observable<BugReport> {
+    return of(this.testBugReport);
+  }
+  markAsFixed(bugReport: BugReport): Observable<BugReport> {
+    this.testBugReport.status = Status.Fixed;
+    this.testBugReport.updates = [
+      { author: this.testUser, update: 'Status change: Accepted > Fixed' },
+    ];
     return of(this.testBugReport);
   }
 }
@@ -150,7 +158,14 @@ describe('BugReportViewComponent', () => {
     expect(component.delete).toHaveBeenCalled();
   });
 
-  xit('should display new update when "Fixed" button is clicked', () => {});
+  it('should display new update when "Fixed" button is clicked', () => {
+    const fixedButton = getMatIconElement('done');
+    fixedButton.click();
+    fixture.detectChanges();
+
+    const updateElements = getElementByClass('update').length;
+    expect(updateElements).toEqual(1);
+  });
 
   xit('should display new update when "WNF" button is clicked', () => {});
 
@@ -194,5 +209,11 @@ describe('BugReportViewComponent', () => {
       e.preventDefault();
     });
     return icon;
+  }
+
+  function getElementByClass(cssClass: string): HTMLElement[] {
+    return fixture.nativeElement.querySelectorAll(
+      '.' + cssClass
+    ) as HTMLElement[];
   }
 });
