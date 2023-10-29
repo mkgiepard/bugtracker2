@@ -86,6 +86,9 @@ export class BugReportService {
     if (bugReport.priority != 0) {
       bugReport.priority--;
     }
+    if (bugReport.updates == null) {
+      bugReport.updates = [];
+    }
     bugReport.updates?.push({
       author: bugReport.author,
       update: 'Priority change: P' + oldPriority + ' > P' + bugReport.priority,
@@ -97,6 +100,9 @@ export class BugReportService {
     let oldPriority = bugReport.priority;
     if (bugReport.priority != 4) {
       bugReport.priority++;
+    }
+    if (bugReport.updates == null) {
+      bugReport.updates = [];
     }
     bugReport.updates?.push({
       author: bugReport.author,
@@ -110,6 +116,9 @@ export class BugReportService {
     if (bugReport.status != Status.Fixed) {
       bugReport.status = Status.Fixed;
     }
+    if (bugReport.updates == null) {
+      bugReport.updates = [];
+    }
     bugReport.updates?.push({
       author: bugReport.author,
       update: 'Status change: ' + oldStatus + ' > ' + bugReport.status,
@@ -121,6 +130,9 @@ export class BugReportService {
     let oldStatus = bugReport.status;
     if (bugReport.status !== Status.WNF && bugReport.status !== Status.Fixed) {
       bugReport.status = Status.WNF;
+    }
+    if (bugReport.updates == null) {
+      bugReport.updates = [];
     }
     bugReport.updates?.push({
       author: bugReport.author,
