@@ -53,6 +53,13 @@ class MockBugReportService {
     ];
     return of(this.testBugReport);
   }
+  downPriority(bugReport: BugReport): Observable<BugReport> {
+    this.testBugReport.priority = 2;
+    this.testBugReport.updates = [
+      { author: this.testUser, update: 'Priority change: P1 > P2' },
+    ];
+    return of(this.testBugReport);
+  }
 }
 
 describe('BugReportViewComponent', () => {
@@ -209,7 +216,16 @@ describe('BugReportViewComponent', () => {
     expect(updateElements[0].textContent).toContain('Priority change: P1 > P0');
   });
 
-  xit('should display new update when "Down" button is clicked', () => {});
+  it('should display new update when "Down" button is clicked', () => {
+    const downButton = getMatIconElement('arrow_circle_down');
+    downButton.click();
+    fixture.detectChanges();
+
+    const updateElements = getElementByClass('update');
+    expect(updateElements.length).toEqual(1);
+    expect(updateElements[0].textContent).toContain('Author: Alpha Tester');
+    expect(updateElements[0].textContent).toContain('Priority change: P1 > P2');
+  });
 
   xit('should display new update when bug priority is changed', () => {});
 
