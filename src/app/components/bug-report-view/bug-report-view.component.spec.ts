@@ -39,6 +39,13 @@ class MockBugReportService {
     ];
     return of(this.testBugReport);
   }
+  markAsWnf(bugReport: BugReport): Observable<BugReport> {
+    this.testBugReport.status = Status.WNF;
+    this.testBugReport.updates = [
+      { author: this.testUser, update: 'Status change: Accepted > WNF' },
+    ];
+    return of(this.testBugReport);
+  }
 }
 
 describe('BugReportViewComponent', () => {
@@ -171,7 +178,18 @@ describe('BugReportViewComponent', () => {
     );
   });
 
-  xit('should display new update when "WNF" button is clicked', () => {});
+  it('should display new update when "WNF" button is clicked', () => {
+    const wnfButton = getMatIconElement('close');
+    wnfButton.click();
+    fixture.detectChanges();
+
+    const updateElements = getElementByClass('update');
+    expect(updateElements.length).toEqual(1);
+    expect(updateElements[0].textContent).toContain('Author: Alpha Tester');
+    expect(updateElements[0].textContent).toContain(
+      'Status change: Accepted > WNF'
+    );
+  });
 
   xit('should display new update when "Up" button is clicked', () => {});
 
