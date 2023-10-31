@@ -229,7 +229,17 @@ describe('BugReportViewComponent', () => {
 
   xit('should display new update when bug priority is changed', () => {});
 
-  xit('should display yellow warning frame when bug data are changed', () => {});
+  it('should apply "changed" class to the main mat-card when bug data are changed', () => {
+    const frame = fixture.nativeElement.querySelector(
+      'mat-card'
+    ) as HTMLElement;
+    const downButton = getMatIconElement('arrow_circle_down');
+
+    downButton.click();
+    fixture.detectChanges();
+
+    expect(frame?.classList.contains('changed')).toBeTrue();
+  });
 
   xit('should display title as read-only', () => {});
 
