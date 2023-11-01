@@ -241,11 +241,23 @@ describe('BugReportViewComponent', () => {
     expect(frame?.classList.contains('changed')).toBeTrue();
   });
 
-  xit('should display title as read-only', () => {});
+  it('should display title as read-only', () => {
+    const title = getInputElement('Title');
 
-  xit('should display description as read-only', () => {});
+    expect(title.readOnly).toBeTrue();
+  });
 
-  xit('should display comments as read-only', () => {});
+  it('should display description as read-only', () => {
+    const description = getTextAreaElement('Description');
+
+    expect(description.readOnly).toBeTrue();
+  });
+
+  it('should display comments as read-only', () => {
+    const comment = getTextAreaElement('Comment');
+
+    expect(comment.readOnly).toBeTrue();
+  });
 
   function getButtonElement(text: string): HTMLButtonElement {
     const buttons = fixture.nativeElement.querySelectorAll(
@@ -279,5 +291,25 @@ describe('BugReportViewComponent', () => {
     return fixture.nativeElement.querySelectorAll(
       '.' + cssClass
     ) as HTMLElement[];
+  }
+
+  function getInputElement(text: string): HTMLInputElement {
+    const inputs = fixture.nativeElement.querySelectorAll(
+      'input'
+    ) as HTMLInputElement[];
+    const inputElement = Array.from(inputs).find(
+      (el) => el.placeholder === text
+    ) as HTMLInputElement;
+    return inputElement;
+  }
+
+  function getTextAreaElement(text: string): HTMLInputElement {
+    const inputs = fixture.nativeElement.querySelectorAll(
+      'textarea'
+    ) as HTMLInputElement[];
+    const inputElement = Array.from(inputs).find(
+      (el) => el.placeholder === text
+    ) as HTMLInputElement;
+    return inputElement;
   }
 });
