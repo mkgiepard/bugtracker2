@@ -98,7 +98,15 @@ describe('BugReportViewComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  xit('should show bug report data in the view form', () => {});
+  it('should show bug report data in the view form', () => {
+    const title = getInputElement('Title');
+    const description = getTextAreaElement('Description');
+    const comment = getTextAreaElement('Comment');
+
+    expect(title.value).toEqual('test bug report ');
+    expect(description.value).toEqual('test lorem epsum...');
+    expect(comment.value).toEqual('test first comment');
+  });
 
   it('should navigate to /list when "Back" button is clicked ', () => {
     const navSpy = spyOn(router, 'navigateByUrl');
