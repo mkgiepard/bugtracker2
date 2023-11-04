@@ -102,6 +102,7 @@ describe('BugReportViewComponent', () => {
     const title = getInputElement('Title');
     const description = getTextAreaElement('Description');
     const comment = getTextAreaElement('Comment');
+    // TODO: add checks for priority, author and status
 
     expect(title.value).toEqual('test bug report ');
     expect(description.value).toEqual('test lorem epsum...');
@@ -235,7 +236,17 @@ describe('BugReportViewComponent', () => {
     expect(updateElements[0].textContent).toContain('Priority change: P1 > P2');
   });
 
-  xit('should display new update when bug priority is changed', () => {});
+  it('should display new update when bug priority is changed', () => {
+    const priority2 = getInputElementByValue('2');
+    priority2.click();
+    fixture.detectChanges();
+
+    const updateLabel = getElementByClass('update-note');
+    expect(updateLabel.length).toEqual(1);
+    expect(updateLabel[0].textContent).toContain(
+      'NOTE: Priority or Status were changed.'
+    );
+  });
 
   it('should apply "changed" class to the main mat-card when bug data are changed', () => {
     const frame = fixture.nativeElement.querySelector(
@@ -307,6 +318,16 @@ describe('BugReportViewComponent', () => {
     ) as HTMLInputElement[];
     const inputElement = Array.from(inputs).find(
       (el) => el.placeholder === text
+    ) as HTMLInputElement;
+    return inputElement;
+  }
+
+  function getInputElementByValue(value: string): HTMLInputElement {
+    const inputs = fixture.nativeElement.querySelectorAll(
+      'input'
+    ) as HTMLInputElement[];
+    const inputElement = Array.from(inputs).find(
+      (el) => el.value === value
     ) as HTMLInputElement;
     return inputElement;
   }

@@ -56,7 +56,8 @@
       </mat-icon>
       <mat-icon class="link action-icon" mat-list-icon (click)="delete()">delete</mat-icon>
       <button [routerLink]="['/edit', bugReport.id]" mat-raised-button>Edit</button>
-      <label [ngClass]="{'visible': !isChanged}">NOTE: Priority or Status were changed.</label>
+      <label class="update-note" [ngClass]="{'visible': !isChanged}">NOTE: Priority or Status were
+        changed.</label>
     </div>
   </form>
 </mat-card>
