@@ -40,7 +40,7 @@ describe('BugReportListComponent', () => {
 
   xit('should navigate to /edit/{id} when "Edit" button is clicked', () => {});
 
-  xit('should navigate to /edit/{id} when bugReport title is clicked', () => {});
+  xit('should navigate to /view/{id} when bugReport title is clicked', () => {});
 
   xit('should call markAsFixed() method when "Fixed" button is clicked', () => {});
 

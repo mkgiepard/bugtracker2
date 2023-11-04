@@ -28,4 +28,34 @@ describe('BugReportEditComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  xit('should navigate to /list when "Back" button is clicked ', () => {});
+
+  xit('should navigate to /comment when "Comment" button is clicked', () => {});
+
+  xit('should call markAsFixed() method when "Fixed" button is clicked', () => {});
+
+  xit('should call markAsWnf() method when "Wnf" button is clicked', () => {});
+
+  xit('should call upPriority() method when "Up" button is clicked', () => {});
+
+  xit('should call downPriority() method when "Down" button is clicked', () => {});
+
+  xit('should call delete() method when "Delete" button is clicked', () => {});
+
+  xit('should display bugReport title in RW mode after loading', () => {});
+
+  xit('should display bugReport priority in RW mode after loading', () => {});
+
+  xit('should display bugReport status in RW mode after loading', () => {});
+
+  xit('should display bugReport description in RW mode after loading', () => {});
+
+  xit('should display bugReport author in RO mode after loading', () => {});
+
+  xit('should show disabled Save button when title is missing', () => {});
+
+  xit('should show disabled Save button when description is missing', () => {});
+
+  xit('should call save() method when Save is clicked', () => {});
 });
