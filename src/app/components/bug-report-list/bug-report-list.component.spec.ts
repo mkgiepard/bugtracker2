@@ -27,4 +27,30 @@ describe('BugReportListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  xit('should display a table with a header and 1 row per bugReport', () => {});
+
+  xit('should display columns with bugReport details', () => {});
+
+  xit('should display column with action buttons', () => {});
+
+  xit('should navigate to create when "FAB" is clicked', () => {});
+
+  xit('should navigate to /comment when "Comment" button is clicked', () => {});
+
+  xit('should navigate to /edit/{id} when "Edit" button is clicked', () => {});
+
+  xit('should navigate to /edit/{id} when bugReport title is clicked', () => {});
+
+  xit('should call markAsFixed() method when "Fixed" button is clicked', () => {});
+
+  xit('should call markAsWnf() method when "Wnf" button is clicked', () => {});
+
+  xit('should call upPriority() method when "Up" button is clicked', () => {});
+
+  xit('should call downPriority() method when "Down" button is clicked', () => {});
+
+  xit('should call delete() method when "Delete" button is clicked', () => {});
+
+  xit('should display search input filed', () => {});
 });

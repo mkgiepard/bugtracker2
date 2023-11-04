@@ -152,7 +152,7 @@ describe('BugReportViewComponent', () => {
     expect(component.markAsFixed).toHaveBeenCalled();
   });
 
-  it('should call markAsWnf() method when "WNF" button is clicked', () => {
+  it('should call markAsWnf() method when "Wnf" button is clicked', () => {
     spyOn(component, 'markAsWnf');
 
     const wnfButton = getMatIconElement('close');
