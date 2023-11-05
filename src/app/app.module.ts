@@ -17,6 +17,7 @@ import { BugReportSearchComponent } from './components/bug-report-search/bug-rep
 import { BugReportAddCommentComponent } from './components/bug-report-add-comment/bug-report-add-comment.component';
 
 import { FullNamePipe } from './pipes/full-name-pipe';
+import { BugReportActionsComponent } from './components/bug-report-actions/bug-report-actions.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { FullNamePipe } from './pipes/full-name-pipe';
     BugReportSearchComponent,
     BugReportAddCommentComponent,
     FullNamePipe,
+    BugReportActionsComponent,
   ],
   imports: [
     HttpClientModule,
