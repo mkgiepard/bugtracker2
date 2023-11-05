@@ -308,9 +308,17 @@
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
   <span class="link" routerLink="/list">Bug tracker v2</span>
-  <span class="link" routerLink="/search">
-    <mat-icon>search</mat-icon>
-  </span>
+  <div>
+    <span class="link" routerLink="/search">
+      <mat-icon>search</mat-icon>
+    </span>
+    <span class="link" routerLink="/settings">
+      <mat-icon>settings</mat-icon>
+    </span>
+    <span class="link" routerLink="/account">
+      <mat-icon>account_circle</mat-icon>
+    </span>
+  </div>
 </div>
 <div class="content">
   <router-outlet></router-outlet>
