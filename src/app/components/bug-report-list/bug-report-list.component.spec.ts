@@ -9,6 +9,44 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { Router } from '@angular/router';
 import { MaterialModule } from '../../modules/material/material.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BugReport, Status } from 'src/app/dataModel/bug-report';
+import { User } from 'src/app/dataModel/user';
+import { BugReportService } from 'src/app/services/bug-report.service';
+import { Observable, of } from 'rxjs';
+import { FullNamePipe } from 'src/app/pipes/full-name-pipe';
+
+class MockBugReportService {
+  isLoggedIn = true;
+  user = { name: 'Test User' };
+  testUser: User = new User('Alpha', 'Tester', 'atester');
+  testBugReports: BugReport[] = [
+    {
+      id: 1002,
+      title: 'test bug report ',
+      priority: 1,
+      status: Status.Accepted,
+      description: 'test lorem epsum...',
+      author: this.testUser,
+      comments: [{ author: this.testUser, comment: 'test first comment' }],
+      updates: [],
+    },
+    {
+      id: 1003,
+      title: 'second test bug report ',
+      priority: 2,
+      status: Status.New,
+      description: 'second test lorem epsum...',
+      author: this.testUser,
+      comments: [
+        { author: this.testUser, comment: 'second test first comment' },
+      ],
+      updates: [],
+    },
+  ];
+  getBugReports(): Observable<BugReport[]> {
+    return of(this.testBugReports);
+  }
+}
 
 describe('BugReportListComponent', () => {
   let component: BugReportListComponent;
@@ -17,12 +55,15 @@ describe('BugReportListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BugReportListComponent],
+      declarations: [BugReportListComponent, FullNamePipe],
       imports: [
         HttpClientTestingModule,
         RouterTestingModule.withRoutes([]),
         MaterialModule,
         NoopAnimationsModule,
+      ],
+      providers: [
+        { provide: BugReportService, useClass: MockBugReportService },
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
     }).compileComponents();
@@ -55,7 +96,17 @@ describe('BugReportListComponent', () => {
     expect(navSpy.calls.mostRecent().args[0].toString()).toEqual('/create');
   });
 
-  xit('should navigate to /comment when "Comment" button is clicked', () => {});
+  it('should navigate to /comment when "Comment" button is clicked', () => {
+    const navSpy = spyOn(router, 'navigateByUrl');
+    const button = getMatIconElement('comment');
+
+    button?.click();
+
+    expect(navSpy).toHaveBeenCalledTimes(1);
+    expect(navSpy.calls.mostRecent().args[0].toString()).toEqual(
+      '/comment/1002'
+    );
+  });
 
   xit('should navigate to /edit/{id} when "Edit" button is clicked', () => {});
 
