@@ -15,7 +15,7 @@
   <!-- Title Column -->
   <ng-container matColumnDef="title">
     <th mat-header-cell *matHeaderCellDef>Title</th>
-    <td mat-cell class="link w50" [routerLink]="['/view', bug.id]" *matCellDef="let bug">
+    <td mat-cell class="title link w50" [routerLink]="['/view', bug.id]" *matCellDef="let bug">
       {{ bug.title }}
     </td>
   </ng-container>

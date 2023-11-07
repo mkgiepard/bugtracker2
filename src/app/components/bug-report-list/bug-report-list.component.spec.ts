@@ -108,9 +108,25 @@ describe('BugReportListComponent', () => {
     );
   });
 
-  xit('should navigate to /edit/{id} when "Edit" button is clicked', () => {});
+  it('should navigate to /edit/{id} when "Edit" button is clicked', () => {
+    const navSpy = spyOn(router, 'navigateByUrl');
+    const button = getMatIconElement('edit');
 
-  xit('should navigate to /view/{id} when bugReport title is clicked', () => {});
+    button?.click();
+
+    expect(navSpy).toHaveBeenCalledTimes(1);
+    expect(navSpy.calls.mostRecent().args[0].toString()).toEqual('/edit/1002');
+  });
+
+  it('should navigate to /view/{id} when bugReport title is clicked', () => {
+    const navSpy = spyOn(router, 'navigateByUrl');
+    const titles = getElementByClass('title') as HTMLLinkElement[];
+
+    titles[0].click();
+
+    expect(navSpy).toHaveBeenCalledTimes(1);
+    expect(navSpy.calls.mostRecent().args[0].toString()).toEqual('/view/1002');
+  });
 
   xit('should call markAsFixed() method when "Fixed" button is clicked', () => {});
 
@@ -136,5 +152,11 @@ describe('BugReportListComponent', () => {
       e.preventDefault();
     });
     return icon;
+  }
+
+  function getElementByClass(cssClass: string): HTMLElement[] {
+    return fixture.nativeElement.querySelectorAll(
+      '.' + cssClass
+    ) as HTMLElement[];
   }
 });
