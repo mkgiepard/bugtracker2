@@ -8,12 +8,12 @@ describe('BugReportActionsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BugReportActionsComponent ]
-    })
-    .compileComponents();
+      declarations: [BugReportActionsComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(BugReportActionsComponent);
     component = fixture.componentInstance;
+    component.id = 1002; // expectedId
     fixture.detectChanges();
   });
 
