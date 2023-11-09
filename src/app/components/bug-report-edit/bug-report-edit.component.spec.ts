@@ -104,7 +104,17 @@ describe('BugReportEditComponent', () => {
     expect(navSpy.calls.mostRecent().args[0].toString()).toEqual('/list');
   });
 
-  xit('should navigate to /comment when "Comment" button is clicked', () => {});
+  xit('should navigate to /comment when "Comment" button is clicked', () => {
+    const navSpy = spyOn(router, 'navigateByUrl');
+    const button = getMatIconElement('comment');
+
+    button?.click();
+
+    expect(navSpy).toHaveBeenCalledTimes(1);
+    expect(navSpy.calls.mostRecent().args[0].toString()).toEqual(
+      '/comment/' + component.bugReport?.id
+    );
+  });
 
   xit('should call markAsFixed() method when "Fixed" button is clicked', () => {});
 
@@ -144,5 +154,19 @@ describe('BugReportEditComponent', () => {
       e.preventDefault();
     });
     return button;
+  }
+
+  function getMatIconElement(text: string): HTMLElement {
+    const icons = fixture.nativeElement.querySelectorAll(
+      'mat-icon'
+    ) as HTMLElement[];
+    const icon = Array.from(icons).find(
+      (el) => el.innerText === text
+    ) as HTMLElement;
+    // Needed to prevent 'ERROR: Some of your tests did a full page reload!'
+    icon.addEventListener('click', function (e) {
+      e.preventDefault();
+    });
+    return icon;
   }
 });
