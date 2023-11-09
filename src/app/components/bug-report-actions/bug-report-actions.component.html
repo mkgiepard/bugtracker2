@@ -1,1 +1,10 @@
-<p>bug-report-actions works!</p>
+<div [id]=id>
+    <mat-icon class="link action-icon" [routerLink]="['/comment', id]" mat-list-icon>comment
+    </mat-icon>
+    <mat-icon class="link action-icon" [routerLink]="['/edit', id]" mat-list-icon>edit</mat-icon>
+    <mat-icon class="link action-icon" mat-list-icon>done</mat-icon>
+    <mat-icon class="link action-icon" mat-list-icon>close</mat-icon>
+    <mat-icon class="link action-icon" mat-list-icon>arrow_circle_up</mat-icon>
+    <mat-icon class="link action-icon" mat-list-icon>arrow_circle_down</mat-icon>
+    <mat-icon class="link action-icon" mat-list-icon>delete</mat-icon>
+</div>
