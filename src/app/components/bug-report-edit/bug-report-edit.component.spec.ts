@@ -126,7 +126,11 @@ describe('BugReportEditComponent', () => {
 
   xit('should call delete() method when "Delete" button is clicked', () => {});
 
-  xit('should display bugReport title in RW mode after loading', () => {});
+  it('should display bugReport title in RW mode after loading', () => {
+    const title = getInputElement('Title');
+
+    expect(title.readOnly).toBeFalse();
+  });
 
   xit('should display bugReport priority in RW mode after loading', () => {});
 
@@ -168,5 +172,15 @@ describe('BugReportEditComponent', () => {
       e.preventDefault();
     });
     return icon;
+  }
+
+  function getInputElement(text: string): HTMLInputElement {
+    const inputs = fixture.nativeElement.querySelectorAll(
+      'input'
+    ) as HTMLInputElement[];
+    const inputElement = Array.from(inputs).find(
+      (el) => el.placeholder === text
+    ) as HTMLInputElement;
+    return inputElement;
   }
 });
