@@ -136,7 +136,11 @@ describe('BugReportEditComponent', () => {
 
   xit('should display bugReport status in RW mode after loading', () => {});
 
-  xit('should display bugReport description in RW mode after loading', () => {});
+  it('should display bugReport description in RW mode after loading', () => {
+    const desc = getTextAreaElement('Description');
+
+    expect(desc.readOnly).toBeFalse();
+  });
 
   xit('should display bugReport author in RO mode after loading', () => {});
 
@@ -177,6 +181,16 @@ describe('BugReportEditComponent', () => {
   function getInputElement(text: string): HTMLInputElement {
     const inputs = fixture.nativeElement.querySelectorAll(
       'input'
+    ) as HTMLInputElement[];
+    const inputElement = Array.from(inputs).find(
+      (el) => el.placeholder === text
+    ) as HTMLInputElement;
+    return inputElement;
+  }
+
+  function getTextAreaElement(text: string): HTMLInputElement {
+    const inputs = fixture.nativeElement.querySelectorAll(
+      'textarea'
     ) as HTMLInputElement[];
     const inputElement = Array.from(inputs).find(
       (el) => el.placeholder === text
