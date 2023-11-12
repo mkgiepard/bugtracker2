@@ -1,4 +1,7 @@
 import { Component, Input } from '@angular/core';
+import { BugReport } from 'src/app/dataModel/bug-report';
+import { MaterialModule } from 'src/app/modules/material/material.module';
+import { BugReportService } from 'src/app/services/bug-report.service';
 
 @Component({
   selector: 'app-bug-report-actions',
@@ -6,5 +9,12 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./bug-report-actions.component.css'],
 })
 export class BugReportActionsComponent {
-  @Input() id!: number;
+  @Input() bugReport!: BugReport;
+
+  constructor(private bugReportService: BugReportService) {}
+
+  markAsFixed(bugReport: BugReport) {
+    if (bugReport == undefined) return;
+    this.bugReportService.markAsFixed(bugReport).subscribe();
+  }
 }
