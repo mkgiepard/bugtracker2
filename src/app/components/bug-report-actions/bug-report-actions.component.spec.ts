@@ -48,7 +48,11 @@ describe('BugReportActionsComponent', () => {
   const mockedBugReportService = jasmine.createSpyObj('BugReportService', [
     'markAsFixed',
     'markAsWnf',
+    'upPriority',
   ]);
+  mockedBugReportService.markAsFixed.and.returnValue({ subscribe: () => {} });
+  mockedBugReportService.markAsWnf.and.returnValue({ subscribe: () => {} });
+  mockedBugReportService.upPriority.and.returnValue({ subscribe: () => {} });
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -87,6 +91,16 @@ describe('BugReportActionsComponent', () => {
 
     expect(component.markAsWnf).toHaveBeenCalled();
     expect(mockedBugReportService.markAsWnf).toHaveBeenCalled();
+  });
+
+  it('should call upPriority() method when "Up" button is clicked', () => {
+    spyOn(component, 'upPriority').and.callThrough();
+
+    const upButton = getMatIconElement('arrow_circle_up');
+    upButton.click();
+
+    expect(component.upPriority).toHaveBeenCalled();
+    expect(mockedBugReportService.upPriority).toHaveBeenCalled();
   });
 
   function getMatIconElement(text: string): HTMLElement {

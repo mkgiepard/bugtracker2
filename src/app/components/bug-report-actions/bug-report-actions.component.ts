@@ -22,4 +22,9 @@ export class BugReportActionsComponent {
     if (bugReport == undefined) return;
     this.bugReportService.markAsWnf(bugReport).subscribe();
   }
+
+  upPriority(bugReport: BugReport) {
+    if (bugReport == undefined) return;
+    this.bugReportService.upPriority(bugReport).subscribe();
+  }
 }
