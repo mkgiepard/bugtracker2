@@ -31,18 +31,31 @@ class MockBugReportService {
     ];
     return of(bugReport);
   }
+  markAsWnf(bugReport: BugReport): Observable<BugReport> {
+    bugReport.status = Status.WNF;
+    bugReport.updates = [
+      { author: testUser, update: 'Status change: Accepted > WNF' },
+    ];
+    return of(bugReport);
+  }
 }
 
 describe('BugReportActionsComponent', () => {
+  let bugReportService: BugReportService;
   let component: BugReportActionsComponent;
   let fixture: ComponentFixture<BugReportActionsComponent>;
+
+  const mockedBugReportService = jasmine.createSpyObj('BugReportService', [
+    'markAsFixed',
+    'markAsWnf',
+  ]);
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [BugReportActionsComponent],
       imports: [MaterialModule, RouterTestingModule.withRoutes([])],
       providers: [
-        { provide: BugReportService, useClass: MockBugReportService },
+        { provide: BugReportService, useValue: mockedBugReportService },
       ],
     }).compileComponents();
 
@@ -57,12 +70,23 @@ describe('BugReportActionsComponent', () => {
   });
 
   it('should call markAsFixed() method when "Fixed" button is clicked', () => {
-    spyOn(component, 'markAsFixed');
+    spyOn(component, 'markAsFixed').and.callThrough();
 
     const fixedButton = getMatIconElement('done');
     fixedButton.click();
 
     expect(component.markAsFixed).toHaveBeenCalled();
+    expect(mockedBugReportService.markAsFixed).toHaveBeenCalled();
+  });
+
+  it('should call markAsWnf() method when "Wnf" button is clicked', () => {
+    spyOn(component, 'markAsWnf').and.callThrough();
+
+    const wnfButton = getMatIconElement('close');
+    wnfButton.click();
+
+    expect(component.markAsWnf).toHaveBeenCalled();
+    expect(mockedBugReportService.markAsWnf).toHaveBeenCalled();
   });
 
   function getMatIconElement(text: string): HTMLElement {

@@ -17,4 +17,9 @@ export class BugReportActionsComponent {
     if (bugReport == undefined) return;
     this.bugReportService.markAsFixed(bugReport).subscribe();
   }
+
+  markAsWnf(bugReport: BugReport) {
+    if (bugReport == undefined) return;
+    this.bugReportService.markAsWnf(bugReport).subscribe();
+  }
 }
