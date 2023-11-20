@@ -131,7 +131,7 @@ describe('BugReportActionsComponent', () => {
     expect(mockedBugReportService.deleteBugReport).toHaveBeenCalled();
   });
 
-  it('should navigate to /comment when "Comment" button is clicked', () => {
+  it('should navigate to /comment/{id} when "Comment" button is clicked', () => {
     const navSpy = spyOn(router, 'navigateByUrl');
     const button = getMatIconElement('comment');
 
@@ -140,6 +140,18 @@ describe('BugReportActionsComponent', () => {
     expect(navSpy).toHaveBeenCalledTimes(1);
     expect(navSpy.calls.mostRecent().args[0].toString()).toEqual(
       '/comment/' + component.bugReport?.id
+    );
+  });
+
+  it('should navigate to /edit/{id} when "Edit" button is clicked ', () => {
+    const navSpy = spyOn(router, 'navigateByUrl');
+    const button = getMatIconElement('edit');
+
+    button?.click();
+
+    expect(navSpy).toHaveBeenCalledTimes(1);
+    expect(navSpy.calls.mostRecent().args[0].toString()).toEqual(
+      '/edit/' + component.bugReport?.id
     );
   });
 
