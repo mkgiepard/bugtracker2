@@ -32,4 +32,9 @@ export class BugReportActionsComponent {
     if (bugReport == undefined) return;
     this.bugReportService.downPriority(bugReport).subscribe();
   }
+
+  delete(bugReport: BugReport) {
+    if (bugReport == undefined) return;
+    this.bugReportService.deleteBugReport(bugReport.id).subscribe();
+  }
 }

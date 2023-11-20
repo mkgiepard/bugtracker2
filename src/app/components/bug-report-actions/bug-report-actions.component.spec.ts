@@ -50,11 +50,15 @@ describe('BugReportActionsComponent', () => {
     'markAsWnf',
     'upPriority',
     'downPriority',
+    'deleteBugReport',
   ]);
   mockedBugReportService.markAsFixed.and.returnValue({ subscribe: () => {} });
   mockedBugReportService.markAsWnf.and.returnValue({ subscribe: () => {} });
   mockedBugReportService.upPriority.and.returnValue({ subscribe: () => {} });
   mockedBugReportService.downPriority.and.returnValue({ subscribe: () => {} });
+  mockedBugReportService.deleteBugReport.and.returnValue({
+    subscribe: () => {},
+  });
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -113,6 +117,16 @@ describe('BugReportActionsComponent', () => {
 
     expect(component.downPriority).toHaveBeenCalled();
     expect(mockedBugReportService.downPriority).toHaveBeenCalled();
+  });
+
+  it('should call delete() method when "Delete" button is clicked', () => {
+    spyOn(component, 'delete').and.callThrough();
+
+    const deleteButton = getMatIconElement('delete');
+    deleteButton.click();
+
+    expect(component.delete).toHaveBeenCalled();
+    expect(mockedBugReportService.deleteBugReport).toHaveBeenCalled();
   });
 
   function getMatIconElement(text: string): HTMLElement {
