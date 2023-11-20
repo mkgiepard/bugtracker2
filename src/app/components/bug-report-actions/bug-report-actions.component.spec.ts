@@ -44,6 +44,7 @@ describe('BugReportActionsComponent', () => {
   let bugReportService: BugReportService;
   let component: BugReportActionsComponent;
   let fixture: ComponentFixture<BugReportActionsComponent>;
+  let router: Router;
 
   const mockedBugReportService = jasmine.createSpyObj('BugReportService', [
     'markAsFixed',
@@ -72,6 +73,7 @@ describe('BugReportActionsComponent', () => {
     fixture = TestBed.createComponent(BugReportActionsComponent);
     component = fixture.componentInstance;
     component.bugReport = testBugReport;
+    router = TestBed.inject(Router);
     fixture.detectChanges();
   });
 
@@ -127,6 +129,18 @@ describe('BugReportActionsComponent', () => {
 
     expect(component.delete).toHaveBeenCalled();
     expect(mockedBugReportService.deleteBugReport).toHaveBeenCalled();
+  });
+
+  it('should navigate to /comment when "Comment" button is clicked', () => {
+    const navSpy = spyOn(router, 'navigateByUrl');
+    const button = getMatIconElement('comment');
+
+    button?.click();
+
+    expect(navSpy).toHaveBeenCalledTimes(1);
+    expect(navSpy.calls.mostRecent().args[0].toString()).toEqual(
+      '/comment/' + component.bugReport?.id
+    );
   });
 
   function getMatIconElement(text: string): HTMLElement {
