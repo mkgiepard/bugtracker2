@@ -49,10 +49,12 @@ describe('BugReportActionsComponent', () => {
     'markAsFixed',
     'markAsWnf',
     'upPriority',
+    'downPriority',
   ]);
   mockedBugReportService.markAsFixed.and.returnValue({ subscribe: () => {} });
   mockedBugReportService.markAsWnf.and.returnValue({ subscribe: () => {} });
   mockedBugReportService.upPriority.and.returnValue({ subscribe: () => {} });
+  mockedBugReportService.downPriority.and.returnValue({ subscribe: () => {} });
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -101,6 +103,16 @@ describe('BugReportActionsComponent', () => {
 
     expect(component.upPriority).toHaveBeenCalled();
     expect(mockedBugReportService.upPriority).toHaveBeenCalled();
+  });
+
+  it('should call downPriority() method when "Down" button is clicked', () => {
+    spyOn(component, 'downPriority').and.callThrough();
+
+    const upButton = getMatIconElement('arrow_circle_down');
+    upButton.click();
+
+    expect(component.downPriority).toHaveBeenCalled();
+    expect(mockedBugReportService.downPriority).toHaveBeenCalled();
   });
 
   function getMatIconElement(text: string): HTMLElement {

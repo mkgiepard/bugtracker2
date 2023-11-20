@@ -27,4 +27,9 @@ export class BugReportActionsComponent {
     if (bugReport == undefined) return;
     this.bugReportService.upPriority(bugReport).subscribe();
   }
+
+  downPriority(bugReport: BugReport) {
+    if (bugReport == undefined) return;
+    this.bugReportService.downPriority(bugReport).subscribe();
+  }
 }
