@@ -96,28 +96,6 @@ describe('BugReportListComponent', () => {
     expect(navSpy.calls.mostRecent().args[0].toString()).toEqual('/create');
   });
 
-  it('should navigate to /comment when "Comment" button is clicked', () => {
-    const navSpy = spyOn(router, 'navigateByUrl');
-    const button = getMatIconElement('comment');
-
-    button?.click();
-
-    expect(navSpy).toHaveBeenCalledTimes(1);
-    expect(navSpy.calls.mostRecent().args[0].toString()).toEqual(
-      '/comment/1002'
-    );
-  });
-
-  it('should navigate to /edit/{id} when "Edit" button is clicked', () => {
-    const navSpy = spyOn(router, 'navigateByUrl');
-    const button = getMatIconElement('edit');
-
-    button?.click();
-
-    expect(navSpy).toHaveBeenCalledTimes(1);
-    expect(navSpy.calls.mostRecent().args[0].toString()).toEqual('/edit/1002');
-  });
-
   it('should navigate to /view/{id} when bugReport title is clicked', () => {
     const navSpy = spyOn(router, 'navigateByUrl');
     const titles = getElementByClass('title') as HTMLLinkElement[];
@@ -128,17 +106,13 @@ describe('BugReportListComponent', () => {
     expect(navSpy.calls.mostRecent().args[0].toString()).toEqual('/view/1002');
   });
 
-  xit('should call markAsFixed() method when "Fixed" button is clicked', () => {});
-
-  xit('should call markAsWnf() method when "Wnf" button is clicked', () => {});
-
-  xit('should call upPriority() method when "Up" button is clicked', () => {});
-
-  xit('should call downPriority() method when "Down" button is clicked', () => {});
-
   xit('should call delete() method when "Delete" button is clicked', () => {});
 
   xit('should display search input filed', () => {});
+
+  xit('should show confirmation pop-up on delete', () => {});
+
+  xit('should remove bug report entry only if confirmation pop-up was acknowledge', () => {});
 
   function getMatIconElement(text: string): HTMLElement {
     const icons = fixture.nativeElement.querySelectorAll(

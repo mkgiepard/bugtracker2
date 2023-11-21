@@ -40,34 +40,6 @@ export class BugReportListComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  upPriority(id: number) {
-    if (this.dataSource == undefined) return;
-    const bug = this.dataSource.data.find((b) => b.id === id);
-    if (bug == undefined) return;
-    this.bugReportService.upPriority(bug).subscribe();
-  }
-
-  downPriority(id: number) {
-    if (this.dataSource == undefined) return;
-    const bug = this.dataSource.data.find((b) => b.id === id);
-    if (bug == undefined) return;
-    this.bugReportService.downPriority(bug).subscribe();
-  }
-
-  markAsFixed(id: number) {
-    if (this.dataSource == undefined) return;
-    const bug = this.dataSource.data.find((b) => b.id === id);
-    if (bug == undefined) return;
-    this.bugReportService.markAsFixed(bug).subscribe();
-  }
-
-  markAsWnf(id: number) {
-    if (this.dataSource == undefined) return;
-    const bug = this.dataSource.data.find((b) => b.id === id);
-    if (bug == undefined) return;
-    this.bugReportService.markAsWnf(bug).subscribe();
-  }
-
   delete(bugReport: BugReport): void {
     if (this.dataSource == undefined) return;
     if (
