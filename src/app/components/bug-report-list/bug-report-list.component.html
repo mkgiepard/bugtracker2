@@ -42,7 +42,8 @@
   <ng-container matColumnDef="action">
     <th mat-header-cell *matHeaderCellDef>Action</th>
     <td mat-cell *matCellDef="let bug">
-      <app-bug-report-actions [bugReport]="bug"></app-bug-report-actions>
+      <app-bug-report-actions (refreshData)="refreshData($event)"
+        [bugReport]="bug"></app-bug-report-actions>
     </td>
   </ng-container>
 

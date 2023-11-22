@@ -53,4 +53,8 @@ export class BugReportListComponent implements OnInit {
       this.bugReportService.deleteBugReport(bugReport.id).subscribe();
     }
   }
+
+  refreshData(event: Event) {
+    this.getBugReports();
+  }
 }

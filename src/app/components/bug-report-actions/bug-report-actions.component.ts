@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { BugReport } from 'src/app/dataModel/bug-report';
 import { MaterialModule } from 'src/app/modules/material/material.module';
 import { BugReportService } from 'src/app/services/bug-report.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bug-report-actions',
@@ -10,8 +11,12 @@ import { BugReportService } from 'src/app/services/bug-report.service';
 })
 export class BugReportActionsComponent {
   @Input() bugReport!: BugReport;
+  @Output() refreshData: EventEmitter<any> = new EventEmitter();
 
-  constructor(private bugReportService: BugReportService) {}
+  constructor(
+    private router: Router,
+    private bugReportService: BugReportService
+  ) {}
 
   markAsFixed(bugReport: BugReport) {
     if (bugReport == undefined) return;
@@ -35,6 +40,14 @@ export class BugReportActionsComponent {
 
   delete(bugReport: BugReport) {
     if (bugReport == undefined) return;
-    this.bugReportService.deleteBugReport(bugReport.id).subscribe();
+    if (
+      window.confirm(
+        'Are you sure you want to delete: "' + bugReport.title + '"?'
+      )
+    ) {
+      this.bugReportService.deleteBugReport(bugReport.id).subscribe(() => {
+        this.refreshData.emit(null);
+      });
+    }
   }
 }

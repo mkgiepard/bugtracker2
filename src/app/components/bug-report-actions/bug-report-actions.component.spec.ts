@@ -123,6 +123,7 @@ describe('BugReportActionsComponent', () => {
 
   it('should call delete() method when "Delete" button is clicked', () => {
     spyOn(component, 'delete').and.callThrough();
+    spyOn(window, 'confirm').and.returnValue(true);
 
     const deleteButton = getMatIconElement('delete');
     deleteButton.click();
