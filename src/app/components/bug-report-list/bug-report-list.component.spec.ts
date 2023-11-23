@@ -106,8 +106,6 @@ describe('BugReportListComponent', () => {
     expect(navSpy.calls.mostRecent().args[0].toString()).toEqual('/view/1002');
   });
 
-  xit('should call delete() method when "Delete" button is clicked', () => {});
-
   xit('should display search input filed', () => {});
 
   xit('should show confirmation pop-up on delete', () => {});
