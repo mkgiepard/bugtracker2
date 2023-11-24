@@ -40,20 +40,6 @@ export class BugReportListComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  delete(bugReport: BugReport): void {
-    if (this.dataSource == undefined) return;
-    if (
-      window.confirm(
-        'Are you sure you want to delete: "' + bugReport.title + '"?'
-      )
-    ) {
-      this.dataSource.data = this.dataSource.data.filter(
-        (b) => b !== bugReport
-      );
-      this.bugReportService.deleteBugReport(bugReport.id).subscribe();
-    }
-  }
-
   refreshData(event: Event) {
     this.getBugReports();
   }
