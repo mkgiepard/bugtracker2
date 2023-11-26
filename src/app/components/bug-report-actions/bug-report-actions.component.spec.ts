@@ -121,7 +121,7 @@ describe('BugReportActionsComponent', () => {
     expect(mockedBugReportService.downPriority).toHaveBeenCalled();
   });
 
-  it('should call delete() method when "Delete" button is clicked', () => {
+  it('should call delete() method when "Delete" button is clicked and user acknowledged deletion', () => {
     spyOn(component, 'delete').and.callThrough();
     spyOn(window, 'confirm').and.returnValue(true);
 
@@ -130,6 +130,17 @@ describe('BugReportActionsComponent', () => {
 
     expect(component.delete).toHaveBeenCalled();
     expect(mockedBugReportService.deleteBugReport).toHaveBeenCalled();
+  });
+
+  it('should call delete() method when "Delete" button is clicked but service is not called when user rejects deletion', () => {
+    spyOn(component, 'delete').and.callThrough();
+    spyOn(window, 'confirm').and.returnValue(false);
+
+    const deleteButton = getMatIconElement('delete');
+    deleteButton.click();
+
+    expect(component.delete).toHaveBeenCalled();
+    expect(mockedBugReportService.deleteBugReport).toHaveBeenCalledTimes(0);
   });
 
   it('should navigate to /comment/{id} when "Comment" button is clicked', () => {
