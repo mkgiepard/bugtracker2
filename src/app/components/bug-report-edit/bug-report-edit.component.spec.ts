@@ -104,7 +104,7 @@ describe('BugReportEditComponent', () => {
     expect(navSpy.calls.mostRecent().args[0].toString()).toEqual('/list');
   });
 
-  xit('should navigate to /comment when "Comment" button is clicked', () => {
+  it('should navigate to /comment when "Comment" button is clicked', () => {
     const navSpy = spyOn(router, 'navigateByUrl');
     const button = getMatIconElement('comment');
 
