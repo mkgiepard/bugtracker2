@@ -142,7 +142,12 @@ describe('BugReportEditComponent', () => {
     expect(desc.readOnly).toBeFalse();
   });
 
-  xit('should display bugReport author in RO mode after loading', () => {});
+  it('should display a RO label with bugReport author after loading', () => {
+    const author = getElementsByClass('author');
+    console.log(author);
+    expect(author.length).toEqual(1);
+    expect(author[0].textContent).toContain('Author: Alpha Tester');
+  });
 
   xit('should show disabled Save button when title is missing', () => {});
 
@@ -196,5 +201,11 @@ describe('BugReportEditComponent', () => {
       (el) => el.placeholder === text
     ) as HTMLInputElement;
     return inputElement;
+  }
+
+  function getElementsByClass(cssClass: string): HTMLElement[] {
+    return fixture.nativeElement.querySelectorAll(
+      '.' + cssClass
+    ) as HTMLElement[];
   }
 });
