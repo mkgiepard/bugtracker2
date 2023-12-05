@@ -75,6 +75,8 @@ describe('BugReportActionsComponent', () => {
     component.bugReport = testBugReport;
     router = TestBed.inject(Router);
     fixture.detectChanges();
+
+    mockedBugReportService.deleteBugReport.calls.reset();
   });
 
   it('should create', () => {
