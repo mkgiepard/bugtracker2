@@ -8,6 +8,7 @@ import { BugReportListComponent } from './components/bug-report-list/bug-report-
 import { BugReportAddCommentComponent } from './components/bug-report-add-comment/bug-report-add-comment.component';
 import { BugReportSearchComponent } from './components/bug-report-search/bug-report-search.component';
 import { BugReportActionsComponent } from './components/bug-report-actions/bug-report-actions.component';
+import { AppSettingsComponent } from './components/app-settings/app-settings.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/list', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'list', component: BugReportListComponent },
   { path: 'comment/:id', component: BugReportAddCommentComponent },
   { path: 'search', component: BugReportSearchComponent },
+  { path: 'settings', component: AppSettingsComponent },
   { path: 'actions', component: BugReportActionsComponent }, // just for testing, remove it!!!!
 ];
 

@@ -18,6 +18,7 @@ import { BugReportAddCommentComponent } from './components/bug-report-add-commen
 
 import { FullNamePipe } from './pipes/full-name-pipe';
 import { BugReportActionsComponent } from './components/bug-report-actions/bug-report-actions.component';
+import { AppSettingsComponent } from './components/app-settings/app-settings.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { BugReportActionsComponent } from './components/bug-report-actions/bug-r
     BugReportAddCommentComponent,
     FullNamePipe,
     BugReportActionsComponent,
+    AppSettingsComponent,
   ],
   imports: [
     HttpClientModule,
