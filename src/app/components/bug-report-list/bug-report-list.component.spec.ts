@@ -106,11 +106,13 @@ describe('BugReportListComponent', () => {
     expect(navSpy.calls.mostRecent().args[0].toString()).toEqual('/view/1002');
   });
 
-  xit('should display search input filed', () => {});
+  it('should display search input filed', () => {
+    const searchField = getInputElement('search bug report');
 
-  xit('should show confirmation pop-up on delete', () => {});
-
-  xit('should remove bug report entry only if confirmation pop-up was acknowledge', () => {});
+    expect(searchField).not.toBeUndefined();
+    expect(searchField).not.toBeNull();
+    expect(searchField.readOnly).toBeFalse();
+  });
 
   function getMatIconElement(text: string): HTMLElement {
     const icons = fixture.nativeElement.querySelectorAll(
@@ -130,5 +132,15 @@ describe('BugReportListComponent', () => {
     return fixture.nativeElement.querySelectorAll(
       '.' + cssClass
     ) as HTMLElement[];
+  }
+
+  function getInputElement(text: string): HTMLInputElement {
+    const inputs = fixture.nativeElement.querySelectorAll(
+      'input'
+    ) as HTMLInputElement[];
+    const inputElement = Array.from(inputs).find(
+      (el) => el.placeholder === text
+    ) as HTMLInputElement;
+    return inputElement;
   }
 });

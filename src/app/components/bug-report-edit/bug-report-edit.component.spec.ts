@@ -144,7 +144,7 @@ describe('BugReportEditComponent', () => {
 
   it('should display a RO label with bugReport author after loading', () => {
     const author = getElementsByClass('author');
-    console.log(author);
+
     expect(author.length).toEqual(1);
     expect(author[0].textContent).toContain('Author: Alpha Tester');
   });
