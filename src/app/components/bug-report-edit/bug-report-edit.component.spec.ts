@@ -1,4 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  TestBed,
+  fakeAsync,
+  tick,
+} from '@angular/core/testing';
 
 import { BugReportEditComponent } from './bug-report-edit.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -149,7 +154,13 @@ describe('BugReportEditComponent', () => {
     expect(author[0].textContent).toContain('Author: Alpha Tester');
   });
 
-  xit('should show disabled Save button when title is missing', () => {});
+  it('should show disabled Save button when title is missing', () => {
+    seedInputElement('Title', '');
+    fixture.detectChanges();
+    let saveButton = getButtonElement('Save');
+
+    expect(saveButton?.disabled).toBeTruthy();
+  });
 
   xit('should show disabled Save button when description is missing', () => {});
 
@@ -207,5 +218,14 @@ describe('BugReportEditComponent', () => {
     return fixture.nativeElement.querySelectorAll(
       '.' + cssClass
     ) as HTMLElement[];
+  }
+
+  function seedInputElement(text: string, value: string) {
+    let input = getInputElement(text);
+    if (input == null) {
+      input = getTextAreaElement(text);
+    }
+    input.value = value;
+    input?.dispatchEvent(new Event('input'));
   }
 });

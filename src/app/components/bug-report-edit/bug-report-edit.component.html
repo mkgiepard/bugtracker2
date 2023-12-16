@@ -34,7 +34,7 @@
     <div>
       <mat-form-field class="w100" appearance="outline">
         <input matInput formControlName="title" placeholder="Title" [(ngModel)]="bugReport.title"
-          value="{{ bugReport.title }}" />
+          value="{{ bugReport.title }}" required />
       </mat-form-field>
     </div>
     <div>
@@ -55,7 +55,8 @@
       <mat-icon class="link action-icon" mat-list-icon (click)="downPriority()">arrow_circle_down
       </mat-icon>
       <mat-icon class="link action-icon" mat-list-icon (click)="delete()">delete</mat-icon>
-      <button (click)="save()" mat-raised-button>Save</button>
+      <button (click)="save()" [disabled]="bugReportForm.pristine || bugReportForm.invalid"
+        mat-raised-button>Save</button>
     </div>
   </form>
 </mat-card>
