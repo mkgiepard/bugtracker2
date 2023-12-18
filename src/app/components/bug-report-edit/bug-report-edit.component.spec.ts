@@ -4,6 +4,7 @@ import {
   fakeAsync,
   tick,
 } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { BugReportEditComponent } from './bug-report-edit.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -81,6 +82,7 @@ describe('BugReportEditComponent', () => {
         HttpClientTestingModule,
         MaterialModule,
         NoopAnimationsModule,
+        ReactiveFormsModule,
       ],
       providers: [
         { provide: BugReportService, useClass: MockBugReportService },
@@ -162,7 +164,13 @@ describe('BugReportEditComponent', () => {
     expect(saveButton?.disabled).toBeTruthy();
   });
 
-  xit('should show disabled Save button when description is missing', () => {});
+  it('should show disabled Save button when description is missing', () => {
+    seedInputElement('Description', '');
+    fixture.detectChanges();
+    let saveButton = getButtonElement('Save');
+
+    expect(saveButton?.disabled).toBeTruthy();
+  });
 
   xit('should call save() method when Save is clicked', () => {});
 
@@ -226,6 +234,6 @@ describe('BugReportEditComponent', () => {
       input = getTextAreaElement(text);
     }
     input.value = value;
-    input?.dispatchEvent(new Event('input'));
+    input.dispatchEvent(new Event('input'));
   }
 });

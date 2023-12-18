@@ -41,7 +41,7 @@
       <mat-form-field class="w100" appearance="outline">
         <textarea matInput formControlName="description" placeholder="Description"
           cdkTextareaAutosize cdkAutosizeMinRows="10" [(ngModel)]="bugReport.description"
-          value="{{ bugReport.description }}"></textarea>
+          value="{{ bugReport.description }}" required></textarea>
       </mat-form-field>
     </div>
     <div class="w100">
