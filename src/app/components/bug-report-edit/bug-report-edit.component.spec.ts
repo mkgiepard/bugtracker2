@@ -20,6 +20,9 @@ import { Observable, of } from 'rxjs';
 import { FullNamePipe } from 'src/app/pipes/full-name-pipe';
 import { MaterialModule } from '../../modules/material/material.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatRadioButtonHarness } from '@angular/material/radio/testing';
+import { HarnessLoader } from '@angular/cdk/testing';
+import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 
 class MockBugReportService {
   isLoggedIn = true;
@@ -72,6 +75,7 @@ describe('BugReportEditComponent', () => {
   let component: BugReportEditComponent;
   let fixture: ComponentFixture<BugReportEditComponent>;
   let router: Router;
+  let loader: HarnessLoader;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -96,6 +100,7 @@ describe('BugReportEditComponent', () => {
     component = fixture.componentInstance;
     router = TestBed.inject(Router);
     fixture.detectChanges();
+    loader = TestbedHarnessEnvironment.loader(fixture);
   });
 
   it('should create', () => {
@@ -130,7 +135,18 @@ describe('BugReportEditComponent', () => {
     expect(title.readOnly).toBeFalse();
   });
 
-  xit('should display bugReport priority in RW mode after loading', () => {});
+  it('should display bugReport priority in RW mode after loading', async () => {
+    const priority = getElementsByClass('priority');
+    const buttons = await loader.getAllHarnesses(MatRadioButtonHarness);
+
+    expect(priority.length).toEqual(1);
+    expect(buttons.length).toEqual(5);
+    expect(buttons[0].isDisabled).toBeFalse;
+    expect(buttons[1].isDisabled).toBeFalse;
+    expect(buttons[2].isDisabled).toBeFalse;
+    expect(buttons[3].isDisabled).toBeFalse;
+    expect(buttons[4].isDisabled).toBeFalse;
+  });
 
   it('should display bugReport status in RW mode after loading', () => {
     const status = getElementsByClass('status');
