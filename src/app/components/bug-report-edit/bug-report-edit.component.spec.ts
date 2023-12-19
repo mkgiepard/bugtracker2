@@ -123,16 +123,6 @@ describe('BugReportEditComponent', () => {
     );
   });
 
-  xit('should call markAsFixed() method when "Fixed" button is clicked', () => {});
-
-  xit('should call markAsWnf() method when "Wnf" button is clicked', () => {});
-
-  xit('should call upPriority() method when "Up" button is clicked', () => {});
-
-  xit('should call downPriority() method when "Down" button is clicked', () => {});
-
-  xit('should call delete() method when "Delete" button is clicked', () => {});
-
   it('should display bugReport title in RW mode after loading', () => {
     const title = getInputElement('Title');
 
