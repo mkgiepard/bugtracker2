@@ -4,7 +4,7 @@ import {
   fakeAsync,
   tick,
 } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { BugReportEditComponent } from './bug-report-edit.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -82,6 +82,7 @@ describe('BugReportEditComponent', () => {
         HttpClientTestingModule,
         MaterialModule,
         NoopAnimationsModule,
+        FormsModule,
         ReactiveFormsModule,
       ],
       providers: [
@@ -131,7 +132,12 @@ describe('BugReportEditComponent', () => {
 
   xit('should display bugReport priority in RW mode after loading', () => {});
 
-  xit('should display bugReport status in RW mode after loading', () => {});
+  it('should display bugReport status in RW mode after loading', () => {
+    const status = getElementsByClass('status');
+
+    expect(status.length).toEqual(1);
+    expect(status[0].ariaDisabled).toEqual('false');
+  });
 
   it('should display bugReport description in RW mode after loading', () => {
     const desc = getTextAreaElement('Description');
