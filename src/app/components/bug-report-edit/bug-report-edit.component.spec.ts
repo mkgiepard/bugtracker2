@@ -162,7 +162,17 @@ describe('BugReportEditComponent', () => {
     expect(saveButton?.disabled).toBeTruthy();
   });
 
-  xit('should call save() method when Save is clicked', () => {});
+  it('should call save() method when Save is clicked', () => {
+    spyOn(component, 'save');
+
+    seedInputElement('Description', 'testing');
+    fixture.detectChanges();
+    let saveButton = getButtonElement('Save');
+
+    saveButton.click();
+
+    expect(fixture.componentInstance.save).toHaveBeenCalled();
+  });
 
   function getButtonElement(text: string): HTMLButtonElement {
     const buttons = fixture.nativeElement.querySelectorAll(
