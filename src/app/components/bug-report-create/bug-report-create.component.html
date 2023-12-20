@@ -36,8 +36,8 @@
     </div>
     <div class="w100">
       <button routerLink="/list" mat-raised-button>Cancel</button>
-      <button type="submit" (click)="add(createForm.value)"
-        [disabled]="createForm.pristine || createForm.invalid" mat-raised-button>Save</button>
+      <button type="submit" (click)="add()" [disabled]="createForm.pristine || createForm.invalid"
+        mat-raised-button>Save</button>
     </div>
   </form>
 </mat-card>

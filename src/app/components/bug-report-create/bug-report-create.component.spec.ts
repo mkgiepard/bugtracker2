@@ -109,8 +109,6 @@ describe('BugReportCreateComponent', () => {
     expect(component.add).toHaveBeenCalled();
   });
 
-  xit('should pass bugReport data to add() method when Save is clicked', () => {});
-
   function seedInputElement(text: string, value: string) {
     let input = getInputElement(text);
     if (input == null) {

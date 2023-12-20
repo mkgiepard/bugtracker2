@@ -65,13 +65,12 @@ export class BugReportCreateComponent implements OnInit {
       .subscribe((bugReports) => (this.bugReports = bugReports));
   }
 
-  add(bugReport: BugReport): void {
-    if (!bugReport) {
-      return;
-    }
-    this.bugReportService.addBugReport(bugReport).subscribe((bugReport) => {
-      this.bugReports.push(bugReport);
-      this.router.navigate(['/list']);
-    });
+  add(): void {
+    this.bugReportService
+      .addBugReport(this.createForm?.value)
+      .subscribe((bugReport) => {
+        this.bugReports.push(bugReport);
+        this.router.navigate(['/list']);
+      });
   }
 }
