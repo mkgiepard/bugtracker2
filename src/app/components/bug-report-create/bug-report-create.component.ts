@@ -8,7 +8,7 @@ import {
 import { BugReport, Status } from 'src/app/dataModel/bug-report';
 import { BugReportService } from 'src/app/services/bug-report.service';
 import { Router } from '@angular/router';
-import { defaultUser } from '../../dataModel/user';
+import { User, defaultUser } from '../../dataModel/user';
 
 @Component({
   selector: 'app-bug-report-create',
@@ -66,8 +66,18 @@ export class BugReportCreateComponent implements OnInit {
   }
 
   add(): void {
+    this.bugReport = this.createForm?.value;
+
+    if (this.bugReport == null) return;
+
+    this.bugReport.author = new User(
+      this.createForm?.value.author,
+      '',
+      this.createForm?.value.author
+    );
+
     this.bugReportService
-      .addBugReport(this.createForm?.value)
+      .addBugReport(this.bugReport)
       .subscribe((bugReport) => {
         this.bugReports.push(bugReport);
         this.router.navigate(['/list']);
