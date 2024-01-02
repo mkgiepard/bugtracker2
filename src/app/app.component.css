@@ -8,3 +8,9 @@
   justify-content: space-between;
   font-size: 24px;
 }
+
+.aligned-with-icon {
+  position: relative;
+  top: -5px;
+  margin-left: 5px; /* optional */
+}
