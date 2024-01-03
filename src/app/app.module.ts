@@ -20,6 +20,7 @@ import { FullNamePipe } from './pipes/full-name-pipe';
 import { BugReportActionsComponent } from './components/bug-report-actions/bug-report-actions.component';
 import { AppSettingsComponent } from './components/app-settings/app-settings.component';
 import { AccountSettingsComponent } from './components/account-settings/account-settings.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -34,12 +35,13 @@ import { AccountSettingsComponent } from './components/account-settings/account-
     BugReportActionsComponent,
     AppSettingsComponent,
     AccountSettingsComponent,
+    LoginComponent,
   ],
   imports: [
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    ),
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
+      dataEncapsulation: false,
+    }),
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
@@ -51,4 +53,4 @@ import { AccountSettingsComponent } from './components/account-settings/account-
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
