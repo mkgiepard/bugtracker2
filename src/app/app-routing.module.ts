@@ -10,6 +10,8 @@ import { BugReportSearchComponent } from './components/bug-report-search/bug-rep
 import { BugReportActionsComponent } from './components/bug-report-actions/bug-report-actions.component';
 import { AppSettingsComponent } from './components/app-settings/app-settings.component';
 import { AccountSettingsComponent } from './components/account-settings/account-settings.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/list', pathMatch: 'full' },
@@ -21,6 +23,8 @@ const routes: Routes = [
   { path: 'search', component: BugReportSearchComponent },
   { path: 'settings', component: AppSettingsComponent },
   { path: 'account', component: AccountSettingsComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'actions', component: BugReportActionsComponent }, // just for testing, remove it!!!!
 ];
 
