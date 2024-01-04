@@ -21,6 +21,7 @@ import { BugReportActionsComponent } from './components/bug-report-actions/bug-r
 import { AppSettingsComponent } from './components/app-settings/app-settings.component';
 import { AccountSettingsComponent } from './components/account-settings/account-settings.component';
 import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { LoginComponent } from './components/login/login.component';
     AppSettingsComponent,
     AccountSettingsComponent,
     LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     HttpClientModule,
