@@ -1,22 +1,17 @@
-<div class="box">
-    <div class="search-input-wrapper">
-        <mat-form-field class="input-form-field w60" appearance="fill">
-            <mat-label>Search by bug title...</mat-label>
-            <input matInput #searchBox class="w100" id="search-box"
-                (input)="search(searchBox.value)" type="text">
-            <button *ngIf="searchBox.value" matSuffix mat-icon-button aria-label="Clear"
-                (click)="searchBox.value='';clearResults();">
-                <mat-icon>close</mat-icon>
-            </button>
-        </mat-form-field>
-    </div>
-    <div class="search-result-wrapper">
-        <mat-card class="search-result-card w60" *ngFor="let bugReport of bugReports$ | async">
-            <span>
-                <a routerLink="/view/{{bugReport.id}}">
-                    {{bugReport.title}}
-                </a>
-            </span>
-        </mat-card>
-    </div>
+<div class="container">
+    <mat-form-field appearance="fill">
+        <mat-label>Search by bug title...</mat-label>
+        <input matInput #searchBox id="search-box" (input)="search(searchBox.value)" type="text">
+        <button *ngIf="searchBox.value" matSuffix mat-icon-button aria-label="Clear"
+            (click)="searchBox.value='';clearResults();">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+    <mat-card class="search-result-card" *ngFor="let bugReport of bugReports$ | async">
+        <span>
+            <a routerLink="/view/{{bugReport.id}}">
+                {{bugReport.title}}
+            </a>
+        </span>
+    </mat-card>
 </div>
