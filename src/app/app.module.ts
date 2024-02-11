@@ -22,6 +22,7 @@ import { AppSettingsComponent } from './components/app-settings/app-settings.com
 import { AccountSettingsComponent } from './components/account-settings/account-settings.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { importProvidersFrom } from '@angular/core';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { RegisterComponent } from './components/register/register.component';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
       dataEncapsulation: false,
+      passThruUnknownUrl: true,
     }),
     BrowserModule,
     FormsModule,

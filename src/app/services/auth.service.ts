@@ -1,9 +1,76 @@
 import { Injectable } from '@angular/core';
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpErrorResponse,
+} from '@angular/common/http';
+import { Observable, of, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+
+export const JWT_NAME = 'bugtracker-token';
+
+export interface AuthResponse {
+  body: string;
+}
+
+export interface User {
+  username: string;
+  email: string;
+  password: string;
+}
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
+  private authURL = '/auth/';
 
-  constructor() { }
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
+
+  constructor(private http: HttpClient) {}
+
+  login(user: User): Observable<AuthResponse> {
+    console.log(user);
+    return this.http
+      .post<any>(
+        this.authURL + 'login',
+        { username: user.username, password: user.password },
+        this.httpOptions
+      )
+      .pipe(
+        map((token) => {
+          console.log('token' + token.accessToken);
+          localStorage.setItem(JWT_NAME, token.accessToken);
+          return token;
+        })
+      );
+  }
+
+  register(user: User): Observable<User> {
+    console.log('will call register auth server');
+
+    return this.http
+      .post<User>(this.authURL + 'register', user, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    if (error.status === 0) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong.
+      console.error(
+        `Backend returned code ${error.status}, body was: `,
+        error.error
+      );
+    }
+    // Return an observable with a user-facing error message.
+    return throwError(
+      () => new Error('Something bad happened; please try again later.')
+    );
+  }
 }
