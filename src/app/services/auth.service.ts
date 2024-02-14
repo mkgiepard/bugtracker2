@@ -7,7 +7,8 @@ import {
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
-export const JWT_NAME = 'bugtracker-token';
+export const JWT_ACCESS_NAME = 'bugtracker-access-token';
+export const JWT_REFRESH_NAME = 'bugtracker-refresh-token';
 
 export interface AuthResponse {
   body: string;
@@ -41,8 +42,8 @@ export class AuthService {
       )
       .pipe(
         map((token) => {
-          console.log('token' + token.accessToken);
-          localStorage.setItem(JWT_NAME, token.accessToken);
+          localStorage.setItem(JWT_ACCESS_NAME, token.accessToken);
+          localStorage.setItem(JWT_REFRESH_NAME, token.refreshToken);
           return token;
         })
       );
