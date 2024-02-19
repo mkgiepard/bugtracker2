@@ -9,6 +9,7 @@ import { catchError, map } from 'rxjs/operators';
 
 export const JWT_ACCESS_NAME = 'bugtracker-access-token';
 export const JWT_REFRESH_NAME = 'bugtracker-refresh-token';
+export const USERNAME = 'bugtracker-username';
 
 export interface AuthResponse {
   body: string;
@@ -44,6 +45,7 @@ export class AuthService {
         map((token) => {
           localStorage.setItem(JWT_ACCESS_NAME, token.accessToken);
           localStorage.setItem(JWT_REFRESH_NAME, token.refreshToken);
+          localStorage.setItem(USERNAME, user.username);
           return token;
         })
       );
