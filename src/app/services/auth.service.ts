@@ -59,6 +59,13 @@ export class AuthService {
       .pipe(catchError(this.handleError));
   }
 
+  logout() {
+    localStorage.removeItem(JWT_ACCESS_NAME);
+    localStorage.removeItem(JWT_REFRESH_NAME);
+    localStorage.removeItem(USERNAME);
+    window.location.href = '/login';
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
