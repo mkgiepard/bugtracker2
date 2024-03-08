@@ -11,6 +11,7 @@ import { BugReportActionsComponent } from './components/bug-report-actions/bug-r
 import { AppSettingsComponent } from './components/app-settings/app-settings.component';
 import { AccountSettingsComponent } from './components/account-settings/account-settings.component';
 import { LoginComponent } from './components/login/login.component';
+import { LogoutComponent } from './components/logout/logout.component';
 import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'settings', component: AppSettingsComponent },
   { path: 'account', component: AccountSettingsComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'logout', component: LogoutComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'actions', component: BugReportActionsComponent }, // just for testing, remove it!!!!
 ];

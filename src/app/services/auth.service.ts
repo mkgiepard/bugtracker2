@@ -59,11 +59,12 @@ export class AuthService {
       .pipe(catchError(this.handleError));
   }
 
-  logout() {
+  logout(): Observable<AuthResponse> {
     localStorage.removeItem(JWT_ACCESS_NAME);
     localStorage.removeItem(JWT_REFRESH_NAME);
     localStorage.removeItem(USERNAME);
-    window.location.href = '/login';
+    // window.location.href = '/login';
+    return this.http.delete<any>(this.authURL + 'logout', this.httpOptions);
   }
 
   private handleError(error: HttpErrorResponse) {
