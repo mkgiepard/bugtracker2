@@ -2,13 +2,21 @@ import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import { createSpyFromClass, Spy } from 'jasmine-auto-spies';
 
 describe('AppComponent', () => {
+  // TODO: do it properly!
+  let mockAuthService = {
+    isUserLoggedIn: { subscribe: () => {} },
+  };
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule],
       declarations: [AppComponent],
       schemas: [NO_ERRORS_SCHEMA],
+      providers: [{ provide: AuthService, useValue: mockAuthService }],
     }).compileComponents();
   });
 
