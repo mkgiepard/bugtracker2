@@ -4,7 +4,7 @@ import {
   HttpHeaders,
   HttpErrorResponse,
 } from '@angular/common/http';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, of, throwError, BehaviorSubject } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 export const JWT_ACCESS_NAME = 'bugtracker-access-token';
@@ -25,6 +25,8 @@ export interface User {
   providedIn: 'root',
 })
 export class AuthService {
+  public isUserLoggedIn: BehaviorSubject<boolean> =
+    new BehaviorSubject<boolean>(false);
   private authURL = '/auth/';
 
   httpOptions = {
@@ -46,6 +48,7 @@ export class AuthService {
           localStorage.setItem(JWT_ACCESS_NAME, token.accessToken);
           localStorage.setItem(JWT_REFRESH_NAME, token.refreshToken);
           localStorage.setItem(USERNAME, user.username);
+          this.isUserLoggedIn.next(true);
           return token;
         })
       );
@@ -63,6 +66,7 @@ export class AuthService {
     localStorage.removeItem(JWT_ACCESS_NAME);
     localStorage.removeItem(JWT_REFRESH_NAME);
     localStorage.removeItem(USERNAME);
+    this.isUserLoggedIn.next(false);
     // window.location.href = '/login';
     return this.http.delete<any>(this.authURL + 'logout', this.httpOptions);
   }
