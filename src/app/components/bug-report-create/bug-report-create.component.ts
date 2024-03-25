@@ -9,6 +9,7 @@ import { BugReport, Status } from 'src/app/dataModel/bug-report';
 import { BugReportService } from 'src/app/services/bug-report.service';
 import { Router } from '@angular/router';
 import { User, defaultUser } from '../../dataModel/user';
+import { USERNAME } from '../../services/auth.service';
 
 @Component({
   selector: 'app-bug-report-create',
@@ -34,20 +35,20 @@ export class BugReportCreateComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.createNewBugReportIntance();
+    this.createNewBugReportInstance();
     if (this.bugReport) {
       this.createForm = this.fb.group({
         title: [this.bugReport.title, Validators.required],
         priority: this.bugReport.priority,
         status: Status.New,
         description: this.bugReport.description,
-        author: this.bugReport.author.username,
+        author: localStorage.getItem(USERNAME),
         comment: this.bugReport.comments,
       });
     }
   }
 
-  createNewBugReportIntance() {
+  createNewBugReportInstance() {
     this.bugReport = {
       id: -1,
       title: '',
