@@ -6,6 +6,6 @@ import { User } from '../dataModel/user';
 })
 export class FullNamePipe implements PipeTransform {
   transform(person: User): string {
-    return person.name + ' ' + person.lastName;
+    return person.firstName + ' ' + person.lastName;
   }
 }

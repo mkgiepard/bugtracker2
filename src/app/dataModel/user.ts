@@ -1,27 +1,48 @@
 import { last } from 'cypress/types/lodash';
 
-export class User {
-  private static index = 1000;
-
-  private id: number;
-  name: string;
-  lastName: string;
+export interface User {
+  id?: number;
   username: string;
-
-  constructor(name: string, lastName: string, username: string) {
-    this.id = User.index++;
-    this.name = name;
-    this.lastName = lastName;
-    this.username = username;
-  }
+  email: string;
+  password?: string;
+  firstName?: string;
+  lastName?: string;
 }
 
-export const userData = [
-  new User('John', 'Bravo', 'jbravo'),
-  new User('Donald', 'Duck', 'dduck'),
-  new User('Smok', 'Wawelski', 'swawelski'),
-  new User('Mis', 'Uszatek', 'muszatek'),
-  new User('Reksio', '', 'reksio'),
+export const userData: User[] = [
+  {
+    username: 'jbravo',
+    email: 'jbravo@softtest.dev',
+    firstName: 'John',
+    lastName: 'Bravo',
+  },
+  {
+    username: 'dduck',
+    email: 'dduck@softtest.dev',
+    firstName: 'Donald',
+    lastName: 'Duck',
+  },
+  {
+    username: 'swawelski',
+    email: 'swawelski@softtest.dev',
+    firstName: 'Smok',
+    lastName: 'Wawelski',
+  },
+  {
+    username: 'muszatek',
+    email: 'muszatek@softtest.dev',
+    firstName: 'Mis',
+    lastName: 'Uszatek',
+  },
+  {
+    username: 'reksio',
+    email: 'reksio@softtest.dev',
+    firstName: 'Reksio',
+    lastName: '',
+  },
 ];
 
-export const defaultUser: User = new User('', '', '');
+export const defaultUser: User = {
+  username: '',
+  email: '',
+};

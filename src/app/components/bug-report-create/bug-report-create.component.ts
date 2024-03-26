@@ -71,11 +71,7 @@ export class BugReportCreateComponent implements OnInit {
 
     if (this.bugReport == null) return;
 
-    this.bugReport.author = new User(
-      this.createForm?.value.author,
-      '',
-      this.createForm?.value.author
-    );
+    this.bugReport.author = this.createForm?.value.author;
 
     this.bugReportService
       .addBugReport(this.bugReport)
