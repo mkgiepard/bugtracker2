@@ -27,7 +27,12 @@ import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 class MockBugReportService {
   isLoggedIn = true;
   user = { name: 'Test User' };
-  testUser: User = new User('Alpha', 'Tester', 'atester');
+  testUser: User = {
+    username: 'atester',
+    email: 'atester@softtest.dev',
+    firstName: 'Alpha',
+    lastName: 'Tester',
+  };
   testBugReport: BugReport = {
     id: 1002,
     title: 'test bug report ',

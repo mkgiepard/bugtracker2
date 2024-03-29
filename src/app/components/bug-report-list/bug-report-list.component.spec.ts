@@ -18,7 +18,12 @@ import { FullNamePipe } from 'src/app/pipes/full-name-pipe';
 class MockBugReportService {
   isLoggedIn = true;
   user = { name: 'Test User' };
-  testUser: User = new User('Alpha', 'Tester', 'atester');
+  testUser: User = {
+    username: 'atester',
+    email: 'atester@softtest.dev',
+    firstName: 'Alpha',
+    lastName: 'Tester',
+  };
   testBugReports: BugReport[] = [
     {
       id: 1002,

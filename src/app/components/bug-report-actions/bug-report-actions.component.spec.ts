@@ -10,7 +10,12 @@ import { BugReportService } from 'src/app/services/bug-report.service';
 import { Observable, of } from 'rxjs';
 
 let user = { name: 'Test User' };
-let testUser: User = new User('Alpha', 'Tester', 'atester');
+let testUser: User = {
+  username: 'atester',
+  email: 'atester@softtest.dev',
+  firstName: 'Alpha',
+  lastName: 'Tester',
+};
 let testBugReport: BugReport = {
   id: 1002,
   title: 'test bug report ',

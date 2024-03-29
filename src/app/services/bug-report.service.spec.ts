@@ -12,7 +12,12 @@ describe('BugReportService', () => {
   let service: BugReportService;
   let httpSpy: Spy<HttpClient>;
   let fakeBugReports: BugReport[];
-  const fakeUser: User = new User('a', 'b', 'ab');
+  const fakeUser: User = {
+    username: 'ab',
+    email: 'ab@softtest.dev',
+    firstName: 'a',
+    lastName: 'b',
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
