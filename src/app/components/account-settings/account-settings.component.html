@@ -1,1 +1,20 @@
-<p>account-settings works!</p>
+<h1 style="text-align: center;">Account Settings</h1>
+<form *ngIf="settingsForm" [formGroup]="settingsForm">
+    <div class="container">
+
+        <mat-form-field>
+            <input matInput placeholder="Username" formControlName="username">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Email" formControlName="email">
+        </mat-form-field>
+
+        <span>Reset password? Click <a href="/resetpwd">here</a>.</span>
+
+        <button mat-flat-button color="primary" type="submit">Save</button>
+
+        <button mat-flat-button color="primary" routerLink="/">Cancel</button>
+
+    </div>
+</form>
