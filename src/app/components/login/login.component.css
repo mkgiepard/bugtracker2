@@ -9,3 +9,7 @@
 .container > * {
   width: 40%;
 }
+
+.mat-mdc-unelevated-button.mat-primary:not(:disabled) {
+  background-color: #1976d2;
+}
