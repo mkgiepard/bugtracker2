@@ -6,6 +6,7 @@ import {
 } from '@angular/common/http';
 import { Observable, of, throwError, BehaviorSubject } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { User } from '../dataModel/user';
 
 export const JWT_ACCESS_NAME = 'bugtracker-access-token';
 export const JWT_REFRESH_NAME = 'bugtracker-refresh-token';
@@ -13,12 +14,6 @@ export const USERNAME = 'bugtracker-username';
 
 export interface AuthResponse {
   body: string;
-}
-
-export interface User {
-  username: string;
-  email: string;
-  password: string;
 }
 
 @Injectable({
