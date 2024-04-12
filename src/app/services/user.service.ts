@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of, catchError } from 'rxjs';
+import { Observable, of, catchError, first, take, map } from 'rxjs';
 
 import { User } from '../dataModel/user';
 
@@ -16,6 +16,14 @@ export class UserService {
     return this.http
       .get<User[]>(this.userUrl)
       .pipe(catchError(this.handleError<User[]>('getUsers', [])));
+  }
+
+  getUser(username: string): Observable<User> {
+    const url = `${this.userUrl}?username=${username}`;
+    return this.http.get<User[]>(url).pipe(
+      map((arr) => arr[0]),
+      catchError(this.handleError<User>('getUser username=${username}'))
+    );
   }
 
   /**

@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { User } from '../../dataModel/user';
 import { UserService } from 'src/app/services/user.service';
+
+import { USERNAME } from '../../services/auth.service';
 
 @Component({
   selector: 'app-account-settings',
@@ -9,6 +13,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class AccountSettingsComponent {
   settingsForm: FormGroup | undefined;
+  user: User | undefined;
 
   constructor(private userService: UserService) {}
 
@@ -17,6 +22,16 @@ export class AccountSettingsComponent {
       username: new FormControl(null, [Validators.required]),
       email: new FormControl(null, [Validators.required, Validators.email]),
     });
-    this.userService.getUsers().subscribe((users) => console.log(users));
+    this.getUser(localStorage.getItem(USERNAME)!);
+  }
+
+  getUser(username: string) {
+    this.userService.getUser(username).subscribe((user) => {
+      this.user = user;
+      this.settingsForm!.patchValue({
+        username: this.user!.username,
+        email: this.user!.email,
+      });
+    });
   }
 }

@@ -1,5 +1,5 @@
 <h1 style="text-align: center;">Account Settings</h1>
-<form *ngIf="settingsForm" [formGroup]="settingsForm">
+<form *ngIf="settingsForm && user" [formGroup]="settingsForm">
     <div class="container">
 
         <mat-form-field>
