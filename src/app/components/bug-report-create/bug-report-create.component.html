@@ -1,4 +1,4 @@
-<mat-card *ngIf="bugReport && createForm && !savingBugReport">
+<mat-card *ngIf="bugReport && currentUser && createForm && !savingBugReport">
   <form [formGroup]="createForm" class="container">
     <div>
       <h1>New Bug Report</h1>
@@ -15,9 +15,7 @@
         </mat-radio-group>
       </div>
       <div class="w40">
-        <mat-form-field class="w80" appearance="fill">
-          <input formControlName="author" matInput placeholder="Author" readonly #author />
-        </mat-form-field>
+        <label>Author: {{ bugReport.author | fullName }}</label>
       </div>
       <div>
         <label>Status: {{ bugReport.status }}</label>
