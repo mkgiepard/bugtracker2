@@ -39,12 +39,20 @@ export class BugReportViewComponent implements OnInit {
   }
 
   getBugReport(id: number) {
-    this.bugReportService
-      .getBugReport(id)
-      .subscribe((bugReport) => (this.bugReport = bugReport));
+    this.bugReportService.getBugReport(id).subscribe((bugReport) => {
+      this.bugReport = bugReport;
+      this.bugReportForm!.patchValue({
+        priority: this.bugReport.priority,
+      });
+    });
   }
 
   upPriority() {
+    if (this.bugReport == undefined) return;
+    if (this.bugReport.priority != 0) {
+      const priority = this.bugReport.priority - 1;
+      this.bugReportForm!.patchValue({ priority: priority });
+    }
     if (this.bugReport == undefined) return;
     this.bugReportService
       .upPriority(this.bugReport)
@@ -53,6 +61,11 @@ export class BugReportViewComponent implements OnInit {
   }
 
   downPriority() {
+    if (this.bugReport == undefined) return;
+    if (this.bugReport.priority != 4) {
+      const priority = this.bugReport.priority + 1;
+      this.bugReportForm!.patchValue({ priority: priority });
+    }
     if (this.bugReport == undefined) return;
     this.bugReportService
       .downPriority(this.bugReport)
