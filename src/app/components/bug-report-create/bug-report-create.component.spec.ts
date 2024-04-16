@@ -11,6 +11,23 @@ import { MaterialModule } from '../../modules/material/material.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { of } from 'rxjs';
+import { User } from '../../dataModel/user';
+import { UserService } from 'src/app/services/user.service';
+import { FullNamePipe } from 'src/app/pipes/full-name-pipe';
+
+class MockUserService {
+  testUser: User = {
+    username: 'atester',
+    email: 'atester@softtest.dev',
+    firstName: 'Alpha',
+    lastName: 'Tester',
+  };
+
+  getUser(username: string) {
+    return of(this.testUser);
+  }
+}
 
 describe('BugReportCreateComponent', () => {
   let component: BugReportCreateComponent;
@@ -19,7 +36,7 @@ describe('BugReportCreateComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BugReportCreateComponent],
+      declarations: [BugReportCreateComponent, FullNamePipe],
       imports: [
         HttpClientTestingModule,
         MaterialModule,
@@ -28,6 +45,7 @@ describe('BugReportCreateComponent', () => {
         RouterTestingModule.withRoutes([]),
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+      providers: [{ provide: UserService, useClass: MockUserService }],
     }).compileComponents();
   });
 
@@ -60,7 +78,6 @@ describe('BugReportCreateComponent', () => {
 
   it('should show enabled Save button with all the data filled', () => {
     seedInputElement('Title', 'someTitle');
-    seedInputElement('Author', 'some author');
     seedInputElement('Description', 'some desc');
     fixture.detectChanges();
 
@@ -80,7 +97,6 @@ describe('BugReportCreateComponent', () => {
 
   it('should show disabled Save button when filled field is cleared', () => {
     seedInputElement('Title', 'someTitle');
-    seedInputElement('Author', 'some author');
     seedInputElement('Description', 'some desc');
     fixture.detectChanges();
 
@@ -99,7 +115,6 @@ describe('BugReportCreateComponent', () => {
     spyOn(component, 'add');
 
     seedInputElement('Title', 'someTitle');
-    seedInputElement('Author', 'some author');
     seedInputElement('Description', 'some desc');
     fixture.detectChanges();
 
