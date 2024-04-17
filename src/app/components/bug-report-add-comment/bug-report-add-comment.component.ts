@@ -3,7 +3,9 @@ import { BugReport } from 'src/app/dataModel/bug-report';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BugReportService } from 'src/app/services/bug-report.service';
-import { userData } from 'src/app/dataModel/user';
+import { User } from 'src/app/dataModel/user';
+import { UserService } from 'src/app/services/user.service';
+import { USERNAME } from '../../services/auth.service';
 
 @Component({
   selector: 'app-bug-report-add-comment',
@@ -11,6 +13,7 @@ import { userData } from 'src/app/dataModel/user';
   styleUrls: ['./bug-report-add-comment.component.css'],
 })
 export class BugReportAddCommentComponent implements OnInit {
+  currentUser: User | undefined;
   bugReport: BugReport | undefined;
   bugReportForm: UntypedFormGroup = new UntypedFormGroup({
     title: new UntypedFormControl(),
@@ -26,8 +29,13 @@ export class BugReportAddCommentComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private bugReportService: BugReportService
-  ) {}
+    private bugReportService: BugReportService,
+    private userService: UserService
+  ) {
+    this.userService
+      .getUser(localStorage.getItem(USERNAME)!)
+      .subscribe((u) => (this.currentUser = u));
+  }
 
   ngOnInit(): void {
     // First get the product id from the current route.
@@ -51,7 +59,7 @@ export class BugReportAddCommentComponent implements OnInit {
       this.addCommentForm.reset();
       this.bugReportService
         .addComment(this.bugReport, {
-          author: userData[Math.floor(Math.random() * userData.length)],
+          author: this.currentUser!,
           comment: comment,
         })
         .subscribe();
