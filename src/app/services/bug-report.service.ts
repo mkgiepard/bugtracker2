@@ -5,18 +5,26 @@ import { catchError } from 'rxjs/operators';
 
 import { BugReport, Status } from '../dataModel/bug-report';
 import { BugReportComment } from '../dataModel/bug-report-comment';
+import { User } from '../dataModel/user';
+import { UserService } from './user.service';
+import { USERNAME } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BugReportService {
   private bugReportUrl = 'api/bugReports';
+  private currentUser: User | undefined;
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private userService: UserService) {
+    this.userService
+      .getUser(localStorage.getItem(USERNAME)!)
+      .subscribe((u) => (this.currentUser = u));
+  }
 
   getBugReports(): Observable<BugReport[]> {
     return this.http
@@ -90,7 +98,7 @@ export class BugReportService {
       bugReport.updates = [];
     }
     bugReport.updates?.push({
-      author: bugReport.author,
+      author: this.currentUser!,
       update: 'Priority change: P' + oldPriority + ' > P' + bugReport.priority,
     });
     return this.updateBugReport(bugReport);
@@ -105,7 +113,7 @@ export class BugReportService {
       bugReport.updates = [];
     }
     bugReport.updates?.push({
-      author: bugReport.author,
+      author: this.currentUser!,
       update: 'Priority change: P' + oldPriority + ' > P' + bugReport.priority,
     });
     return this.updateBugReport(bugReport);
@@ -120,7 +128,7 @@ export class BugReportService {
       bugReport.updates = [];
     }
     bugReport.updates?.push({
-      author: bugReport.author,
+      author: this.currentUser!,
       update: 'Status change: ' + oldStatus + ' > ' + bugReport.status,
     });
     return this.updateBugReport(bugReport);
@@ -135,7 +143,7 @@ export class BugReportService {
       bugReport.updates = [];
     }
     bugReport.updates?.push({
-      author: bugReport.author,
+      author: this.currentUser!,
       update: 'Status change: ' + oldStatus + ' > ' + bugReport.status,
     });
     return this.updateBugReport(bugReport);

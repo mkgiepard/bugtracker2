@@ -7,6 +7,21 @@ import { createSpyFromClass, Spy } from 'jasmine-auto-spies';
 import { BugReportService } from './bug-report.service';
 import { BugReport, Status } from '../dataModel/bug-report';
 import { User } from '../dataModel/user';
+import { of } from 'rxjs';
+import { UserService } from 'src/app/services/user.service';
+
+class MockUserService {
+  fakeUser: User = {
+    username: 'ab',
+    email: 'ab@softtest.dev',
+    firstName: 'a',
+    lastName: 'b',
+  };
+
+  getUser(username: string) {
+    return of(this.fakeUser);
+  }
+}
 
 describe('BugReportService', () => {
   let service: BugReportService;
@@ -25,6 +40,7 @@ describe('BugReportService', () => {
       providers: [
         BugReportService,
         { provide: HttpClient, useValue: createSpyFromClass(HttpClient) },
+        { provide: UserService, useClass: MockUserService },
       ],
     });
     service = TestBed.inject(BugReportService);
