@@ -46,6 +46,12 @@ export const userData: User[] = [
     firstName: 'Mario',
     lastName: 'Bross',
   },
+  {
+    username: 'qbtest',
+    email: 'qbtest@selftest.dev',
+    firstName: 'Qb',
+    lastName: 'Test',
+  },
 ];
 
 export const defaultUser: User = {

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of, catchError, first, take, map } from 'rxjs';
+import { Observable, of, catchError, first, take, map, tap } from 'rxjs';
 
 import { User } from '../dataModel/user';
 
@@ -8,6 +8,7 @@ import { User } from '../dataModel/user';
   providedIn: 'root',
 })
 export class UserService {
+  private currentUser: User | undefined;
   private userUrl = 'api/users';
 
   constructor(private http: HttpClient) {}
@@ -19,9 +20,14 @@ export class UserService {
   }
 
   getUser(username: string): Observable<User> {
+    if (this.currentUser && this.currentUser.username === username) {
+      return of(this.currentUser);
+    }
     const url = `${this.userUrl}?username=${username}`;
+
     return this.http.get<User[]>(url).pipe(
       map((arr) => arr[0]),
+      tap((user) => (this.currentUser = user)),
       catchError(this.handleError<User>('getUser username=${username}'))
     );
   }
