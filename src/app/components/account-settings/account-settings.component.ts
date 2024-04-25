@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { User } from '../../dataModel/user';
 import { UserService } from 'src/app/services/user.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 
 import { USERNAME } from '../../services/auth.service';
@@ -16,7 +17,10 @@ export class AccountSettingsComponent {
   settingsForm: FormGroup | undefined;
   user: User | undefined;
 
-  constructor(private router: Router, private userService: UserService) {}
+  constructor(
+    private router: Router,
+    private userService: UserService,
+    private authService: AuthService) {}
 
   ngOnInit(): void {
     this.settingsForm = new FormGroup({
@@ -47,6 +51,15 @@ export class AccountSettingsComponent {
         .updateUser(this.user)
         .subscribe(() => this.goBack());
       
+    }
+  }
+
+  deleteUser(): void {
+    this.user = Object.assign(this.user!, this.settingsForm?.value);
+    if (this.user) {
+      this.userService
+        .deleteUser(this.user)
+        .subscribe(() => { this.authService.logout(); this.router.navigate(['/login'])});
     }
   }
   

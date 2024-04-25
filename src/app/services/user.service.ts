@@ -35,12 +35,19 @@ export class UserService {
   }
 
   updateUser(user: User): Observable<User> {
-    console.log(user);
     const url = `${this.userUrl}/${user.username}`;
     return this.http
       .put<User>(url, user, this.httpOptions)
       .pipe(catchError(this.handleError<User>('updateUser')));
   }
+
+  deleteUser(user: User): Observable<User> {
+    const url = `${this.userUrl}/${user.username}`;
+    return this.http
+      .delete<User>(url, this.httpOptions)
+      .pipe(catchError(this.handleError<User>('deleteUser')));
+  }
+
 
   /**
    * Handle Http operation that failed.

@@ -19,7 +19,8 @@
             <input matInput placeholder="Last Name" formControlName="lastName">
         </mat-form-field>
 
-        <span>Reset password? Click <a href="/resetpwd">here</a>.</span>
+        <span>Reset password? Click <a mat-raised-button href="/resetpwd">Reset password</a></span>
+        <span>Remove account? Click <a mat-raised-button color="warn" (click)="deleteUser()">Delete User</a></span>
 
         <button mat-flat-button color="primary" type="submit" (click)="save()">Save</button>
 

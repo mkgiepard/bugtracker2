@@ -61,6 +61,7 @@ export class AuthService {
     localStorage.removeItem(JWT_ACCESS_NAME);
     localStorage.removeItem(JWT_REFRESH_NAME);
     localStorage.removeItem(USERNAME);
+    localStorage.clear();
     this.isUserLoggedIn.next(false);
     // window.location.href = '/login';
     return this.http.delete<any>(this.authURL + 'logout', this.httpOptions);
