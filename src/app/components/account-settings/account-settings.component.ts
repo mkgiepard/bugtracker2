@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { User } from '../../dataModel/user';
 import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 import { USERNAME } from '../../services/auth.service';
 
@@ -15,7 +16,7 @@ export class AccountSettingsComponent {
   settingsForm: FormGroup | undefined;
   user: User | undefined;
 
-  constructor(private userService: UserService) {}
+  constructor(private router: Router, private userService: UserService) {}
 
   ngOnInit(): void {
     this.settingsForm = new FormGroup({
@@ -37,5 +38,19 @@ export class AccountSettingsComponent {
         lastName: this.user!.lastName,
       });
     });
+  }
+
+  save(): void {
+    this.user = Object.assign(this.user!, this.settingsForm?.value);
+    if (this.user) {
+      this.userService
+        .updateUser(this.user)
+        .subscribe(() => this.goBack());
+      
+    }
+  }
+  
+  goBack(): void {
+    this.router.navigate(['/list']);
   }
 }

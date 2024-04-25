@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of, catchError, first, take, map, tap } from 'rxjs';
 
@@ -10,6 +10,9 @@ import { User } from '../dataModel/user';
 export class UserService {
   private currentUser: User | undefined;
   private userUrl = 'app/users';
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
 
   constructor(private http: HttpClient) {}
 
@@ -29,6 +32,14 @@ export class UserService {
       tap((user) => (this.currentUser = user)),
       catchError(this.handleError<User>('getUser username=${username}'))
     );
+  }
+
+  updateUser(user: User): Observable<User> {
+    console.log(user);
+    const url = `${this.userUrl}/${user.username}`;
+    return this.http
+      .put<User>(url, user, this.httpOptions)
+      .pipe(catchError(this.handleError<User>('updateUser')));
   }
 
   /**
