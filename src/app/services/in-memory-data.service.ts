@@ -10,8 +10,7 @@ import { User, userData } from '../dataModel/user';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const bugReports = bugReportData;
-    const users = userData;
-    return { bugReports, users };
+    return { bugReports };
   }
 
   // Overrides the genId method to ensure that a hero always has an id.

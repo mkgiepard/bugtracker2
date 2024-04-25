@@ -9,7 +9,7 @@ import { User } from '../dataModel/user';
 })
 export class UserService {
   private currentUser: User | undefined;
-  private userUrl = 'api/users';
+  private userUrl = 'app/users';
 
   constructor(private http: HttpClient) {}
 
@@ -23,10 +23,9 @@ export class UserService {
     if (this.currentUser && this.currentUser.username === username) {
       return of(this.currentUser);
     }
-    const url = `${this.userUrl}?username=${username}`;
+    const url = `${this.userUrl}/${username}`;
 
-    return this.http.get<User[]>(url).pipe(
-      map((arr) => arr[0]),
+    return this.http.get<User>(url).pipe(
       tap((user) => (this.currentUser = user)),
       catchError(this.handleError<User>('getUser username=${username}'))
     );
