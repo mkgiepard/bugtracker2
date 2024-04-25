@@ -21,6 +21,8 @@ export class AccountSettingsComponent {
     this.settingsForm = new FormGroup({
       username: new FormControl(null, [Validators.required]),
       email: new FormControl(null, [Validators.required, Validators.email]),
+      firstName: new FormControl(null, [Validators.required]),
+      lastName: new FormControl(null),
     });
     this.getUser(localStorage.getItem(USERNAME)!);
   }
@@ -31,6 +33,8 @@ export class AccountSettingsComponent {
       this.settingsForm!.patchValue({
         username: this.user!.username,
         email: this.user!.email,
+        firstName: this.user!.firstName,
+        lastName: this.user!.lastName,
       });
     });
   }
