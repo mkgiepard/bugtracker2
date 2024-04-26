@@ -36,6 +36,7 @@ class CustomValidators {
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup | undefined;
+  usernameHint = 'Username is required';
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -61,8 +62,13 @@ export class RegisterComponent implements OnInit {
       }
       this.authService
         .register(this.registerForm.value)
-        .pipe(map((user) => this.router.navigate(['login'])))
-        .subscribe();
+        .subscribe({
+          next: () => this.router.navigate(['login']),
+          error: (err) => {
+            this.registerForm?.controls['username'].setErrors({'incorrect': true});
+            this.usernameHint = 'Username already in use, please choose a different one.'
+          }
+        });
     }
   }
 }

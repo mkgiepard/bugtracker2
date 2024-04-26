@@ -50,8 +50,6 @@ export class AuthService {
   }
 
   register(user: User): Observable<User> {
-    console.log('will call register auth server');
-
     return this.http
       .post<User>(this.authURL + 'register', user, this.httpOptions)
       .pipe(catchError(this.handleError));
