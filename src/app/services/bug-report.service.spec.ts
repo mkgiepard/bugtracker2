@@ -54,7 +54,7 @@ describe('BugReportService', () => {
         status: Status.New,
         description: 'lorem epsum...',
         author: fakeUser,
-        created: new Date(1924, 1, 12),
+        created: new Date(2024, 1, 12),
         updated: new Date(2024, 3, 21)
       },
       {
@@ -64,7 +64,7 @@ describe('BugReportService', () => {
         status: Status.Accepted,
         description: 'lorem epsum...',
         author: fakeUser,
-        created: new Date(1924, 1, 12),
+        created: new Date(2024, 1, 12),
         updated: new Date(2024, 3, 21)
       },
       {
@@ -74,7 +74,7 @@ describe('BugReportService', () => {
         status: Status.New,
         description: 'lorem epsum...',
         author: fakeUser,
-        created: new Date(1924, 1, 12),
+        created: new Date(2024, 1, 12),
         updated: new Date(2024, 3, 21)
       },
       {
@@ -84,7 +84,7 @@ describe('BugReportService', () => {
         status: Status.Fixed,
         description: 'lorem epsum...',
         author: fakeUser,
-        created: new Date(1924, 1, 12),
+        created: new Date(2024, 1, 12),
         updated: new Date(2024, 3, 21)
       },
       {
@@ -94,7 +94,7 @@ describe('BugReportService', () => {
         status: Status.WNF,
         description: 'lorem epsum...',
         author: fakeUser,
-        created: new Date(1924, 1, 12),
+        created: new Date(2024, 1, 12),
         updated: new Date(2024, 3, 21)
       },
     ];

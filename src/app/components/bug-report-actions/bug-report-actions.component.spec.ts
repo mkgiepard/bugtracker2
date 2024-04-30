@@ -23,9 +23,9 @@ let testBugReport: BugReport = {
   status: Status.Accepted,
   description: 'test lorem epsum...',
   author: testUser,
-  comments: [{ author: testUser, comment: 'test first comment' }],
+  comments: [{ author: testUser, comment: 'test first comment', created: new Date(2024, 3, 21) }],
   updates: [],
-  created: new Date(1924, 1, 12),
+  created: new Date(2024, 1, 12),
   updated: new Date(2024, 3, 21)
 };
 

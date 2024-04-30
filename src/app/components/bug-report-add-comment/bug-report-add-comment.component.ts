@@ -61,6 +61,7 @@ export class BugReportAddCommentComponent implements OnInit {
         .addComment(this.bugReport, {
           author: this.currentUser!,
           comment: comment,
+          created: new Date()
         })
         .subscribe();
     }

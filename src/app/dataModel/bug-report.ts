@@ -21,7 +21,7 @@ export interface BugReport {
   comments?: BugReportComment[];
   updates?: BugReportUpdate[];
   created: Date;
-  updated: Date;
+  updated?: Date;
 }
 
 export const bugReportData: BugReport[] = [
@@ -33,9 +33,9 @@ export const bugReportData: BugReport[] = [
     description: 'lorem epsum...',
     author: userData[0],
     comments: [
-      { author: userData[0], comment: 'first comment' },
-      { author: userData[1], comment: 'second comment' },
-      { author: userData[0], comment: 'third comment' },
+      { author: userData[0], comment: 'first comment', created: new Date(2024, 3, 19) },
+      { author: userData[1], comment: 'second comment', created: new Date(2024, 3, 20) },
+      { author: userData[0], comment: 'third comment', created: new Date(2024, 3, 21) },
     ],
     updates: [
       {
@@ -43,7 +43,7 @@ export const bugReportData: BugReport[] = [
         update: 'Priority change P1 > P0',
       },
     ],
-    created: new Date(1924, 1, 12),
+    created: new Date(2024, 1, 12),
     updated: new Date(2024, 3, 21)
   },
   {
@@ -53,8 +53,8 @@ export const bugReportData: BugReport[] = [
     status: Status.Accepted,
     description: 'lorem epsum...',
     author: userData[1],
-    comments: [{ author: userData[0], comment: 'first comment' }],
-    created: new Date(1924, 1, 12),
+    comments: [{ author: userData[0], comment: 'first comment', created: new Date(2024, 3, 21) }],
+    created: new Date(2024, 1, 12),
     updated: new Date(2024, 3, 21)
   },
   {
@@ -65,12 +65,12 @@ export const bugReportData: BugReport[] = [
     description: 'lorem epsum...',
     author: userData[2],
     comments: [
-      { author: userData[0], comment: 'first comment' },
-      { author: userData[1], comment: 'second comment' },
-      { author: userData[2], comment: 'third comment' },
-      { author: userData[0], comment: 'lorem epsum' },
+      { author: userData[0], comment: 'first comment', created: new Date(2024, 3, 18) },
+      { author: userData[1], comment: 'second comment', created: new Date(2024, 3, 19) },
+      { author: userData[2], comment: 'third comment', created: new Date(2024, 3, 20) },
+      { author: userData[0], comment: 'lorem epsum', created: new Date(2024, 3, 21) },
     ],
-    created: new Date(1924, 1, 12),
+    created: new Date(2024, 1, 12),
     updated: new Date(2024, 3, 21)
   },
   {
@@ -81,7 +81,7 @@ export const bugReportData: BugReport[] = [
     description: 'lorem epsum...',
     author: userData[3],
     comments: [],
-    created: new Date(1924, 1, 12),
+    created: new Date(2024, 1, 12),
     updated: new Date(2024, 3, 21)
   },
   {
@@ -92,7 +92,7 @@ export const bugReportData: BugReport[] = [
     description: 'lorem epsum...',
     author: userData[4],
     comments: [],
-    created: new Date(1924, 1, 12),
+    created: new Date(2024, 1, 12),
     updated: new Date(2024, 3, 21)
   },
   {
@@ -103,7 +103,7 @@ export const bugReportData: BugReport[] = [
     description: 'lorem epsum...',
     author: userData[0],
     comments: [],
-    created: new Date(1924, 1, 12),
+    created: new Date(2024, 1, 12),
     updated: new Date(2024, 3, 21)
   },
   {
@@ -114,7 +114,7 @@ export const bugReportData: BugReport[] = [
     description: 'lorem epsum...',
     author: userData[1],
     comments: [],
-    created: new Date(1924, 1, 12),
+    created: new Date(2024, 1, 12),
     updated: new Date(2024, 3, 21)
   },
 ];

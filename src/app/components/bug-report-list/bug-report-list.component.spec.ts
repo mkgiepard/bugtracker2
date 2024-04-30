@@ -32,9 +32,9 @@ class MockBugReportService {
       status: Status.Accepted,
       description: 'test lorem epsum...',
       author: this.testUser,
-      comments: [{ author: this.testUser, comment: 'test first comment' }],
+      comments: [{ author: this.testUser, comment: 'test first comment', created: new Date(2024, 3, 21) }],
       updates: [],
-      created: new Date(1924, 1, 12),
+      created: new Date(2024, 1, 12),
       updated: new Date(2024, 3, 21)
     },
     {
@@ -45,10 +45,10 @@ class MockBugReportService {
       description: 'second test lorem epsum...',
       author: this.testUser,
       comments: [
-        { author: this.testUser, comment: 'second test first comment' },
+        { author: this.testUser, comment: 'second test first comment', created: new Date(2024, 3, 21) },
       ],
       updates: [],
-      created: new Date(1924, 1, 12),
+      created: new Date(2024, 1, 12),
       updated: new Date(2024, 3, 21)
     },
   ];
