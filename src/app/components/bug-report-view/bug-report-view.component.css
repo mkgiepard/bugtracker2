@@ -54,3 +54,9 @@ button {
 .visible {
   display: none;
 }
+
+.label-container {
+  display: flex;
+  padding-left: 4px;
+  padding-bottom: 4px;
+}
