@@ -37,17 +37,18 @@
     </div>
     <div *ngFor="let comment of bugReport.comments">
       <div class="label-container">
-        <label class="w100">Author: {{ comment.author | fullName }}</label>
-        <label class="w100">Created: {{ bugReport.created | date:"yyyy/MM/dd" }}</label>
+        <label class="w60">Author: {{ comment.author | fullName }}</label>
+        <label>Created: {{ bugReport.created | date:"yyyy/MM/dd" }}</label>
       </div>
       <mat-form-field class="w100" appearance="outline">
         <textarea matInput readonly="true" placeholder="Comment" cdkTextareaAutosize
           cdkAutosizeMinRows="2" value="{{ comment.comment }}"></textarea>
       </mat-form-field>
     </div>
-    <div class="row w100 update" *ngFor="let u of bugReport.updates">
-      <label class="w100">Author: {{ u.author | fullName }}</label>
-      <label class="w100">{{u.update}}</label>
+    <div class="label-container w100 update" *ngFor="let u of bugReport.updates">
+      <label>Author: {{ u.author | fullName }}</label>
+      <label class="update">{{u.update}}</label>
+      <label>Created: {{ u.created | date:"yyyy/MM/dd" }}</label>
     </div>
     <div class="w100">
       <button routerLink="/list" mat-raised-button>Back</button>
