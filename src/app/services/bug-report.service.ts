@@ -100,6 +100,7 @@ export class BugReportService {
     bugReport.updates?.push({
       author: this.currentUser!,
       update: 'Priority change: P' + oldPriority + ' > P' + bugReport.priority,
+      created: new Date()
     });
     return this.updateBugReport(bugReport);
   }
@@ -115,6 +116,7 @@ export class BugReportService {
     bugReport.updates?.push({
       author: this.currentUser!,
       update: 'Priority change: P' + oldPriority + ' > P' + bugReport.priority,
+      created: new Date()
     });
     return this.updateBugReport(bugReport);
   }
@@ -130,6 +132,7 @@ export class BugReportService {
     bugReport.updates?.push({
       author: this.currentUser!,
       update: 'Status change: ' + oldStatus + ' > ' + bugReport.status,
+      created: new Date()
     });
     return this.updateBugReport(bugReport);
   }
@@ -145,6 +148,7 @@ export class BugReportService {
     bugReport.updates?.push({
       author: this.currentUser!,
       update: 'Status change: ' + oldStatus + ' > ' + bugReport.status,
+      created: new Date()
     });
     return this.updateBugReport(bugReport);
   }

@@ -41,6 +41,7 @@ export const bugReportData: BugReport[] = [
       {
         author: userData[0],
         update: 'Priority change P1 > P0',
+        created: new Date(2024, 3, 18)
       },
     ],
     created: new Date(2024, 1, 12),

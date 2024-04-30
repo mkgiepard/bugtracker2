@@ -34,14 +34,14 @@ class MockBugReportService {
   markAsFixed(bugReport: BugReport): Observable<BugReport> {
     bugReport.status = Status.Fixed;
     bugReport.updates = [
-      { author: testUser, update: 'Status change: Accepted > Fixed' },
+      { author: testUser, update: 'Status change: Accepted > Fixed', created: new Date(2024, 3, 21) },
     ];
     return of(bugReport);
   }
   markAsWnf(bugReport: BugReport): Observable<BugReport> {
     bugReport.status = Status.WNF;
     bugReport.updates = [
-      { author: testUser, update: 'Status change: Accepted > WNF' },
+      { author: testUser, update: 'Status change: Accepted > WNF', created: new Date(2024, 3, 21) },
     ];
     return of(bugReport);
   }

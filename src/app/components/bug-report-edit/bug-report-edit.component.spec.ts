@@ -51,28 +51,28 @@ class MockBugReportService {
   markAsFixed(bugReport: BugReport): Observable<BugReport> {
     this.testBugReport.status = Status.Fixed;
     this.testBugReport.updates = [
-      { author: this.testUser, update: 'Status change: Accepted > Fixed' },
+      { author: this.testUser, update: 'Status change: Accepted > Fixed', created: new Date(2024, 3, 21) },
     ];
     return of(this.testBugReport);
   }
   markAsWnf(bugReport: BugReport): Observable<BugReport> {
     this.testBugReport.status = Status.WNF;
     this.testBugReport.updates = [
-      { author: this.testUser, update: 'Status change: Accepted > WNF' },
+      { author: this.testUser, update: 'Status change: Accepted > WNF', created: new Date(2024, 3, 21) },
     ];
     return of(this.testBugReport);
   }
   upPriority(bugReport: BugReport): Observable<BugReport> {
     this.testBugReport.priority = 0;
     this.testBugReport.updates = [
-      { author: this.testUser, update: 'Priority change: P1 > P0' },
+      { author: this.testUser, update: 'Priority change: P1 > P0', created: new Date(2024, 3, 21) },
     ];
     return of(this.testBugReport);
   }
   downPriority(bugReport: BugReport): Observable<BugReport> {
     this.testBugReport.priority = 2;
     this.testBugReport.updates = [
-      { author: this.testUser, update: 'Priority change: P1 > P2' },
+      { author: this.testUser, update: 'Priority change: P1 > P2', created: new Date(2024, 3, 21) },
     ];
     return of(this.testBugReport);
   }
