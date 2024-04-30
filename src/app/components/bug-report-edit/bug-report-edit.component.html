@@ -15,8 +15,11 @@
           <mat-radio-button [value]="4">P4</mat-radio-button>
         </mat-radio-group>
       </div>
-      <div class="w40 author">
+      <div class="author">
         <label>Author: {{ bugReport.author | fullName }}</label>
+      </div>
+      <div>
+        <label>Created: {{ bugReport.created | date:"yyyy/MM/dd" }}</label>
       </div>
       <div>
         <mat-form-field appearance="outline" floatLabel="auto">

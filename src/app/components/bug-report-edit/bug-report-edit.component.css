@@ -27,6 +27,7 @@ button {
   align-items: center;
   display: flex;
   flex-direction: row;
+  gap: 80px;
 }
 
 .w100 {
