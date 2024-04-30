@@ -34,6 +34,8 @@ class MockBugReportService {
       author: this.testUser,
       comments: [{ author: this.testUser, comment: 'test first comment' }],
       updates: [],
+      created: new Date(1924, 1, 12),
+      updated: new Date(2024, 3, 21)
     },
     {
       id: 1003,
@@ -46,6 +48,8 @@ class MockBugReportService {
         { author: this.testUser, comment: 'second test first comment' },
       ],
       updates: [],
+      created: new Date(1924, 1, 12),
+      updated: new Date(2024, 3, 21)
     },
   ];
   getBugReports(): Observable<BugReport[]> {

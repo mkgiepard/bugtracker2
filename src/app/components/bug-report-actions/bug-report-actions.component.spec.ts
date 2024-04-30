@@ -25,6 +25,8 @@ let testBugReport: BugReport = {
   author: testUser,
   comments: [{ author: testUser, comment: 'test first comment' }],
   updates: [],
+  created: new Date(1924, 1, 12),
+  updated: new Date(2024, 3, 21)
 };
 
 class MockBugReportService {

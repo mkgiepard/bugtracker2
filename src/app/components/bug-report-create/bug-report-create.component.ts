@@ -64,6 +64,8 @@ export class BugReportCreateComponent implements OnInit {
       description: '',
       author: this.currentUser!,
       comments: [],
+      created: new Date(),
+      updated: new Date()
     };
   }
 
