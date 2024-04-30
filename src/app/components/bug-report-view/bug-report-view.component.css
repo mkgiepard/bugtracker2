@@ -32,6 +32,7 @@ button {
   display: flex;
   flex-direction: row;
   align-items: center;
+  gap: 80px;
 }
 
 .w100 {
@@ -40,6 +41,10 @@ button {
 
 .w40 {
   width: 40%;
+}
+
+.w60 {
+  width: 60%;
 }
 
 .link {

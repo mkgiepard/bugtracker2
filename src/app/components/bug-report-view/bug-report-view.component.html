@@ -14,11 +14,14 @@
           <mat-radio-button [value]="4">P4</mat-radio-button>
         </mat-radio-group>
       </div>
-      <div class="w40">
+      <div>
         <label>Author: {{ bugReport.author | fullName }}</label>
       </div>
       <div>
         <label>Status: {{ bugReport.status }}</label>
+      </div>
+      <div>
+        <label>Created: {{ bugReport.created | date:"yyyy/MM/dd" }}</label>
       </div>
     </div>
     <div>
