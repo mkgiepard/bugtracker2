@@ -15,6 +15,7 @@ export class BugReportListComponent implements OnInit {
     'priority',
     'status',
     'author',
+    'created',
     'action',
   ];
   // dataSource: BugReport[] = [];

@@ -15,7 +15,7 @@
   <!-- Title Column -->
   <ng-container matColumnDef="title">
     <th mat-header-cell *matHeaderCellDef>Title</th>
-    <td mat-cell class="title link w50" [routerLink]="['/view', bug.id]" *matCellDef="let bug">
+    <td mat-cell class="title link w40" [routerLink]="['/view', bug.id]" *matCellDef="let bug">
       {{ bug.title }}
     </td>
   </ng-container>
@@ -36,6 +36,12 @@
   <ng-container matColumnDef="author">
     <th mat-header-cell *matHeaderCellDef>Author</th>
     <td mat-cell *matCellDef="let bug">{{ bug.author | fullName }}</td>
+  </ng-container>
+
+  <!-- Created Column -->
+  <ng-container matColumnDef="created">
+    <th mat-header-cell *matHeaderCellDef>Created</th>
+    <td mat-cell *matCellDef="let bug">{{ bug.created | date:"yyyy/MM/dd" }}</td>
   </ng-container>
 
   <!-- Actions Column -->
