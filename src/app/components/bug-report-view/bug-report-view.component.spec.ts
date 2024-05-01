@@ -214,6 +214,7 @@ describe('BugReportViewComponent', () => {
     fixture.detectChanges();
 
     const updateElements = getElementByClass('update');
+    console.log(updateElements);
     expect(updateElements.length).toEqual(1);
     expect(updateElements[0].textContent).toContain('Author: Alpha Tester');
     expect(updateElements[0].textContent).toContain(

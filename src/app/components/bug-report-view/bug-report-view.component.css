@@ -62,7 +62,3 @@ button {
   gap: 20px;
   justify-content: space-between;
 }
-
-.update {
-  flex-grow: 4;
-}

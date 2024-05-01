@@ -47,7 +47,7 @@
     </div>
     <div class="label-container w100 update" *ngFor="let u of bugReport.updates">
       <label>Author: {{ u.author | fullName }}</label>
-      <label class="update">{{u.update}}</label>
+      <label>{{u.update}}</label>
       <label>Created: {{ u.created | date:"yyyy/MM/dd HH:MM:ss" }}</label>
     </div>
     <div class="w100">
