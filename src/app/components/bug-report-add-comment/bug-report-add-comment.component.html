@@ -34,7 +34,10 @@
             </mat-form-field>
         </div>
         <div *ngFor="let comment of bugReport.comments">
-            <label class="w100">Author: {{ comment.author | fullName }}</label>
+            <div class="label-container">
+                <label>Author: {{ comment.author | fullName }}</label>
+                <label>Created: {{ comment.created | date:"yyyy/MM/dd HH:mm:ss" }}</label>
+            </div>
             <mat-form-field class="w100" appearance="outline">
                 <textarea matInput readonly="true" placeholder="Comment" cdkTextareaAutosize
                     cdkAutosizeMinRows="2" value="{{ comment.comment }}"></textarea>

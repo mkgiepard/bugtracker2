@@ -39,3 +39,11 @@ button {
 .link {
   cursor: pointer;
 }
+
+.label-container {
+  display: flex;
+  padding-left: 4px;
+  padding-bottom: 4px;
+  gap: 20px;
+  justify-content: space-between;
+}
