@@ -62,3 +62,8 @@ button {
   gap: 20px;
   justify-content: space-between;
 }
+
+.dates-container {
+  display: flex;
+  flex-direction: column;
+}
