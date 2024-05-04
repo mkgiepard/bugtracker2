@@ -52,6 +52,7 @@ export class BugReportService {
 
   /** PUT: update the bugReport on the server */
   updateBugReport(bugReport: BugReport): Observable<BugReport> {
+    bugReport.updated = new Date();
     return this.http
       .put<BugReport>(this.bugReportUrl, bugReport, this.httpOptions)
       .pipe(
@@ -69,6 +70,7 @@ export class BugReportService {
       bugReport.comments = [];
     }
     bugReport.comments?.push(comment);
+    bugReport.updated = new Date();
     return this.http
       .put<BugReport>(this.bugReportUrl, bugReport, this.httpOptions)
       .pipe(
