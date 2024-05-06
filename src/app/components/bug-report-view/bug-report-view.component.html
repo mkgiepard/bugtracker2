@@ -1,5 +1,92 @@
 <mat-card *ngIf="bugReport" [ngClass]="{'changed': isChanged}">
   <form [formGroup]="bugReportForm" class="container">
+  <div class="container-grid">
+    <div class="container-main">
+      <div>
+        <h1>Bug Report: {{ bugReport.id }}</h1>
+      </div>
+      <div>
+        <mat-form-field class="w100" appearance="outline">
+          <input matInput readonly="true" placeholder="Title" value="{{ bugReport.title }}" />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="w100" appearance="outline">
+          <textarea matInput readonly="true" placeholder="Description" cdkTextareaAutosize
+            cdkAutosizeMinRows="2" value="{{ bugReport.description }}"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="container-sidebar">
+      <div><label>Author: {{ bugReport.author | fullName }}</label></div>
+      <div><label>Created: {{ bugReport.created | date:"yyyy/MM/dd HH:mm:ss" }}</label></div>
+      <div><label>Updated: {{ bugReport.updated | date:"yyyy/MM/dd HH:mm:ss" }}</label></div>
+      <div><label>Status: {{ bugReport.status }}</label></div>
+      <div>
+        <div><label>Priority:</label></div>
+        <div>
+          <mat-radio-group formControlName="priority" appearance="outline" (change)="setIsChanged()">
+            <mat-radio-button [value]="0">P0</mat-radio-button>
+            <mat-radio-button [value]="1">P1</mat-radio-button>
+            <mat-radio-button [value]="2">P2</mat-radio-button>
+            <mat-radio-button [value]="3">P3</mat-radio-button>
+            <mat-radio-button [value]="4">P4</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngFor="let comment of bugReport.comments">
+    <div class="container-grid">
+      <div class="container-main">
+        <mat-form-field class="w100" appearance="outline">
+          <textarea matInput readonly="true" placeholder="Comment" cdkTextareaAutosize
+            cdkAutosizeMinRows="2" value="{{ comment.comment }}"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="container-sidebar">
+        <div><label>Author: {{ comment.author | fullName }}</label></div>
+        <div><label>Created: {{ comment.created | date:"yyyy/MM/dd HH:mm:ss" }}</label></div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngFor="let u of bugReport.updates">
+    <div class="container-grid">
+      <div class="container-main">
+        <div><label>{{u.update}}</label></div>
+      </div>
+      <div class="container-sidebar">
+        <div><label>Author: {{ u.author | fullName }}</label></div>
+        <div><label>Created: {{ u.created | date:"yyyy/MM/dd HH:mm:ss" }}</label></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="w100">
+    <button routerLink="/list" mat-raised-button>Back</button>
+    <mat-icon class="link action-icon" mat-list-icon [routerLink]="['/comment', bugReport.id]">
+      comment</mat-icon>
+    <mat-icon class="link action-icon" mat-list-icon (click)="markAsFixed()">done</mat-icon>
+    <mat-icon class="link action-icon" mat-list-icon (click)="markAsWnf()">close</mat-icon>
+    <mat-icon class="link action-icon" mat-list-icon (click)="upPriority()">arrow_circle_up
+    </mat-icon>
+    <mat-icon class="link action-icon" mat-list-icon (click)="downPriority()">arrow_circle_down
+    </mat-icon>
+    <mat-icon class="link action-icon" mat-list-icon (click)="delete()">delete</mat-icon>
+    <button [routerLink]="['/edit', bugReport.id]" mat-raised-button>Edit</button>
+    <label class="update-note" [ngClass]="{'visible': !isChanged}">NOTE: Priority or Status were
+      changed.</label>
+  </div>
+
+  </form>
+</mat-card>
+
+<!---
+<mat-card *ngIf="bugReport" [ngClass]="{'changed': isChanged}">
+  <form [formGroup]="bugReportForm" class="container">
     <div>
       <h1>Bug Report: {{ bugReport.id }}</h1>
     </div>
@@ -68,3 +155,4 @@
     </div>
   </form>
 </mat-card>
+-->
