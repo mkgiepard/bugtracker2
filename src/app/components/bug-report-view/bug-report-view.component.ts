@@ -8,7 +8,7 @@ import { BugReportComment } from 'src/app/dataModel/bug-report-comment';
 @Component({
   selector: 'app-bug-report-view',
   templateUrl: './bug-report-view.component.html',
-  styleUrls: ['./bug-report-view.component.css'],
+  styleUrls: ['./bug-report-view.component.scss'],
 })
 export class BugReportViewComponent implements OnInit {
   bugReport: BugReport | undefined;
