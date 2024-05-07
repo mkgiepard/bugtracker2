@@ -8,7 +8,7 @@ import { provideImageKitLoader } from '@angular/common';
 @Component({
   selector: 'app-bug-report-edit',
   templateUrl: './bug-report-edit.component.html',
-  styleUrls: ['./bug-report-edit.component.css'],
+  styleUrls: ['./bug-report-edit.component.scss'],
 })
 export class BugReportEditComponent implements OnInit {
   bugReport: BugReport | undefined;

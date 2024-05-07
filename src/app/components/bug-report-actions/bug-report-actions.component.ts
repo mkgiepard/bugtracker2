@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-bug-report-actions',
   templateUrl: './bug-report-actions.component.html',
-  styleUrls: ['./bug-report-actions.component.css'],
+  styleUrls: ['./bug-report-actions.component.scss'],
 })
 export class BugReportActionsComponent {
   @Input() bugReport!: BugReport;

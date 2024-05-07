@@ -10,7 +10,7 @@ import { USERNAME } from '../../services/auth.service';
 @Component({
   selector: 'app-bug-report-add-comment',
   templateUrl: './bug-report-add-comment.component.html',
-  styleUrls: ['./bug-report-add-comment.component.css'],
+  styleUrls: ['./bug-report-add-comment.component.scss'],
 })
 export class BugReportAddCommentComponent implements OnInit {
   currentUser: User | undefined;

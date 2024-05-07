@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   standalone: true,
   imports: [RouterModule],
   templateUrl: './logout.component.html',
-  styleUrl: './logout.component.css',
+  styleUrl: './logout.component.scss',
 })
 export class LogoutComponent {
   constructor(private authService: AuthService, private router: Router) {}

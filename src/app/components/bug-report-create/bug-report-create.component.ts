@@ -15,7 +15,7 @@ import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-bug-report-create',
   templateUrl: './bug-report-create.component.html',
-  styleUrls: ['./bug-report-create.component.css'],
+  styleUrls: ['./bug-report-create.component.scss'],
 })
 export class BugReportCreateComponent implements OnInit {
   createForm: UntypedFormGroup | undefined;

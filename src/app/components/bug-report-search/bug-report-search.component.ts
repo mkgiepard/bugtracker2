@@ -7,7 +7,7 @@ import { BugReportService } from 'src/app/services/bug-report.service';
 @Component({
   selector: 'app-bug-report-search',
   templateUrl: './bug-report-search.component.html',
-  styleUrls: ['./bug-report-search.component.css'],
+  styleUrls: ['./bug-report-search.component.scss'],
 })
 export class BugReportSearchComponent implements OnInit {
   bugReports$!: Observable<BugReport[]>;

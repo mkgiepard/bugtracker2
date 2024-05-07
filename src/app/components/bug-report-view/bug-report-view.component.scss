@@ -22,6 +22,22 @@ mat-card {
   grid-area: sidebar;
 }
 
+label {
+  font-size: 12px;
+}
+
+input {
+  font-size: 12px;
+}
+
+textarea {
+  font-size:12px;
+}
+
+.mat-mdc-form-field-input-control.mat-mdc-form-field-input-control {
+  font-size: 12px;
+}
+
 .changed {
   border-color: yellow;
   border-width: 1px;
@@ -84,4 +100,23 @@ button {
 .dates-container {
   display: flex;
   flex-direction: column;
+}
+
+.smallRadio .mat-radio-container{
+  height: 10px;
+  width: 10px;
+}
+.smallRadio .mat-radio-outer-circle{
+  height: 10px;
+  width: 10px;
+}
+.smallRadio .mat-radio-inner-circle{
+  height: 10px;
+  width: 10px;
+}
+.smallRadio .mat-radio-button .mat-radio-ripple{
+  height: 20px; 
+  width: 20px; 
+  left: calc(50% - 10px); 
+  top: calc(50% - 10px); 
 }

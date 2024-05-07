@@ -6,7 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 @Component({
   selector: 'app-bug-report-list',
   templateUrl: './bug-report-list.component.html',
-  styleUrls: ['./bug-report-list.component.css'],
+  styleUrls: ['./bug-report-list.component.scss'],
 })
 export class BugReportListComponent implements OnInit {
   displayedColumns: string[] = [
