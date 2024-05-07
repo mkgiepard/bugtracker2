@@ -19,12 +19,12 @@
     </div>
 
     <div class="container-sidebar">
-      <div><label>Author: {{ bugReport.author | fullName }}</label></div>
-      <div><label>Created: {{ bugReport.created | date:"yyyy/MM/dd HH:mm:ss" }}</label></div>
-      <div><label>Updated: {{ bugReport.updated | date:"yyyy/MM/dd HH:mm:ss" }}</label></div>
-      <div><label>Status: {{ bugReport.status }}</label></div>
+      <div>Author: {{ bugReport.author | fullName }}</div>
+      <div>Created: {{ bugReport.created | date:"yyyy/MM/dd HH:mm:ss" }}</div>
+      <div>Updated: {{ bugReport.updated | date:"yyyy/MM/dd HH:mm:ss" }}</div>
+      <div>Status: {{ bugReport.status }}</div>
       <div>
-        <div><label>Priority:</label></div>
+        <div>Priority:</div>
         <div>
           <mat-radio-group formControlName="priority" appearance="outline" (change)="setIsChanged()">
             <mat-radio-button [value]="0">P0</mat-radio-button>
@@ -47,8 +47,8 @@
         </mat-form-field>
       </div>
       <div class="container-sidebar">
-        <div><label>Author: {{ comment.author | fullName }}</label></div>
-        <div><label>Created: {{ comment.created | date:"yyyy/MM/dd HH:mm:ss" }}</label></div>
+        <div>Author: {{ comment.author | fullName }}</div>
+        <div>Created: {{ comment.created | date:"yyyy/MM/dd HH:mm:ss" }}</div>
       </div>
     </div>
   </div>
@@ -56,11 +56,11 @@
   <div *ngFor="let u of bugReport.updates">
     <div class="container-grid update">
       <div class="container-main">
-        <div><label>{{u.update}}</label></div>
+        <div>{{u.update}}</div>
       </div>
       <div class="container-sidebar">
-        <div><label>Author: {{ u.author | fullName }}</label></div>
-        <div><label>Created: {{ u.created | date:"yyyy/MM/dd HH:mm:ss" }}</label></div>
+        <div>Author: {{ u.author | fullName }}</div>
+        <div>Created: {{ u.created | date:"yyyy/MM/dd HH:mm:ss" }}</div>
       </div>
     </div>
   </div>
@@ -77,8 +77,8 @@
     </mat-icon>
     <mat-icon class="link action-icon" mat-list-icon (click)="delete()">delete</mat-icon>
     <button [routerLink]="['/edit', bugReport.id]" mat-raised-button>Edit</button>
-    <label class="update-note" [ngClass]="{'visible': !isChanged}">NOTE: Priority or Status were
-      changed.</label>
+    <div class="update-note" [ngClass]="{'visible': !isChanged}">NOTE: Priority or Status were
+      changed.</div>
   </div>
 
   </form>
