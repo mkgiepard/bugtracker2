@@ -32,6 +32,10 @@ mat-card {
   border-width: 1px;
 }
 
+.scaled {
+  transform: scale(0.8);
+}
+
 .action-icon {
   margin-right: 24px;
 }
