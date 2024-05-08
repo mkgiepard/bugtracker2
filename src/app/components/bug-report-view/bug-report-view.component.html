@@ -1,6 +1,6 @@
 <mat-card *ngIf="bugReport" [ngClass]="{'changed': isChanged}">
   <form [formGroup]="bugReportForm" class="container">
-  <div class="container-grid">
+  <div class="container-grid border">
     <div class="container-main">
       <div>
         <h1>Bug Report: {{ bugReport.id }}</h1>
@@ -18,7 +18,7 @@
       </div>
     </div>
 
-    <div class="container-sidebar">
+    <div class="container-sidebar border">
       <div>Author: {{ bugReport.author | fullName }}</div>
       <div>Created: {{ bugReport.created | date:"yyyy/MM/dd HH:mm:ss" }}</div>
       <div>Updated: {{ bugReport.updated | date:"yyyy/MM/dd HH:mm:ss" }}</div>
@@ -39,14 +39,14 @@
   </div>
 
   <div *ngFor="let comment of bugReport.comments">
-    <div class="container-grid">
+    <div class="container-grid border">
       <div class="container-main">
         <mat-form-field class="w100" appearance="outline">
           <textarea matInput readonly="true" placeholder="Comment" cdkTextareaAutosize
             cdkAutosizeMinRows="2" value="{{ comment.comment }}"></textarea>
         </mat-form-field>
       </div>
-      <div class="container-sidebar">
+      <div class="container-sidebar border">
         <div>Author: {{ comment.author | fullName }}</div>
         <div>Created: {{ comment.created | date:"yyyy/MM/dd HH:mm:ss" }}</div>
       </div>
@@ -54,11 +54,11 @@
   </div>
 
   <div *ngFor="let u of bugReport.updates">
-    <div class="container-grid update">
+    <div class="container-grid update border">
       <div class="container-main">
         <div>{{u.update}}</div>
       </div>
-      <div class="container-sidebar">
+      <div class="container-sidebar border">
         <div>Author: {{ u.author | fullName }}</div>
         <div>Created: {{ u.created | date:"yyyy/MM/dd HH:mm:ss" }}</div>
       </div>
