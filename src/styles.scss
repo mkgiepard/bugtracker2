@@ -7,15 +7,20 @@ body {
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  color: #666;
 }
 
+app-root {
+  font-size: 13px;
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  color: #666;
+  --mat-form-field-container-text-size: 13px;
+}
 
+/* This is a copy from inlined style */
 :host {
   font-family: Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol";
-  font-size: 12px;
   color: #333;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
