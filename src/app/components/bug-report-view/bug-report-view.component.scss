@@ -6,7 +6,7 @@ mat-card {
 
 .container-grid {
   display: grid;
-  grid-template-columns: 69% 29%;
+  grid-template-columns: auto 250px;
   grid-template-rows: auto;
   grid-template-areas: "main sidebar";
   column-gap: 2%;
@@ -33,6 +33,7 @@ mat-card {
 }
 
 .scaled {
+  transform-origin: top left;
   transform: scale(0.8);
 }
 
@@ -93,4 +94,19 @@ button {
 .dates-container {
   display: flex;
   flex-direction: column;
+}
+
+.field {
+  display: grid;
+  grid-template-columns: 50px auto;
+  grid-template-rows: auto;
+  column-gap: 12px;
+}
+
+.field-name {
+
+}
+
+.field-data {
+
 }

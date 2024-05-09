@@ -21,13 +21,25 @@
     </div>
 
     <div class="container-sidebar border">
-      <div>Author: {{ bugReport.author | fullName }}</div>
-      <div>Created: {{ bugReport.created | date:"yyyy/MM/dd HH:mm:ss" }}</div>
-      <div>Updated: {{ bugReport.updated | date:"yyyy/MM/dd HH:mm:ss" }}</div>
-      <div>Status: {{ bugReport.status }}</div>
-      <div>
-        <div>Priority:</div>
-        <div class="scaled">
+      <div class="field">
+        <div class="field-name">Author:</div>
+        <div class="field-data">{{ bugReport.author | fullName }}</div>
+      </div>
+      <div class="field">
+        <div class="field-name">Created:</div>
+        <div class="field-data">{{ bugReport.created | date:"yyyy/MM/dd HH:mm:ss" }}</div>
+      </div>
+      <div class="field">
+        <div class="field-name">Updated:</div>
+        <div class="field-data">{{ bugReport.updated | date:"yyyy/MM/dd HH:mm:ss" }}</div>
+      </div>
+      <div class="field">
+        <div class="field-name">Status:</div>
+        <div class="field-data">{{ bugReport.status }}</div>
+      </div>
+      <div class="field">
+        <div class="fieled-name">Priority:</div>
+        <div class="fieled-data scaled">
           <mat-radio-group formControlName="priority" appearance="outline" (change)="setIsChanged()">
             <mat-radio-button [value]="0">P0</mat-radio-button>
             <mat-radio-button [value]="1">P1</mat-radio-button>
@@ -39,34 +51,45 @@
       </div>
     </div>
   </div>
-
-  <div *ngFor="let comment of bugReport.comments">
-    <div class="container-grid border">
-      <div class="container-main">
-        <mat-form-field class="w100" appearance="outline">
-          <mat-label>Comment</mat-label>
-          <textarea matInput readonly="true" placeholder="Comment" cdkTextareaAutosize
-            cdkAutosizeMinRows="2" value="{{ comment.comment }}"></textarea>
-        </mat-form-field>
+<div *ngFor="let comment of bugReport.comments">
+  <div class="container-grid border">
+    <div class="container-main">
+      <mat-form-field class="w100" appearance="outline">
+        <mat-label>Comment</mat-label>
+        <textarea matInput readonly="true" placeholder="Comment" cdkTextareaAutosize
+          cdkAutosizeMinRows="2" value="{{ comment.comment }}"></textarea>
+      </mat-form-field>
+    </div>
+    <div class="container-sidebar border">
+      <div class="field">
+        <div class="field-name">Author:</div>
+        <div class="field-data">{{ comment.author | fullName }}</div>
       </div>
-      <div class="container-sidebar border">
-        <div>Author: {{ comment.author | fullName }}</div>
-        <div>Created: {{ comment.created | date:"yyyy/MM/dd HH:mm:ss" }}</div>
+      <div class="field">
+        <div class="field-name">Created:</div>
+        <div class="field-data">{{ comment.created | date:"yyyy/MM/dd HH:mm:ss" }}</div>
       </div>
     </div>
   </div>
+</div>
 
-  <div *ngFor="let u of bugReport.updates">
-    <div class="container-grid update border">
-      <div class="container-main">
-        <div>{{u.update}}</div>
+<div *ngFor="let u of bugReport.updates">
+  <div class="container-grid update border">
+    <div class="container-main">
+      <div>{{u.update}}</div>
+    </div>
+    <div class="container-sidebar border">
+      <div class="field">
+        <div class="field-name">Author:</div>
+        <div class="field-data">{{ u.author | fullName }}</div>
       </div>
-      <div class="container-sidebar border">
-        <div>Author: {{ u.author | fullName }}</div>
-        <div>Created: {{ u.created | date:"yyyy/MM/dd HH:mm:ss" }}</div>
+      <div class="field">
+        <div class="field-name">Created:</div>
+        <div class="field-data">{{ u.created | date:"yyyy/MM/dd HH:mm:ss" }}</div>
       </div>
     </div>
   </div>
+</div>
 
   <div class="w100">
     <button routerLink="/list" mat-raised-button>Back</button>
