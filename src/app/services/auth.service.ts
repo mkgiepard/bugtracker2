@@ -4,7 +4,7 @@ import {
   HttpHeaders,
   HttpErrorResponse,
 } from '@angular/common/http';
-import { Observable, of, throwError, BehaviorSubject } from 'rxjs';
+import { Observable, of, throwError, BehaviorSubject, tap } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { User } from '../dataModel/user';
 
@@ -55,14 +55,22 @@ export class AuthService {
       .pipe(catchError(this.handleError));
   }
 
-  logout(): Observable<AuthResponse> {
-    localStorage.removeItem(JWT_ACCESS_NAME);
-    localStorage.removeItem(JWT_REFRESH_NAME);
-    localStorage.removeItem(USERNAME);
-    localStorage.clear();
-    this.isUserLoggedIn.next(false);
-    // window.location.href = '/login';
-    return this.http.delete<any>(this.authURL + 'logout', this.httpOptions);
+  logout(): Observable<any> {
+    const url = this.authURL + 'logout/' + localStorage.getItem(USERNAME);
+
+    return this.http
+      .delete(url, this.httpOptions)
+      .pipe(
+        tap((_) => {
+          localStorage.removeItem(JWT_ACCESS_NAME);
+          localStorage.removeItem(JWT_REFRESH_NAME);
+          localStorage.removeItem(USERNAME);
+          localStorage.clear();
+          this.isUserLoggedIn.next(false);
+        }),
+        catchError(this.handleError)
+      );
+      
   }
 
   private handleError(error: HttpErrorResponse) {
