@@ -202,7 +202,8 @@ describe('BugReportViewComponent', () => {
 
     const updateElements = getElementByClass('update');
     expect(updateElements.length).toEqual(1);
-    expect(updateElements[0].textContent).toContain('Author: Alpha Tester');
+    expect(updateElements[0].textContent).toContain('Status change:');
+    expect(updateElements[0].textContent).toContain('Alpha Tester');
     expect(updateElements[0].textContent).toContain(
       'Status change: Accepted > Fixed'
     );
@@ -216,7 +217,8 @@ describe('BugReportViewComponent', () => {
     const updateElements = getElementByClass('update');
     console.log(updateElements);
     expect(updateElements.length).toEqual(1);
-    expect(updateElements[0].textContent).toContain('Author: Alpha Tester');
+    expect(updateElements[0].textContent).toContain('Status change:');
+    expect(updateElements[0].textContent).toContain('Alpha Tester');
     expect(updateElements[0].textContent).toContain(
       'Status change: Accepted > WNF'
     );
@@ -229,7 +231,7 @@ describe('BugReportViewComponent', () => {
 
     const updateElements = getElementByClass('update');
     expect(updateElements.length).toEqual(1);
-    expect(updateElements[0].textContent).toContain('Author: Alpha Tester');
+    expect(updateElements[0].textContent).toContain('Alpha Tester');
     expect(updateElements[0].textContent).toContain('Priority change: P1 > P0');
   });
 
@@ -240,7 +242,7 @@ describe('BugReportViewComponent', () => {
 
     const updateElements = getElementByClass('update');
     expect(updateElements.length).toEqual(1);
-    expect(updateElements[0].textContent).toContain('Author: Alpha Tester');
+    expect(updateElements[0].textContent).toContain('Alpha Tester');
     expect(updateElements[0].textContent).toContain('Priority change: P1 > P2');
   });
 
