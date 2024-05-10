@@ -5,6 +5,11 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { LogoutComponent } from './logout.component';
 
+let mockAuthService = {
+  logout: () => {return {subscribe: () => {} } }
+}
+
+
 describe('LogoutComponent', () => {
   let component: LogoutComponent;
   let fixture: ComponentFixture<LogoutComponent>;
@@ -13,7 +18,7 @@ describe('LogoutComponent', () => {
     await TestBed.configureTestingModule({
       imports: [LogoutComponent, RouterTestingModule],
       providers: [
-        { provide: AuthService, useValue: createSpyFromClass(AuthService) },
+        { provide: AuthService, useValue: mockAuthService },
       ],
     }).compileComponents();
 
