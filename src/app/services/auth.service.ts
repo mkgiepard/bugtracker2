@@ -58,19 +58,32 @@ export class AuthService {
   logout(): Observable<any> {
     const url = this.authURL + 'logout/' + localStorage.getItem(USERNAME);
 
+    return this.http.delete(url, this.httpOptions).pipe(
+      tap((_) => {
+        localStorage.removeItem(JWT_ACCESS_NAME);
+        localStorage.removeItem(JWT_REFRESH_NAME);
+        localStorage.removeItem(USERNAME);
+        localStorage.clear();
+        this.isUserLoggedIn.next(false);
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  refreshToken(): Observable<AuthResponse> {
+    const refreshToken = localStorage.getItem(JWT_REFRESH_NAME);
     return this.http
-      .delete(url, this.httpOptions)
+      .post<any>(
+        this.authURL + 'token',
+        { grant_type: 'refresh_token', refresh_token: refreshToken },
+        this.httpOptions
+      )
       .pipe(
-        tap((_) => {
-          localStorage.removeItem(JWT_ACCESS_NAME);
-          localStorage.removeItem(JWT_REFRESH_NAME);
-          localStorage.removeItem(USERNAME);
-          localStorage.clear();
-          this.isUserLoggedIn.next(false);
-        }),
-        catchError(this.handleError)
+        map((token) => {
+          localStorage.setItem(JWT_ACCESS_NAME, token.accessToken);
+          return token;
+        })
       );
-      
   }
 
   private handleError(error: HttpErrorResponse) {

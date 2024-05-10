@@ -22,8 +22,9 @@ export class AppSettingsComponent {
         if (error.status === 401) {
           this.message =
             'You are not authorized to visit this route. No data is displayed';
+        } else {
+          this.message = error
         }
-        console.log(error);
       },
     });
   }
