@@ -1,50 +1,65 @@
 <mat-card *ngIf="bugReport">
   <form [formGroup]="bugReportForm" class="container">
-    <div>
-      <h1>Bug Report: {{ bugReport.id }}</h1>
-      <input matInput formControlName="id" value="{{ bugReport.id }}" hidden />
-    </div>
-    <div class="row w100">
-      <div class="w40">
-        <label>Priority: </label>
-        <mat-radio-group class="priority" formControlName="priority" appearance="outline">
-          <mat-radio-button [value]="0">P0</mat-radio-button>
-          <mat-radio-button [value]="1">P1</mat-radio-button>
-          <mat-radio-button [value]="2">P2</mat-radio-button>
-          <mat-radio-button [value]="3">P3</mat-radio-button>
-          <mat-radio-button [value]="4">P4</mat-radio-button>
-        </mat-radio-group>
+    <div class="container-grid border">
+      <div class="container-main">
+        <div>
+          <h1>Bug Report: {{ bugReport.id }}</h1>
+          <input matInput formControlName="id" value="{{ bugReport.id }}" hidden />
+        </div>
+        <div>
+          <mat-form-field class="w100" appearance="outline">
+            <mat-label>Title</mat-label>
+            <input matInput formControlName="title" placeholder="Title" value="{{ bugReport.title }}"
+              required />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="w100" appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea matInput formControlName="description" placeholder="Description"
+              cdkTextareaAutosize cdkAutosizeMinRows="10" value="{{ bugReport.description }}"
+              required></textarea>
+          </mat-form-field>
+        </div>
       </div>
-      <div class="author">
-        <label>Author: {{ bugReport.author | fullName }}</label>
+      <div class="container-sidebar border">
+        <div class="field">
+          <div class="field-name">Author:</div>
+          <div class="field-data">{{ bugReport.author | fullName }}</div>
+        </div>
+        <div class="field">
+          <div class="field-name">Created:</div>
+          <div class="field-data">{{ bugReport.created | date:"yyyy/MM/dd HH:mm:ss" }}</div>
+        </div>
+        <div class="field">
+          <div class="field-name">Updated:</div>
+          <div class="field-data">{{ bugReport.updated | date:"yyyy/MM/dd HH:mm:ss" }}</div>
+        </div>
+        <div>
+          <div>
+            <mat-form-field appearance="outline" floatLabel="auto">
+              <mat-label>Status</mat-label>
+              <mat-select class="status" formControlName="status">
+                <mat-option *ngFor="let bugReportStatus of bugReportStatuses" [value]="bugReportStatus">
+                  {{bugReportStatus}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="field">
+          <div class="fieled-name">Priority:</div>
+          <div class="fieled-data scaled">
+            <mat-radio-group class="priority" formControlName="priority" appearance="outline">
+              <mat-radio-button [value]="0">P0</mat-radio-button>
+              <mat-radio-button [value]="1">P1</mat-radio-button>
+              <mat-radio-button [value]="2">P2</mat-radio-button>
+              <mat-radio-button [value]="3">P3</mat-radio-button>
+              <mat-radio-button [value]="4">P4</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
       </div>
-      <div class="dates-container">
-        <label>Created: {{ bugReport.created | date:"yyyy/MM/dd HH:mm:ss" }}</label>
-        <label>Updated: {{ bugReport.updated | date:"yyyy/MM/dd HH:mm:ss" }}</label>
-      </div>
-      <div>
-        <mat-form-field appearance="outline" floatLabel="auto">
-          <mat-label>Status</mat-label>
-          <mat-select class="status" formControlName="status">
-            <mat-option *ngFor="let bugReportStatus of bugReportStatuses" [value]="bugReportStatus">
-              {{bugReportStatus}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-    </div>
-    <div>
-      <mat-form-field class="w100" appearance="outline">
-        <input matInput formControlName="title" placeholder="Title" value="{{ bugReport.title }}"
-          required />
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field class="w100" appearance="outline">
-        <textarea matInput formControlName="description" placeholder="Description"
-          cdkTextareaAutosize cdkAutosizeMinRows="10" value="{{ bugReport.description }}"
-          required></textarea>
-      </mat-form-field>
     </div>
     <div class="w100">
       <button (click)="goBack()" mat-raised-button>Back</button>
