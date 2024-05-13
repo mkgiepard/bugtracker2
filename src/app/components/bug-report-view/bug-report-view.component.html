@@ -51,41 +51,39 @@
       </div>
     </div>
   </div>
-<div *ngFor="let comment of bugReport.comments">
-  <div class="container-grid border">
+
+  <div *ngFor="let log of bugReportChangeLog">
+  <div *ngIf="log.hasOwnProperty('comment')" class="container-grid border">
     <div class="container-main">
       <mat-form-field class="w100" appearance="outline">
         <mat-label>Comment</mat-label>
         <textarea matInput readonly="true" placeholder="Comment" cdkTextareaAutosize
-          cdkAutosizeMinRows="2" value="{{ comment.comment }}"></textarea>
+          cdkAutosizeMinRows="2" value="{{ (log | cast: BugReportComment).comment }}"></textarea>
       </mat-form-field>
     </div>
     <div class="container-sidebar border">
       <div class="field">
         <div class="field-name">Author:</div>
-        <div class="field-data">{{ comment.author | fullName }}</div>
+        <div class="field-data">{{ log.author | fullName }}</div>
       </div>
       <div class="field">
         <div class="field-name">Created:</div>
-        <div class="field-data">{{ comment.created | date:"yyyy/MM/dd HH:mm:ss" }}</div>
+        <div class="field-data">{{ log.created | date:"yyyy/MM/dd HH:mm:ss" }}</div>
       </div>
     </div>
   </div>
-</div>
-
-<div *ngFor="let u of bugReport.updates">
-  <div class="container-grid update border">
+  <div *ngIf="log.hasOwnProperty('update')" class="container-grid update border">
     <div class="container-main">
-      <div>{{u.update}}</div>
+      <div>{{(log | cast: BugReportUpdate).update}}</div>
     </div>
     <div class="container-sidebar border">
       <div class="field">
         <div class="field-name">Author:</div>
-        <div class="field-data">{{ u.author | fullName }}</div>
+        <div class="field-data">{{ log.author | fullName }}</div>
       </div>
       <div class="field">
         <div class="field-name">Created:</div>
-        <div class="field-data">{{ u.created | date:"yyyy/MM/dd HH:mm:ss" }}</div>
+        <div class="field-data">{{ log.created | date:"yyyy/MM/dd HH:mm:ss" }}</div>
       </div>
     </div>
   </div>

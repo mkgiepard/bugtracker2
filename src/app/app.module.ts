@@ -26,45 +26,47 @@ import { importProvidersFrom } from '@angular/core';
 
 import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { CastPipe } from "./pipes/cast.pipe";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    BugReportListComponent,
-    BugReportViewComponent,
-    BugReportCreateComponent,
-    BugReportEditComponent,
-    BugReportSearchComponent,
-    BugReportAddCommentComponent,
-    FullNamePipe,
-    BugReportActionsComponent,
-    AppSettingsComponent,
-    AccountSettingsComponent,
-    LoginComponent,
-    RegisterComponent,
-  ],
-  imports: [
-    HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
-      dataEncapsulation: false,
-      passThruUnknownUrl: true,
-    }),
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-  ],
-  exports: [MaterialModule, FormsModule, ReactiveFormsModule],
-  providers: [
-    AuthService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true,
-    },
-  ],
-  bootstrap: [AppComponent],
+    declarations: [
+        AppComponent,
+        BugReportListComponent,
+        BugReportViewComponent,
+        BugReportCreateComponent,
+        BugReportEditComponent,
+        BugReportSearchComponent,
+        BugReportAddCommentComponent,
+        FullNamePipe,
+        BugReportActionsComponent,
+        AppSettingsComponent,
+        AccountSettingsComponent,
+        LoginComponent,
+        RegisterComponent,
+        CastPipe
+    ],
+    exports: [MaterialModule, FormsModule, ReactiveFormsModule],
+    providers: [
+        AuthService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true,
+        },
+    ],
+    bootstrap: [AppComponent],
+    imports: [
+        HttpClientModule,
+        HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
+            dataEncapsulation: false,
+            passThruUnknownUrl: true,
+        }),
+        BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MaterialModule,
+    ]
 })
 export class AppModule {}

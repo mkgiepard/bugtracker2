@@ -14,6 +14,7 @@ import { FullNamePipe } from 'src/app/pipes/full-name-pipe';
 import { Router } from '@angular/router';
 import { MaterialModule } from '../../modules/material/material.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { CastPipe } from 'src/app/pipes/cast.pipe';
 
 class MockBugReportService {
   isLoggedIn = true;
@@ -76,7 +77,7 @@ describe('BugReportViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BugReportViewComponent, FullNamePipe],
+      declarations: [BugReportViewComponent, FullNamePipe, CastPipe],
       schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
       imports: [
         RouterTestingModule.withRoutes([]),

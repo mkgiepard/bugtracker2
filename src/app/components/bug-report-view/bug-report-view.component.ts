@@ -4,6 +4,10 @@ import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BugReportService } from 'src/app/services/bug-report.service';
 import { BugReportComment } from 'src/app/dataModel/bug-report-comment';
+import { BugReportUpdate } from 'src/app/dataModel/bug-report-update';
+
+
+type ChangeEntry = BugReportComment | BugReportUpdate;
 
 @Component({
   selector: 'app-bug-report-view',
@@ -20,6 +24,10 @@ export class BugReportViewComponent implements OnInit {
   bugReportPriority: string | undefined;
   bugComments: BugReportComment[] | undefined;
   isChanged = false;
+  bugReportChangeLog: ChangeEntry[] = [];
+
+  BugReportComment: BugReportComment | undefined;
+  BugReportUpdate: BugReportUpdate | undefined;
 
   constructor(
     private router: Router,
@@ -44,7 +52,19 @@ export class BugReportViewComponent implements OnInit {
       this.bugReportForm!.patchValue({
         priority: this.bugReport.priority,
       });
+      this.createChangeLog();
     });
+  }
+
+  createChangeLog() {
+    this.bugReportChangeLog = [];
+    if (this.bugReport?.comments) {
+      this.bugReportChangeLog = this.bugReportChangeLog.concat(this.bugReport?.comments);
+    }
+    if (this.bugReport?.updates) {
+      this.bugReportChangeLog = this.bugReportChangeLog.concat(this.bugReport?.updates);
+    }
+    this.bugReportChangeLog.sort((a, b) => {return new Date(a.created).getTime() - new Date(b.created).getTime();});
   }
 
   upPriority() {
@@ -75,13 +95,13 @@ export class BugReportViewComponent implements OnInit {
 
   markAsFixed() {
     if (this.bugReport == undefined) return;
-    this.bugReportService.markAsFixed(this.bugReport).subscribe();
+    this.bugReportService.markAsFixed(this.bugReport).subscribe(() => this.reload());
     this.setIsChanged();
   }
 
   markAsWnf() {
     if (this.bugReport == undefined) return;
-    this.bugReportService.markAsWnf(this.bugReport).subscribe();
+    this.bugReportService.markAsWnf(this.bugReport).subscribe(() => this.reload());
     this.setIsChanged();
   }
 
