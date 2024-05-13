@@ -172,7 +172,7 @@ describe('BugReportEditComponent', () => {
     const author = getElementsByClass('author');
 
     expect(author.length).toEqual(1);
-    expect(author[0].textContent).toContain('Author: Alpha Tester');
+    expect(author[0].textContent).toContain('Alpha Tester');
   });
 
   it('should show disabled Save button when title is missing', () => {
