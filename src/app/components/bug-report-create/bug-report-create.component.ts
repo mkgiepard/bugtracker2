@@ -50,6 +50,7 @@ export class BugReportCreateComponent implements OnInit {
           description: this.bugReport.description,
           author: this.currentUser,
           comment: this.bugReport.comments,
+          created: this.bugReport.created,
         });
       }
     });
