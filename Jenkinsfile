@@ -21,7 +21,7 @@ pipeline {
         stage ('test'){
             steps{
                 sh '''
-                ng test --single-run --browsers Chrome_no_sandbox
+                npm run ng test --single-run --browsers Chrome_no_sandbox
                 '''
             }
             post {
