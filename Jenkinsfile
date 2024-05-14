@@ -23,7 +23,7 @@ pipeline {
                 sh '''
                 echo $CHROME_BIN
                 ls -al $CHROME_BIN
-                npm run ng test --browsers=ChromeHeadless --watch=false
+                npm run ng test --browsers=FirefoxHeadless --watch=false
                 '''
             }
             post {

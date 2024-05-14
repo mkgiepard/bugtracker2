@@ -8,6 +8,7 @@ module.exports = function (config) {
     plugins: [
       require("karma-jasmine"),
       require("karma-chrome-launcher"),
+      require("karma-firefox-launcher"),
       require("karma-jasmine-html-reporter"),
       require("karma-coverage"),
       require("@angular-devkit/build-angular/plugins/karma"),
@@ -44,8 +45,17 @@ module.exports = function (config) {
           "--remote-debugging-port=9222",
         ],
       },
+      FirefoxHeadless: {
+        base: "Firefox",
+        flags: [
+          "--no-sandbox",
+          "--disable-gpu",
+          "--headless",
+          "--remote-debugging-port=9222",
+        ],
+      },
     },
-    browsers: ["Chrome", "ChromeHeadless"],
+    browsers: ["Firefox", "FirefoxHeadless", "Chrome", "ChromeHeadless"],
     singleRun: false,
     restartOnFileChange: true,
   });
