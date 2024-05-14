@@ -20,9 +20,11 @@ pipeline {
         }
         stage ('test'){
             steps{
-                sh '''
-                npm run ng test --browsers=ChromeHeadless --watch=false
-                '''
+                withEnv(["CHROME_BIN=/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"]) { 
+                    sh '''
+                    npm run ng test --browsers=ChromeHeadless --watch=false
+                    '''
+                }
             }
             post {
                 always {
