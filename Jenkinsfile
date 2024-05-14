@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    
+
     environment {
         NPM_CONFIG_CACHE = "${WORKSPACE}/.npm"
     }
@@ -24,11 +24,6 @@ pipeline {
                 ls -al $FIREFOX_BIN
                 npm run ng test --browsers=FirefoxHeadless --watch=false
                 '''
-            }
-            post {
-                always {
-                junit "test-results.xml"
-               }
             }
         }
 
