@@ -21,8 +21,6 @@ pipeline {
         stage ('test'){
             steps{
                 sh '''
-                echo $CHROME_BIN
-                ls -al $CHROME_BIN
                 npm run ng test --browsers=FirefoxHeadless --watch=false
                 '''
             }
