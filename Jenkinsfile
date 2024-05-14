@@ -21,6 +21,8 @@ pipeline {
         stage ('test'){
             steps{
                 sh '''
+                pwd
+                hostname
                 echo $FIREFOX_BIN
                 ls -al $FIREFOX_BIN
                 npm run ng test --browsers=FirefoxHeadless --watch=false
