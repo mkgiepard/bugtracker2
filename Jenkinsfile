@@ -22,6 +22,8 @@ pipeline {
             steps{
                 withEnv(["""CHROME_BIN=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"""]) { 
                     sh '''
+                    echo $CHROME_BIN
+                    ls -al $CHROME_BIN
                     npm run ng test --browsers=ChromeHeadless --watch=false
                     '''
                 }
