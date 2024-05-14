@@ -21,7 +21,7 @@ pipeline {
         stage ('test'){
             steps{
                 sh '''
-                npm run ng test
+                npm run ng test --browsers=ChromeHeadless --watch=false
                 '''
             }
             post {
