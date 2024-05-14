@@ -1,15 +1,12 @@
 pipeline {
+    agent any
+    
     environment {
         NPM_CONFIG_CACHE = "${WORKSPACE}/.npm"
     }
 
 
     stages {
-        stage ('checkout'){
-            steps{
-                checkout scm
-            }
-        }
         stage ('install modules'){
             steps{
                 sh '''
