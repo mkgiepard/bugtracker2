@@ -55,7 +55,7 @@ module.exports = function (config) {
         ],
       },
     },
-    browsers: ["Firefox", "FirefoxHeadless", "Chrome", "ChromeHeadless"],
+    browsers: ["FirefoxHeadless", "ChromeHeadless"],
     singleRun: true,
     restartOnFileChange: true,
   });
