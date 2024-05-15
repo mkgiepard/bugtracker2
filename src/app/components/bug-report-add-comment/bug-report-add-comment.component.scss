@@ -52,3 +52,44 @@ button {
   display: flex;
   flex-direction: column;
 }
+
+
+.container-grid {
+  display: grid;
+  grid-template-columns: auto 250px;
+  grid-template-rows: auto;
+  grid-template-areas: "main sidebar";
+  column-gap: 2%;
+  row-gap: 15px;
+}
+
+.border {
+  border: 1px dotted grey;
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.container-main {
+  grid-area: main;
+}
+
+.container-sidebar {
+  display: grid;
+  row-gap: 8px;
+  grid-area: sidebar;
+}
+
+.field {
+  display: grid;
+  grid-template-columns: 50px auto;
+  grid-template-rows: auto;
+  column-gap: 12px;
+}
+
+.field-name {
+
+}
+
+.field-data {
+
+}

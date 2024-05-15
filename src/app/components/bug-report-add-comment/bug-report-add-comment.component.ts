@@ -51,7 +51,12 @@ export class BugReportAddCommentComponent implements OnInit {
   getBugReport(id: number) {
     this.bugReportService
       .getBugReport(id)
-      .subscribe((bugReport) => (this.bugReport = bugReport));
+      .subscribe((bugReport) => {
+        this.bugReport = bugReport;
+        this.bugReportForm!.patchValue({
+          priority: this.bugReport.priority,
+        })
+    });
   }
 
   addComment(comment: string): void {

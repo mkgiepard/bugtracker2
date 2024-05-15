@@ -1,53 +1,77 @@
 <mat-card *ngIf="bugReport">
     <form [formGroup]="bugReportForm" class="container">
-        <div>
-            <h1>Bug Report: {{ bugReport.id }}</h1>
+        <div class="container-grid border">
+            <div class="container-main">
+                <div>
+                    <h1>Bug Report: {{ bugReport.id }}</h1>
+                </div>
+                <div>
+                    <mat-form-field class="w100" appearance="outline">
+                        <mat-label>Title</mat-label>
+                        <input matInput readonly="true" placeholder="Title" value="{{ bugReport.title }}" />
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field class="w100" appearance="outline">
+                        <mat-label>Description</mat-label>
+                        <textarea matInput readonly="true" placeholder="Description" cdkTextareaAutosize
+                            cdkAutosizeMinRows="2" value="{{ bugReport.description }}"></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+        
+            <div class="container-sidebar border">
+                <div class="field">
+                    <div class="field-name">Author:</div>
+                    <div class="field-data">{{ bugReport.author | fullName }}</div>
+                </div>
+                <div class="field">
+                    <div class="field-name">Created:</div>
+                    <div class="field-data">{{ bugReport.created | date:"yyyy/MM/dd HH:mm:ss" }}</div>
+                </div>
+                <div class="field">
+                    <div class="field-name">Updated:</div>
+                    <div class="field-data">{{ bugReport.updated | date:"yyyy/MM/dd HH:mm:ss" }}</div>
+                </div>
+                <div class="field">
+                    <div class="field-name">Status:</div>
+                    <div class="field-data">{{ bugReport.status }}</div>
+                </div>
+                <div class="field">
+                    <div class="fieled-name">Priority:</div>
+                    <div class="fieled-data scaled">
+                        <mat-radio-group formControlName="priority" appearance="outline">
+                            <mat-radio-button [value]="0">P0</mat-radio-button>
+                            <mat-radio-button [value]="1">P1</mat-radio-button>
+                            <mat-radio-button [value]="2">P2</mat-radio-button>
+                            <mat-radio-button [value]="3">P3</mat-radio-button>
+                            <mat-radio-button [value]="4">P4</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="row w100">
-            <div class="w40">
-                <label>Priority: </label>
-                <mat-radio-group [disabled]="true" formControlName="priority" appearance="outline"
-                    [(ngModel)]="bugReport.priority">
-                    <mat-radio-button [value]="0">P0</mat-radio-button>
-                    <mat-radio-button [value]="1">P1</mat-radio-button>
-                    <mat-radio-button [value]="2">P2</mat-radio-button>
-                    <mat-radio-button [value]="3">P3</mat-radio-button>
-                    <mat-radio-button [value]="4">P4</mat-radio-button>
-                </mat-radio-group>
+        <div *ngFor="let comment of bugReport.comments" class="container-grid border">
+            <div class="container-main">
+                <mat-form-field class="w100" appearance="outline">
+                    <mat-label>Comment</mat-label>
+                    <textarea matInput readonly="true" placeholder="Comment" cdkTextareaAutosize
+                        cdkAutosizeMinRows="2" value="{{ comment.comment }}"></textarea>
+                </mat-form-field>
             </div>
-            <div>
-                <label>Author: {{ bugReport.author | fullName }}</label>
+            <div class="container-sidebar border">
+                <div class="field">
+                    <div class="field-name">Author:</div>
+                    <div class="field-data">{{ comment.author | fullName }}</div>
+                  </div>
+                  <div class="field">
+                    <div class="field-name">Created:</div>
+                    <div class="field-data">{{ comment.created | date:"yyyy/MM/dd HH:mm:ss" }}</div>
+                  </div>
             </div>
-            <div>
-                <label>Status: {{ bugReport.status }}</label>
-            </div>
-            <div class="dates-container">
-                <label>Created: {{ bugReport.created | date:"yyyy/MM/dd HH:mm:ss" }}</label>
-                <label>Updated: {{ bugReport.updated | date:"yyyy/MM/dd HH:mm:ss" }}</label>
-            </div>
-        </div>
-        <div>
-            <mat-form-field class="w100" appearance="outline">
-                <input matInput readonly="true" placeholder="Title" value="{{ bugReport.title }}" />
-            </mat-form-field>
-        </div>
-        <div class="row">
-            <mat-form-field class="w100" appearance="outline">
-                <textarea matInput readonly="true" placeholder="Description" cdkTextareaAutosize
-                    cdkAutosizeMinRows="2" value="{{ bugReport.description }}"></textarea>
-            </mat-form-field>
-        </div>
-        <div *ngFor="let comment of bugReport.comments">
-            <div class="label-container">
-                <label>Author: {{ comment.author | fullName }}</label>
-                <label>Created: {{ comment.created | date:"yyyy/MM/dd HH:mm:ss" }}</label>
-            </div>
-            <mat-form-field class="w100" appearance="outline">
-                <textarea matInput readonly="true" placeholder="Comment" cdkTextareaAutosize
-                    cdkAutosizeMinRows="2" value="{{ comment.comment }}"></textarea>
-            </mat-form-field>
         </div>
     </form>
+    <div class="container-grid border">
     <form [formGroup]="addCommentForm" class="container">
         <div class="row">
             <mat-form-field class="w100" appearance="fill">
@@ -62,4 +86,5 @@
                 mat-raised-button>Save</button>
         </div>
     </form>
+    </div>
 </mat-card>
