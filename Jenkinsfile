@@ -18,15 +18,17 @@ pipeline {
         stage ('test'){
             steps{
                 sh '''
-                pwd
-                hostname
-                echo $FIREFOX_BIN
-                ls -al $FIREFOX_BIN
                 npm run ng test --browsers=FirefoxHeadless --watch=false
                 '''
             }
         }
-
+        stage ('cypress.e2e'){
+            steps{
+                sh '''
+                npx cypress run
+                '''
+            }
+        }
         stage('build') {
             steps {
                 sh 'node --version'
