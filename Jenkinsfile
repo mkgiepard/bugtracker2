@@ -25,6 +25,7 @@ pipeline {
         stage ('cypress.e2e'){
             steps{
                 sh '''
+                npm ci
                 npx cypress run
                 '''
             }
