@@ -76,7 +76,7 @@ export class BugReportViewComponent implements OnInit {
     if (this.bugReport == undefined) return;
     this.bugReportService
       .upPriority(this.bugReport)
-      .subscribe(() => this.reload());
+      .subscribe(() => this.createChangeLog());
     this.setIsChanged();
   }
 
@@ -89,19 +89,19 @@ export class BugReportViewComponent implements OnInit {
     if (this.bugReport == undefined) return;
     this.bugReportService
       .downPriority(this.bugReport)
-      .subscribe(() => this.reload());
+      .subscribe(() => this.createChangeLog());
     this.setIsChanged();
   }
 
   markAsFixed() {
     if (this.bugReport == undefined) return;
-    this.bugReportService.markAsFixed(this.bugReport).subscribe(() => this.reload());
+    this.bugReportService.markAsFixed(this.bugReport).subscribe(() => this.createChangeLog());
     this.setIsChanged();
   }
 
   markAsWnf() {
     if (this.bugReport == undefined) return;
-    this.bugReportService.markAsWnf(this.bugReport).subscribe(() => this.reload());
+    this.bugReportService.markAsWnf(this.bugReport).subscribe(() => this.createChangeLog());
     this.setIsChanged();
   }
 
