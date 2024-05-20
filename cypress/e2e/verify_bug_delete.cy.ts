@@ -1,6 +1,7 @@
 import { EditPage } from '../pages/edit_page';
 import { HomePage } from '../pages/home_page';
 import { ViewPage } from '../pages/view_page';
+import { LoginPage } from '../pages/login_page';
 
 
 const homePage = new HomePage();
@@ -8,6 +9,10 @@ const homePage = new HomePage();
 describe("Verify bug deletion", () => {
 
     beforeEach(() => {
+        const login = new LoginPage();
+        login.open();
+        login.loginWithTestUser();
+
         homePage.open();
     })
 

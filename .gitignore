@@ -50,3 +50,4 @@ Thumbs.db
 # Cypress
 /cypress/downloads
 /cypress/screenshots
+cypress.env.json

@@ -1,10 +1,17 @@
 import { CreatePage } from '../pages/create_page';
 import { ViewPage } from '../pages/view_page';
 import { HomePage } from '../pages/home_page';
+import { LoginPage } from '../pages/login_page';
 
 const homePage = new HomePage();
 
-describe("Verify bug creattion", () => {
+describe("Verify bug creation", () => {
+
+    beforeEach(() => {
+        const login = new LoginPage();
+        login.open();
+        login.loginWithTestUser();
+    })
 
     it("Verify opening bug create page from the home page", () => {
         homePage.open();
@@ -25,7 +32,6 @@ describe("Verify bug creattion", () => {
         var createPage: CreatePage = new CreatePage();
         createPage.open();
         createPage.typeTitle('my title');
-        createPage.typeAuthor('joe doe');
         createPage.typeDesc('my desc\n2nd line');
         var pageAfterSave: HomePage = createPage.clickOnSave();
         pageAfterSave.validateHomePage();

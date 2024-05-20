@@ -1,10 +1,15 @@
 import { HomePage } from '../pages/home_page';
 import { EditPage } from '../pages/edit_page';
+import { LoginPage } from '../pages/login_page';
 
 const homePage = new HomePage();
 
 describe('The Home Page', () => {
   beforeEach(() => {
+    const login = new LoginPage();
+    login.open();
+    login.loginWithTestUser();
+
     homePage.open();
   });
 

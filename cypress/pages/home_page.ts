@@ -5,6 +5,10 @@ import { ViewPage } from './view_page';
 
 export class HomePage {
 
+    HomePage() {
+        cy.contains("add");
+    }
+
     open() {
         cy.visit("/");
     }

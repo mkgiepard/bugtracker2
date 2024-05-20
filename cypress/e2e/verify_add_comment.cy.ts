@@ -1,9 +1,15 @@
 import { AddCommentPage } from '../pages/add_comment_page';
 import { HomePage } from '../pages/home_page';
+import { LoginPage } from '../pages/login_page';
 
 const homePage = new HomePage();
 
 describe("Verify add comment page", () => {
+    beforeEach(() => {
+        const login = new LoginPage();
+        login.open();
+        login.loginWithTestUser();
+    })
 
     it("Verify opening add comment page from the home page", () => {
         homePage.open();

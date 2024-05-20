@@ -7,7 +7,7 @@ export class EditPage {
   }
 
   clickOnDelete() {
-    cy.get('mat-icon').eq(5).click();
+    cy.get('mat-icon:contains("delete")').click();
     cy.url().should('include', '/list');
   }
 

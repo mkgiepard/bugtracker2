@@ -8,12 +8,12 @@ export class ViewPage {
     }
 
     clickOnDelete() {
-        cy.get('mat-icon').eq(5).click();
+        cy.get('mat-icon:contains("delete")').click();
         cy.url().should("include", "/list");
     }
 
     clickOnBack(): HomePage {
-        cy.contains('Back').click();
+        cy.get('button:contains("Back")').click();
         return new HomePage();
     }
 
