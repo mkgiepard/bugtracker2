@@ -5,6 +5,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BugReportService } from 'src/app/services/bug-report.service';
 import { provideImageKitLoader } from '@angular/common';
 import { USERNAME } from '../../services/auth.service';
+import { BugReportComment } from 'src/app/dataModel/bug-report-comment';
+import { BugReportUpdate } from 'src/app/dataModel/bug-report-update';
+
+type ChangeEntry = BugReportComment | BugReportUpdate;
 
 @Component({
   selector: 'app-bug-report-edit',
@@ -22,7 +26,12 @@ export class BugReportEditComponent implements OnInit {
   });
   bugReportPriority: string | undefined;
   bugReportStatuses = Object.values(Status);
+  bugReportChangeLog: ChangeEntry[] = [];
+  BugReportComment: BugReportComment | undefined;
+  BugReportUpdate: BugReportUpdate | undefined;
+
   canEdit: Boolean | undefined;
+  currentUsername: string | null | undefined;
 
   constructor(
     private router: Router,
@@ -41,6 +50,18 @@ export class BugReportEditComponent implements OnInit {
     this.bugReportPriority = this.bugReport?.priority.toString();
   }
 
+  createChangeLog() {
+    this.bugReportChangeLog = [];
+    if (this.bugReport?.comments) {
+      this.bugReportChangeLog = this.bugReportChangeLog.concat(this.bugReport?.comments);
+    }
+    if (this.bugReport?.updates) {
+      this.bugReportChangeLog = this.bugReportChangeLog.concat(this.bugReport?.updates);
+    }
+    this.bugReportChangeLog.sort((a, b) => {return new Date(a.created).getTime() - new Date(b.created).getTime();});
+    this.currentUsername = localStorage.getItem(USERNAME);
+  }
+
   getBugReport(id: number) {
     this.bugReportService.getBugReport(id).subscribe((bugReport) => {
       this.bugReport = bugReport;
@@ -51,6 +72,7 @@ export class BugReportEditComponent implements OnInit {
         priority: this.bugReport.priority,
         description: this.bugReport.description,
       });
+      this.createChangeLog();
       this.canEdit = this.bugReport.author.username === localStorage.getItem(USERNAME);
     });
   }
@@ -126,5 +148,10 @@ export class BugReportEditComponent implements OnInit {
     this.bugReport = Object.assign(this.bugReport!, this.bugReportForm.value);
     if (this.bugReport == undefined) return;
     this.getBugReport(this.bugReport.id);
+  }
+
+  canEditComment(username: String): Boolean {
+    console.log(username);
+    return username === localStorage.getItem(USERNAME)
   }
 }

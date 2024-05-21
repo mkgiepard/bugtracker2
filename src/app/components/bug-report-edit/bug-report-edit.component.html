@@ -61,6 +61,45 @@
         </div>
       </div>
     </div>
+
+
+  <div *ngFor="let log of bugReportChangeLog">
+    <div *ngIf="log.hasOwnProperty('comment')" class="container-grid border">
+      <div class="container-main">
+        <mat-form-field class="w100" appearance="outline">
+          <mat-label>Comment</mat-label>
+          <textarea matInput readonly="{{ log.author.username != currentUsername }}" placeholder="Comment" cdkTextareaAutosize
+            cdkAutosizeMinRows="2" value="{{ (log | cast: BugReportComment).comment }}"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="container-sidebar border">
+        <div class="field">
+          <div class="field-name">Author:</div>
+          <div class="field-data">{{ log.author | fullName }}</div>
+        </div>
+        <div class="field">
+          <div class="field-name">Created:</div>
+          <div class="field-data">{{ log.created | date:"yyyy/MM/dd HH:mm:ss" }}</div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="log.hasOwnProperty('update')" class="container-grid update border">
+      <div class="container-main">
+        <div>{{(log | cast: BugReportUpdate).update}}</div>
+      </div>
+      <div class="container-sidebar border">
+        <div class="field">
+          <div class="field-name">Author:</div>
+          <div class="field-data">{{ log.author | fullName }}</div>
+        </div>
+        <div class="field">
+          <div class="field-name">Created:</div>
+          <div class="field-data">{{ log.created | date:"yyyy/MM/dd HH:mm:ss" }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <div class="w100">
       <button (click)="goBack()" mat-raised-button>Back</button>
       <mat-icon class="link action-icon" mat-list-icon [routerLink]="['/comment', bugReport.id]">
