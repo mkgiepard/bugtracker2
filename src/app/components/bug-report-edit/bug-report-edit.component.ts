@@ -4,6 +4,7 @@ import { BugReport, Status } from 'src/app/dataModel/bug-report';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BugReportService } from 'src/app/services/bug-report.service';
 import { provideImageKitLoader } from '@angular/common';
+import { USERNAME } from '../../services/auth.service';
 
 @Component({
   selector: 'app-bug-report-edit',
@@ -21,6 +22,7 @@ export class BugReportEditComponent implements OnInit {
   });
   bugReportPriority: string | undefined;
   bugReportStatuses = Object.values(Status);
+  canEdit: Boolean | undefined;
 
   constructor(
     private router: Router,
@@ -49,6 +51,7 @@ export class BugReportEditComponent implements OnInit {
         priority: this.bugReport.priority,
         description: this.bugReport.description,
       });
+      this.canEdit = this.bugReport.author.username === localStorage.getItem(USERNAME);
     });
   }
 

@@ -18,7 +18,7 @@
             <mat-label>Description</mat-label>
             <textarea matInput formControlName="description" placeholder="Description"
               cdkTextareaAutosize cdkAutosizeMinRows="10" value="{{ bugReport.description }}"
-              required></textarea>
+              required readonly="{{ !canEdit }}"></textarea>
           </mat-form-field>
         </div>
       </div>
