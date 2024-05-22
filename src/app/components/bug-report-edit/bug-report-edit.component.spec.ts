@@ -23,6 +23,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatRadioButtonHarness } from '@angular/material/radio/testing';
 import { HarnessLoader } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
+import { CastPipe } from 'src/app/pipes/cast.pipe';
 
 class MockBugReportService {
   isLoggedIn = true;
@@ -86,7 +87,7 @@ describe('BugReportEditComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BugReportEditComponent, FullNamePipe],
+      declarations: [BugReportEditComponent, FullNamePipe, CastPipe],
       schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
       imports: [
         RouterTestingModule.withRoutes([]),
@@ -162,10 +163,10 @@ describe('BugReportEditComponent', () => {
     expect(status[0].ariaDisabled).toEqual('false');
   });
 
-  it('should display bugReport description in RW mode after loading', () => {
+  it('should display bugReport description in RO mode after loading if a user != author', () => {
     const desc = getTextAreaElement('Description');
 
-    expect(desc.readOnly).toBeFalse();
+    expect(desc.readOnly).toBeTrue();
   });
 
   it('should display a RO label with bugReport author after loading', () => {
