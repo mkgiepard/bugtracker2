@@ -34,6 +34,10 @@ export class AccountSettingsComponent {
 
   getUser(username: string) {
     this.userService.getUser(username).subscribe((user) => {
+      if (!user) {
+        this.router.navigate(['/login']);
+      }
+
       this.user = user;
       this.settingsForm!.patchValue({
         username: this.user!.username,
