@@ -38,4 +38,4 @@ USER node
 EXPOSE 4200
 
 # Run the application in dev mode to use with Compose watch feature
-CMD npm start
+CMD npm run startInDocker
