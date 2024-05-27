@@ -33,6 +33,22 @@ mat-form-field {
   width: 40%;
 }
 
+.auto {
+  width: auto;
+}
+
+.narrow {
+  width: 80px;
+}
+
+.w160 {
+  width: 160px;
+}
+
+.w300 {
+  width: 300px;
+}
+
 .mat-mdc-table tr.mat-mdc-row:hover {
   background: lightgrey;
 }
