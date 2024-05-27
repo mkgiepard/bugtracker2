@@ -12,7 +12,7 @@ export class AppSettingsComponent {
   message: String | undefined;
 
   ngOnInit() {
-    this.http.get<any>('http://localhost:3000/app/settings').subscribe({
+    this.http.get<any>('/app/settings').subscribe({
       next: (res) => {
         if (res) {
           this.message = res.msg;
