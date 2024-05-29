@@ -6,6 +6,8 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
 
 import { MaterialModule } from './modules/material/material.module';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BugReportListComponent } from './components/bug-report-list/bug-report-list.component';
@@ -53,6 +55,12 @@ import { CastPipe } from "./pipes/cast.pipe";
             useClass: AuthInterceptor,
             multi: true,
         },
+        {
+            provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+            useValue: {
+              subscriptSizing: 'dynamic'
+            }
+        }
     ],
     bootstrap: [AppComponent],
     imports: [

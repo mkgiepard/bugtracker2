@@ -37,7 +37,7 @@
         </div>
         <div>
           <div>
-            <mat-form-field appearance="outline" floatLabel="auto">
+            <mat-form-field appearance="outline" floatLabel="auto" class="custom-form-field">
               <mat-label>Status</mat-label>
               <mat-select class="status" formControlName="status">
                 <mat-option *ngFor="let bugReportStatus of bugReportStatuses" [value]="bugReportStatus">
