@@ -21,6 +21,9 @@ mat-card {
 
 .container-main {
   grid-area: main;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
 }
 
 .container-sidebar {
