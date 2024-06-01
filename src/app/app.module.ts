@@ -29,6 +29,7 @@ import { importProvidersFrom } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { CastPipe } from "./pipes/cast.pipe";
+import { UserListComponent } from './components/user-list/user-list.component';
 
 @NgModule({
     declarations: [
@@ -45,7 +46,8 @@ import { CastPipe } from "./pipes/cast.pipe";
         AccountSettingsComponent,
         LoginComponent,
         RegisterComponent,
-        CastPipe
+        CastPipe,
+        UserListComponent
     ],
     exports: [MaterialModule, FormsModule, ReactiveFormsModule],
     providers: [
