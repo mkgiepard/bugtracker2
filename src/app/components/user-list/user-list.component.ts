@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
 import { User } from 'src/app/dataModel/user';
@@ -9,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.scss'
 })
-export class UserListComponent {
+export class UserListComponent implements OnInit {
   columns: string[] = [
     'username',
     'email',
